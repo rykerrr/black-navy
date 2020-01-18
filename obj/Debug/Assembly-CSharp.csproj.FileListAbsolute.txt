@@ -258,3 +258,14 @@ D:\UnityProjects2\BlackNavy\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.c
 D:\UnityProjects2\BlackNavy\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 D:\UnityProjects2\BlackNavy\obj\Debug\Assembly-CSharp.dll
 D:\UnityProjects2\BlackNavy\obj\Debug\Assembly-CSharp.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\Unity.Timeline.Editor.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\Unity.VSCode.Editor.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\Unity.TextMeshPro.Editor.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\UnityEngine.UI.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\Unity.Timeline.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\Unity.CollabProxy.Editor.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\Unity.Rider.Editor.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\Unity.2D.Sprite.Editor.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\Unity.2D.Tilemap.Editor.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\Unity.TextMeshPro.pdb
+D:\UnityProjects2\BlackNavy\Temp\bin\Debug\UnityEditor.UI.pdb

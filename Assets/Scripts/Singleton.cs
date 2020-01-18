@@ -52,6 +52,10 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        
+    }
 
     private void OnApplicationQuit()
     {

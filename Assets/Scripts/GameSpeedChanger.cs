@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 #pragma warning disable 0649
 public class GameSpeedChanger : MonoBehaviour
@@ -10,10 +11,47 @@ public class GameSpeedChanger : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (!EventSystem.current.IsPointerOverGameObject())
         {
-            Debug.Log("Yeet");
-            Application.Quit();
+            float speed = Time.timeScale;
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Space))
+            {
+                speed = 0f;
+                Time.timeScale = speed;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                speed = 1f;
+                Time.timeScale = speed;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                speed = 2f;
+                Time.timeScale = speed;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha4))
+            {
+                speed = 4f;
+                Time.timeScale = speed;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha6))
+            {
+                speed = 6f;
+                Time.timeScale = speed;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha8))
+            {
+                speed = 8f;
+                Time.timeScale = speed;
+            }
+
+            speedText.text = "Current Speed: " + System.Convert.ToInt32(speed) + "x";
         }
     }
 

@@ -13,20 +13,24 @@ public class WeaponUnguidedMissileLauncher
     [SerializeField] private float missileDelay;
 
     [HideInInspector] public LayerMask whatAreOurProjectiles;
-    private float missileTimer;
+    [SerializeField] private float missileTimer;
 
-    public void LaunchMissile()
+    public bool LaunchMissile()
     {
         if(Time.time > missileTimer)
         {
             Transform missileClone = Poolable.Get<UnguidedMissile>(() => Poolable.CreateObj<UnguidedMissile>(missilePrefab.gameObject), missileBay.position, owner.rotation).transform;
             int layerValue = whatAreOurProjectiles.layermask_to_layer();
             missileClone.gameObject.layer = layerValue;
-            UnguidedMissile rocket = missileClone.GetComponent<UnguidedMissile>();
-            rocket.ActivateBoost();
+            missileClone.gameObject.SetActive(true);
+            UnguidedMissile missile = missileClone.GetComponent<UnguidedMissile>();
+            missile.ActivateBoost();
             missileTimer = missileDelay + Time.time;
+
+            return true;
         }
 
+        return false;
     }
 }
 #pragma warning restore 0649

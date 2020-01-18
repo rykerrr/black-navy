@@ -6,28 +6,42 @@ using UnityEngine;
 #pragma warning disable 0649
 [RequireComponent(typeof(UnitHumanoid))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class UnitBase : Poolable
+public abstract class UnitBase : Poolable
 {
     [Header("Base unit properties")]
     [SerializeField] protected Rigidbody2D thisRb;
     [SerializeField] public UnitLayerMask whatUnitsToTarget;
     [SerializeField] public LayerMask whatAreOurProjectiles;
     [SerializeField] public LayerMask whatIsTarget;
-    [SerializeField] private Transform lookCheckPoint;
-    [SerializeField] private float lookCheckRadius;
-    [SerializeField] private float targetCheckRadius;
+    [SerializeField] protected Transform firePoint;
+    [SerializeField] protected float lookCheckRadius;
+    [SerializeField] private float targetCheckDelay;
+    [SerializeField] protected float targetCheckRadius;
+    [SerializeField] protected float yBaseAltitude;
     [SerializeField] protected float speed;
 
-    protected Transform target;
-    protected float waterLevel = GameConfig.Instance.WaterLevel;
+    public float BaseAltitude => yBaseAltitude;
+
+    [Header("Base unit debug")]
+    protected Rigidbody2D targRb;
+    protected UnitHumanoid targHumanoid;
+    [SerializeField] protected Transform target;
+    private float findTargetTimer;
+    protected float waterLevel;
     protected float curSpd;
 
-    // maybe add water as well?
-    protected bool CheckIfLookingAtTarget()
+    protected virtual void Awake()
     {
-        if(target)
+        waterLevel = GameConfig.Instance.WaterLevel;
+        thisRb = GetComponent<Rigidbody2D>();
+    }
+
+    // maybe add water as well?
+    protected bool CheckIfLookingAtTarget(float range)
+    {
+        if (target)
         {
-            RaycastHit2D[] hits = Physics2D.CircleCastAll(lookCheckPoint.position, lookCheckRadius, transform.up, 50f, whatIsTarget);
+            RaycastHit2D[] hits = Physics2D.CircleCastAll(firePoint.position, lookCheckRadius, transform.up, range, whatIsTarget);
 
             foreach (RaycastHit2D hit in hits)
             {
@@ -49,37 +63,80 @@ public class UnitBase : Poolable
     }
     protected bool FindTarget()
     {
-        List<Collider2D> hit = (Physics2D.OverlapCircleAll(transform.position, targetCheckRadius, whatIsTarget)).ToList();
-        List<Collider2D> availableTargets = new List<Collider2D>();
-
-        foreach (Collider2D en in hit)
+        if (Time.time > findTargetTimer)
         {
-            if (UnitLayerMask.CheckIfUnitIsInMask(en.GetComponent<ShipHumanoid>().whatAmI, whatUnitsToTarget) == true)
+            List<Collider2D> hit = (Physics2D.OverlapCircleAll(transform.position, targetCheckRadius, whatIsTarget)).ToList();
+            List<Collider2D> availableTargets = new List<Collider2D>();
+
+            foreach (Collider2D en in hit)
             {
-                availableTargets.Add(en);
+                if (en)
+                {
+                    try
+                    {
+                        if (UnitLayerMask.CheckIfUnitIsInMask(en.GetComponent<UnitHumanoid>().type, whatUnitsToTarget) == true)
+                        {
+                            if ((en.transform.position - transform.position).magnitude <= targetCheckRadius)
+                            {
+                                availableTargets.Add(en);
+                            }
+                        }
+                    }
+                    catch (System.Exception e)
+                    {
+                        Debug.Log(e);
+                        Debug.Log(hit + " | " + hit.Count);
+
+                        foreach(var obj in hit)
+                        {
+                            Debug.Log(obj.name);
+                        }
+                    }
+                }
             }
+
+
+            /*for (int i = 0; i < availableTargets.Count; i++)
+            {
+                Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+            }*/
+
+            availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
+            if (availableTargets.Count > 0)
+            {
+                target = availableTargets[0].transform;
+                targRb = target.GetComponent<Rigidbody2D>();
+                targHumanoid = target.GetComponent<UnitHumanoid>();
+
+                return true;
+            }
+
+            /*if (hit != null)
+            {
+                target = hit.transform;
+                return true;
+            }*/
+
+            findTargetTimer = targetCheckDelay + Time.time;
+            return false;
         }
+        else return false;
+    }
 
-        /*for (int i = 0; i < availableTargets.Count; i++)
-        {
-            Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
-        }*/
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, targetCheckRadius);
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, lookCheckRadius);
+    }
 
-        availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
-        if (availableTargets.Count > 0)
-        {
-            target = availableTargets[0].transform;
-
-            return true;
-        }
-
-        /*if (hit != null)
-        {
-            target = hit.transform;
-            return true;
-        }*/
-
-        return false;
+    private void OnDisable()
+    {
+        target = null;
+        curSpd = 0f;
+        findTargetTimer = 0f;
+        thisRb.velocity = Vector2.zero;
     }
 }
 #pragma warning restore 0649

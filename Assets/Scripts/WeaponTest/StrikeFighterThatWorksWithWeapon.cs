@@ -1,0 +1,190 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+#pragma warning disable 0649
+public class StrikeFighterThatWorksWithWeapon : AircraftBase
+{
+    [Header("Strike fighter properties")]
+    [SerializeField] public WeaponBase[] weapons;
+    [SerializeField] private Transform[] weaponMounts;
+    [SerializeField] private float aircraftEscapeRange;
+    [SerializeField] private float shipEscapeRange;
+    [SerializeField] private float evasionLength;
+    [SerializeField] private float distanceBeforeFire;
+
+    private float veloc1;
+    [SerializeField] private bool targIsVisual = false;
+
+    protected override void Start()
+    {
+        base.Start();
+        OnEnable();
+    }
+
+    private void Update()
+    {
+        int vsi = thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y) >= 0 ? vsi = 1 : vsi = -1;
+
+        if (vsi == 0)
+        {
+            Debug.Log("possible error @vsi");
+            Debug.Break();
+        }
+
+        if (returningToBaseAlt)
+        {
+            ReturnToBaseAlt();
+            return;
+        }
+
+        if (evading)
+        {
+            Evade(aircraftEscapeRange);
+            return;
+        }
+
+        if (!takenOff)
+        {
+            curSpd = Mathf.SmoothDamp(curSpd, speed, ref veloc1, timeToTakeOffFully / 3f);
+        }
+        else
+        {
+            bool isNearWater = CheckIfNearWater();
+            bool isAboveCeil = CheckifAboveCeil();
+
+            if (target)
+            {
+                Vector3 dist = (target.position - transform.position);
+                targIsVisual = CheckIfLookingAtTarget(distanceBeforeFire);
+
+                if (dist.magnitude >= targetCheckRadius)
+                {
+                    target = null;
+                    return;
+                }
+
+                if (targHumanoid.type == UnitType.Aircraft)
+                {
+                    if (dist.magnitude <= aircraftEscapeRange && !evading)
+                    {
+                        float yAlt = vsi == 1 ? evadeAlt * vsi * Random.Range(2f, 3f) : evadeAlt * vsi * Random.Range(0.2f, 0.7f);
+                        yAlt *= transform.up.x >= 0 ? 1 : -1;
+                        evadePosition = new Vector3(transform.up.x * 300, yAlt * 2f, transform.position.z);
+                        evading = true;
+                        evadeTimer = Time.time + evasionLength;
+                        return;
+                    }
+
+                    //dist += (Vector3)(targRb.velocity / 4f);
+                }
+                else
+                {
+                    if (dist.magnitude <= shipEscapeRange && !evading)
+                    {
+                        evadePosition = new Vector3(transform.up.x * 300, BaseAltitude * 1.4f, transform.position.z);
+                        evading = true;
+                        evadeTimer = Time.time + evasionLength;
+                        return;
+                    }
+                }
+
+                transform.up = Vector3.MoveTowards(transform.up, dist.normalized, 1.4f * rotationSmoothing * Time.deltaTime);
+
+                if (targIsVisual)
+                {
+                    curSpd = Mathf.SmoothDamp(curSpd, speed * 0.8f, ref veloc1, 2f);
+
+                    FireState wep1fire = weapons[0].Fire();
+                    FireState wep2fire = weapons[1].Fire();
+
+                    foreach (WeaponBase wep in weapons)
+                    {
+                        FireState wepFire = wep.Fire();
+
+                        if (wepFire == FireState.OutOfAmmo)
+                        {
+                            Debug.Log("ooa");
+
+                            evadePosition = new Vector3(transform.up.x * 10f * vsi, evadeAlt, transform.position.z);
+
+                            evading = true;
+                            evadeTimer = (Time.time + evasionLength) * 1.2f;
+                            return;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (FindTarget())
+                {
+                    return; // loop back
+                }
+                else
+                {
+                    transform.up = Vector3.MoveTowards(transform.up, new Vector3(transform.up.x, 0f, transform.position.z), rotationSmoothing);
+                }
+            }
+
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        thisRb.velocity = transform.up * curSpd * Time.fixedDeltaTime;
+    }
+
+    protected override void Evade(float escapeRange)
+    {
+        base.Evade(escapeRange);
+
+        if (evading == false)
+        {
+            ReloadWeapons();
+        }
+    }
+
+    protected override void ReturnToBaseAlt()
+    {
+        base.ReturnToBaseAlt();
+
+        if (returningToBaseAlt == false)
+        {
+            ReloadWeapons();
+        }
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+
+        for (int i = 0; i < weapons.Length; i++)
+        {
+            weapons[i].whatAreOurProjectiles = whatAreOurProjectiles;
+            weapons[i].whatIsTarget = whatIsTarget;
+            weapons[i].spawnLocation = firePoint;
+            weapons[i].transform.localPosition = weaponMounts[i].localPosition;
+        }
+
+        //foreach (WeaponBase weapon in weapons)
+        //{
+        //    weapon.whatAreOurProjectiles = whatAreOurProjectiles;
+        //    weapon.whatIsTarget = whatIsTarget;
+        //    weapon.spawnLocation = firePoint;
+
+        //    weapon.transform.position = weaponMounts;
+        //}
+
+        ReloadWeapons();
+    }
+
+    private void ReloadWeapons()
+    {
+        foreach (WeaponBase wep in weapons)
+        {
+            wep.LoadAmmo();
+        }
+    }
+}
+#pragma warning restore 0649

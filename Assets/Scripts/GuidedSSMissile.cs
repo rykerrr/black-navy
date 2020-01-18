@@ -7,53 +7,55 @@ public class GuidedSSMissile : GuidedProjectile // surface to surface
 {
     [Header("Surface to surface missile properties")]
     [SerializeField] private Transform afterBurner;
-    [SerializeField] private float fuel;
+    [SerializeField] private int fuel;
     [SerializeField] private float maxDistToTarget;
     [SerializeField] private float boosterLength;
     [SerializeField] private float intermStageLength;
 
-    private bool attackingStage = false;
-    private bool boosting = false;
-    private bool intermStage = false;
+    [Header("Debug props")]
+    [SerializeField] private bool attackingStage = false;
+    [SerializeField] private bool boosting = false;
+    [SerializeField] private bool intermStage = false;
+
+    private int curFuel;
+
+    private void Start()
+    {
+        OnEnable(); 
+    }
 
     private void Update()
     {
+        if(enabled)
+        {
+            if(fuel <= 0)
+            {
+                Debug.Log("hello there from the other side");
+            }
+        }
+
         if (Time.timeScale >= 0.1f)
         {
             if (isOutOfWater)
             {
                 if (intermStage || attackingStage)
                 {
-                    bool foundTarget;
-
                     if (attackingStage)
                     {
-                        if (fuel >= 0)
+                        if (curFuel >= 0)
                         {
-                            fuel--;
+                            curFuel--;
                         }
                     }
 
-                    if (target == null)
+                    if (target)
                     {
-                        foundTarget = FindTarget();
+                        Vector3 dist = (target.position - transform.position).normalized;
+                        transform.up = Vector3.MoveTowards(transform.up, dist, rotationSmoothing * Time.deltaTime);
                     }
                     else
                     {
-                        if ((target.position - transform.position).magnitude >= maxDistToTarget)
-                        {
-                            foundTarget = false;
-                        }
-                        else
-                        {
-                            foundTarget = true;
-                        }
-                    }
-
-                    if (foundTarget)
-                    {
-                        Vector3 dist = (target.position - transform.position).normalized;
-                        transform.up = Vector3.MoveTowards(transform.up, dist, rotationSmoothing);
+                        FindTarget();
                     }
                 }
             }
@@ -63,10 +65,11 @@ public class GuidedSSMissile : GuidedProjectile // surface to surface
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
+        float curSpd = speed * Time.fixedDeltaTime;
 
         if (boosting)
         {
-            thisRb.velocity = speed * transform.up * Time.fixedDeltaTime * 1.5f;
+            thisRb.velocity = curSpd * transform.up * 1.5f;
         }
         else
         {
@@ -76,7 +79,7 @@ public class GuidedSSMissile : GuidedProjectile // surface to surface
                 {
                     if (fuel >= 0 && target)
                     {
-                        thisRb.velocity = speed * transform.up * Time.fixedDeltaTime;
+                        thisRb.velocity = curSpd * transform.up;
                     }
                 }
             }
@@ -95,13 +98,29 @@ public class GuidedSSMissile : GuidedProjectile // surface to surface
         abSprite.enabled = true;
         yield return new WaitForSeconds(boosterLength);
         abSprite.enabled = false;
-        thisRb.velocity = Vector3.zero;
-        thisRb.AddForce(transform.up * speed * Time.fixedDeltaTime / 1.5f, ForceMode2D.Impulse);
         intermStage = true;
         boosting = false;
+        //thisRb.AddForce(transform.up * speed / 1.5f * Time.fixedDeltaTime, ForceMode2D.Impulse);
         yield return new WaitForSeconds(intermStageLength);
         intermStage = false;
         attackingStage = true;
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        curFuel = fuel;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        thisRb.velocity = Vector3.zero;
+        attackingStage = false;
+        boosting = false;
+        intermStage = false;
+        StopAllCoroutines();
+        target = null;
     }
 }
 #pragma warning restore 0649

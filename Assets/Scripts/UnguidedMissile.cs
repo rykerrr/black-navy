@@ -6,9 +6,15 @@ using UnityEngine;
 public class UnguidedMissile : UnguidedProjectile
 {
     [Header("Unguided missile properties")]
-    [SerializeField] private float forceGen;
+    [SerializeField] private int fuel;
 
+    private int curFuel;
     private bool boost;
+
+    private void Start()
+    {
+        OnEnable();
+    }
 
     protected override void FixedUpdate()
     {
@@ -16,9 +22,14 @@ public class UnguidedMissile : UnguidedProjectile
 
         if (boost)
         {
+            fuel--;
+
             if (isOutOfWater)
             {
-                thisRb.AddForce(transform.up * forceGen * Time.deltaTime, ForceMode2D.Force);
+                if (fuel >= 0)
+                {
+                    thisRb.AddForce(transform.up * speed * Time.deltaTime, ForceMode2D.Force);
+                }
             }
         }
     }
@@ -32,7 +43,21 @@ public class UnguidedMissile : UnguidedProjectile
             thisRb = GetComponent<Rigidbody2D>();
         }
 
-        thisRb.AddForce(transform.up * forceGen * Time.deltaTime, ForceMode2D.Impulse);
+        thisRb.AddForce(transform.up * speed * Time.deltaTime, ForceMode2D.Impulse);
+    }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        curFuel = fuel;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        boost = false;
+        thisRb.velocity = Vector2.zero;
+        curFuel = 0;
     }
 }
 #pragma warning restore 0649

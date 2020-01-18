@@ -27,7 +27,7 @@ public class GuidedGlideBomb : GuidedProjectile
             if (target && transform.position.y >= target.position.y)
             {
                 Vector3 dist = (target.position - transform.position).normalized;
-                transform.up = Vector3.MoveTowards(transform.up, dist, rotationSmoothing);
+                transform.up = Vector3.MoveTowards(transform.up, dist, rotationSmoothing * Time.deltaTime);
 
                 if (targetIsVisual)
                 {
@@ -52,9 +52,20 @@ public class GuidedGlideBomb : GuidedProjectile
         }
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         boosterTimer = timeBeforeBoosters + Time.time;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        thisRb.velocity = Vector3.zero;
+        gliding = false;
+        target = null;
+        boosterTimer = 0f;
+        StopAllCoroutines();
     }
 }
 #pragma warning restore 0649

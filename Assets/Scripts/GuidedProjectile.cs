@@ -11,7 +11,10 @@ public abstract class GuidedProjectile : ProjectileBase
     [SerializeField] public LayerMask whatIsTarget;
     [SerializeField] protected UnitLayerMask whatUnitsToTarget;
     [SerializeField] protected float targetCheckRadius;
-    [SerializeField] [Range(0.01f, 0.08f)] protected float rotationSmoothing;
+    [SerializeField] protected float rotationSmoothing;
+
+    protected Rigidbody2D targRb;
+    protected UnitHumanoid targHumanoid;
 
     protected bool FindTarget()
     {
@@ -20,9 +23,25 @@ public abstract class GuidedProjectile : ProjectileBase
 
         foreach (Collider2D en in hit)
         {
-            if (UnitLayerMask.CheckIfUnitIsInMask(en.GetComponent<ShipHumanoid>().whatAmI, whatUnitsToTarget) == true)
+            try
             {
-                availableTargets.Add(en);
+                if (UnitLayerMask.CheckIfUnitIsInMask(en.GetComponent<UnitHumanoid>().type, whatUnitsToTarget) == true)
+                {
+                    if ((en.transform.position - transform.position).magnitude <= targetCheckRadius)
+                    {
+                        availableTargets.Add(en);
+                    }
+                }
+            }
+            catch (System.Exception e)
+            {
+                Debug.Log(e);
+                Debug.Log(hit + " | " + hit.Count);
+
+                foreach (var obj in hit)
+                {
+                    Debug.Log(obj.name);
+                }
             }
         }
 
@@ -35,6 +54,8 @@ public abstract class GuidedProjectile : ProjectileBase
         if (availableTargets.Count > 0)
         {
             target = availableTargets[0].transform;
+            targRb = target.GetComponent<Rigidbody2D>();
+            targHumanoid = target.GetComponent<UnitHumanoid>();
 
             return true;
         }

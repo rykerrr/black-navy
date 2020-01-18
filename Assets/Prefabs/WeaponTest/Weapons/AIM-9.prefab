@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4316392488291592272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4181751334715019067}
+  - component: {fileID: 8664147023450718145}
+  m_Layer: 0
+  m_Name: AIM-9
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4181751334715019067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4316392488291592272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -300.32913, y: 34.38246, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8664147023450718145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4316392488291592272}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086768c23117fe04b8dcea11dce1fe6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 0}
+  projectilePrefab: {fileID: 9173797744970012537, guid: cadb633a104497544ab20cddb4f3bd77,
+    type: 3}
+  spawnLocation: {fileID: 0}
+  delayBetweenFire: 4
+  inaccuracyOffset: 0
+  reloadTime: 20
+  lookCheckRadius: 4
+  lookCheckRange: 90
+  maxAmmo: 999999
+  whatIsTarget:
+    serializedVersion: 2
+    m_Bits: 0
+  whatAreOurProjectiles:
+    serializedVersion: 2
+    m_Bits: 0
+  target: {fileID: 0}
+  currentAmmo: 0

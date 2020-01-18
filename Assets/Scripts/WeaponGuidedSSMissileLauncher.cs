@@ -17,17 +17,16 @@ public class WeaponGuidedSSMissileLauncher
     [HideInInspector] public float rocketFireAngle;
     private float missileTimer;
 
-    public void LaunchSSMissile(Transform target)
+    public void LaunchSSMissile()
     {
         if (Time.time > missileTimer)
         {
-            Transform missileClone = Poolable.Get<GuidedSSMissile>(() => Poolable.CreateObj<GuidedSSMissile>(missilePrefab.gameObject), new Vector3(missileFirePoint.position.x + Random.Range(-0.2f, 0.2f), missileFirePoint.position.y + rocketYOffset, missileFirePoint.position.z), Quaternion.identity).transform;
+            Transform missileClone = Poolable.Get<GuidedSSMissile>(() => Poolable.CreateObj<GuidedSSMissile>(missilePrefab.gameObject), new Vector3(missileFirePoint.position.x + Random.Range(-0.2f, 0.2f), missileFirePoint.position.y, missileFirePoint.position.z), Quaternion.identity).transform;
             missileClone.localEulerAngles = new Vector3(0f, 0f, rocketFireAngle);
             int layerValue = whatAreOurProjectiles.layermask_to_layer();
             missileClone.gameObject.layer = layerValue;
             GuidedSSMissile missile = missileClone.GetComponent<GuidedSSMissile>();
             missile.whatIsTarget = whatIsTarget;
-            missile.target = target;
             missile.BoostStage();
             missileTimer = missileDelay + Time.time;
         }

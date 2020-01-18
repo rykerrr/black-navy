@@ -119,30 +119,30 @@ public class AircraftCarrier : MonoBehaviour
         {
             Transform planeClone = Instantiate(currentPlane, aircraftSpawnPoint.position, currentPlane.rotation) as Transform;
 
-            if (planeClone.GetComponent<StrikeFighter>())
-            {
-                StrikeFighter unit = planeClone.GetComponent<StrikeFighter>();
-                unit.whatAreOurProjectiles = whatAreOurProjectiles;
-                unit.whatIsTarget = whatIsTarget;
-                unit.TakeOff();
-                unit.gameObject.layer = gameObject.layer;
-            }
-            else if (planeClone.GetComponent<NormalBomber>())
-            {
-                NormalBomber unit = planeClone.GetComponent<NormalBomber>();
-                unit.whatAreOurProjectiles = whatAreOurProjectiles;
-                unit.whatIsTarget = whatIsTarget;
-                unit.TakeOff();
-                unit.gameObject.layer = gameObject.layer;
-            }
-            else if (planeClone.GetComponent<AirSuperiorityFighter>())
-            {
-                AirSuperiorityFighter unit = planeClone.GetComponent<AirSuperiorityFighter>();
-                unit.whatAreOurProjectiles = whatAreOurProjectiles;
-                unit.whatIsTarget = whatIsTarget;
-                unit.TakeOff();
-                unit.gameObject.layer = gameObject.layer;
-            }
+            //if (planeClone.GetComponent<StrikeFighter>())
+            //{
+            //    StrikeFighter unit = planeClone.GetComponent<StrikeFighter>();
+            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
+            //    unit.whatIsTarget = whatIsTarget;
+            //    unit.TakeOff();
+            //    unit.gameObject.layer = gameObject.layer;
+            //}
+            //else if (planeClone.GetComponent<NormalBomber>())
+            //{
+            //    NormalBomber unit = planeClone.GetComponent<NormalBomber>();
+            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
+            //    unit.whatIsTarget = whatIsTarget;
+            //    unit.TakeOff();
+            //    unit.gameObject.layer = gameObject.layer;
+            //}
+            //else if (planeClone.GetComponent<AirSuperiorityFighter>())
+            //{
+            //    AirSuperiorityFighter unit = planeClone.GetComponent<AirSuperiorityFighter>();
+            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
+            //    unit.whatIsTarget = whatIsTarget;
+            //    unit.TakeOff();
+            //    unit.gameObject.layer = gameObject.layer;
+            //}
 
             switch (planeClone.gameObject.layer) // temporary before i commit seppuku, retard
             {

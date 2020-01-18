@@ -4,5 +4,15 @@ using UnityEngine;
 
 public abstract class UnguidedProjectile : ProjectileBase
 {
-    // something?
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        //Debug.Log("unguided base created");
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        //Debug.Log("unguided base destroyed");
+    }
 }

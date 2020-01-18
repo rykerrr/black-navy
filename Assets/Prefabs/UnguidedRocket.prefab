@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9645eb3dcdd82a44886b20297c54646e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisRb: {fileID: 0}
+  thisRb: {fileID: 6328786469434867094}
   onHitParticlePrefab: {fileID: 236020772683594545, guid: c610f9ddf80888849838d7542cbbc860,
     type: 3}
   waterLevel: 0

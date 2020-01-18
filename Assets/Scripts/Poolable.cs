@@ -24,6 +24,7 @@ public abstract class Poolable : MonoBehaviour
         T ret = Get<T>(alternativeCreate);
         ret.transform.position = position;
 
+        ret.Reactivate();
         return ret;
     }
     public static T Get<T>(Func<T> alternativeCreate, Quaternion rotation) where T : Poolable
@@ -31,6 +32,7 @@ public abstract class Poolable : MonoBehaviour
         T ret = Get<T>(alternativeCreate);
         ret.transform.rotation = rotation;
 
+        ret.Reactivate();
         return ret;
     }
     public static T Get<T>(Func<T> alternativeCreate, Transform parent) where T : Poolable
@@ -38,6 +40,7 @@ public abstract class Poolable : MonoBehaviour
         T ret = Get<T>(alternativeCreate);
         ret.transform.parent = parent;
 
+        ret.Reactivate();
         return ret;
     }
     public static T Get<T>(Func<T> alternativeCreate, Vector3 position, Quaternion rotation) where T : Poolable
@@ -45,6 +48,7 @@ public abstract class Poolable : MonoBehaviour
         T ret = Get<T>(alternativeCreate, position);
         ret.transform.rotation = rotation;
 
+        ret.Reactivate();
         return ret;
     }
     public static T Get<T>(Func<T> alternativeCreate, Vector3 position, Transform parent) where T : Poolable
@@ -52,6 +56,7 @@ public abstract class Poolable : MonoBehaviour
         T ret = Get<T>(alternativeCreate, position);
         ret.transform.parent = parent;
 
+        ret.Reactivate();
         return ret;
     }
     public static T Get<T>(Func<T> alternativeCreate, Quaternion rotation, Transform parent) where T : Poolable
@@ -59,6 +64,7 @@ public abstract class Poolable : MonoBehaviour
         T ret = Get<T>(alternativeCreate, rotation);
         ret.transform.parent = parent;
 
+        ret.Reactivate();
         return ret;
     }
     public static T Get<T>(Func<T> alternativeCreate, Vector3 position, Quaternion rotation, Transform parent) where T : Poolable
@@ -66,6 +72,7 @@ public abstract class Poolable : MonoBehaviour
         T ret = Get<T>(alternativeCreate, position, rotation);
         ret.transform.parent = parent;
 
+        ret.Reactivate();
         return ret;
     }
     #endregion
@@ -98,6 +105,7 @@ public abstract class Poolable : MonoBehaviour
     /// <returns>whether the reset is successful.</returns>
     protected virtual bool Reset()
     {
+        this.enabled = false;
         this.gameObject.SetActive(false);
         return true;
     }
@@ -107,10 +115,12 @@ public abstract class Poolable : MonoBehaviour
     /// </summary>
     protected virtual void Reactivate()
     {
+        this.enabled = true;
         this.gameObject.SetActive(true);
     }
 
-    public static T CreateObj<T>(GameObject pref)
+
+    public static T CreateObj<T>(GameObject pref) where T : Poolable
     {
         var prefCl = Instantiate(pref);
         return prefCl.GetComponent<T>();

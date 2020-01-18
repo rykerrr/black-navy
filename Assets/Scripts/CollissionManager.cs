@@ -13,7 +13,8 @@ public class CollissionManager : MonoBehaviour
         Physics2D.IgnoreLayerCollision(9, 10); // friendly ships and enemy ships
         Physics2D.IgnoreLayerCollision(11, 11); // enemy projectiles
         Physics2D.IgnoreLayerCollision(9, 11); // enemy ships and enemy projectiles
-        Physics2D.IgnoreLayerCollision(8, 10); // friendly ships and friendly projectiles
+        Physics2D.IgnoreLayerCollision(10, 8); // friendly ships and friendly projectiles
+        Physics2D.IgnoreLayerCollision(8, 11); // friendly projectiles and enemy projectiles
     }
 }
 #pragma warning restore 0649

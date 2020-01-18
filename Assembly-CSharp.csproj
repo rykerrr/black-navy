@@ -24,7 +24,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2019_2_9;UNITY_2019_2;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2019_2_9;UNITY_2019_2;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;ENABLE_VIDEO;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -50,7 +50,7 @@
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
-    <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
+    <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2019.2.9f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
@@ -62,28 +62,79 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AdsManager.cs" />
+    <Compile Include="Assets\Scripts\AircraftBase.cs" />
+    <Compile Include="Assets\Scripts\AirSuperiorityFighter.cs" />
+    <Compile Include="Assets\Scripts\BallisticSubmarine.cs" />
+    <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\CannonShell.cs" />
+    <Compile Include="Assets\Scripts\CarrierModule.cs" />
+    <Compile Include="Assets\Scripts\CollissionManager.cs" />
+    <Compile Include="Assets\Scripts\CrateDropper.cs" />
+    <Compile Include="Assets\Scripts\CrateDropperC130.cs" />
     <Compile Include="Assets\Scripts\Extensions\LayerMaskExtensions.cs" />
+    <Compile Include="Assets\Scripts\Frigate.cs" />
+    <Compile Include="Assets\Scripts\GameConfig.cs" />
+    <Compile Include="Assets\Scripts\GameSpeedChanger.cs" />
+    <Compile Include="Assets\Scripts\GuidedAAMissile.cs" />
+    <Compile Include="Assets\Scripts\GuidedGlideBomb.cs" />
+    <Compile Include="Assets\Scripts\GuidedProjectile.cs" />
+    <Compile Include="Assets\Scripts\GuidedSSMissile.cs" />
+    <Compile Include="Assets\Scripts\GuidedTorpedo.cs" />
+    <Compile Include="Assets\Scripts\IHealth.cs" />
+    <Compile Include="Assets\Scripts\LoadoutHandler.cs" />
+    <Compile Include="Assets\Scripts\Poolable.cs" />
+    <Compile Include="Assets\Scripts\ProjectileBase.cs" />
+    <Compile Include="Assets\Scripts\RegularCashCrate.cs" />
+    <Compile Include="Assets\Scripts\RegularCrate.cs" />
+    <Compile Include="Assets\Scripts\ShipBase.cs" />
+    <Compile Include="Assets\Scripts\Singleton.cs" />
+    <Compile Include="Assets\Scripts\StrategicBomber.cs" />
+    <Compile Include="Assets\Scripts\StrikeFighter.cs" />
+    <Compile Include="Assets\Scripts\Submarine.cs" />
     <Compile Include="Assets\Scripts\Test\AircraftCarrier.cs" />
-    <Compile Include="Assets\Scripts\Test\AirSuperiorityFighter.cs" />
-    <Compile Include="Assets\Scripts\Test\BallisticSubmarine.cs" />
+    <Compile Include="Assets\Scripts\Test\asfighter.cs" />
+    <Compile Include="Assets\Scripts\Test\ballsub.cs" />
     <Compile Include="Assets\Scripts\Test\BitmasksAndShifting.cs" />
-    <Compile Include="Assets\Scripts\Test\CameraController.cs" />
-    <Compile Include="Assets\Scripts\Test\CollissionManager.cs" />
-    <Compile Include="Assets\Scripts\Test\GameSpeedChanger.cs" />
+    <Compile Include="Assets\Scripts\Test\bombr.cs" />
     <Compile Include="Assets\Scripts\Test\GuidedBomb.cs" />
     <Compile Include="Assets\Scripts\Test\Missile.cs" />
-    <Compile Include="Assets\Scripts\Test\NormalBomber.cs" />
     <Compile Include="Assets\Scripts\Test\NormalShipWeapons.cs" />
+    <Compile Include="Assets\Scripts\Test\ParasiteCarrier.cs" />
+    <Compile Include="Assets\Scripts\Test\ParasiteFighter.cs" />
     <Compile Include="Assets\Scripts\Test\Rocket.cs" />
+    <Compile Include="Assets\Scripts\Test\sfighterattack.cs" />
     <Compile Include="Assets\Scripts\Test\Shell.cs" />
-    <Compile Include="Assets\Scripts\Test\ShipHumanoid.cs" />
-    <Compile Include="Assets\Scripts\Test\StrikeFighter.cs" />
-    <Compile Include="Assets\Scripts\Test\Submarine.cs" />
+    <Compile Include="Assets\Scripts\Test\shipyeet.cs" />
+    <Compile Include="Assets\Scripts\Test\sub.cs" />
     <Compile Include="Assets\Scripts\Test\TestBoi.cs" />
-    <Compile Include="Assets\Scripts\Test\TestUIBuddy.cs" />
     <Compile Include="Assets\Scripts\Test\Torpedo.cs" />
     <Compile Include="Assets\Scripts\Test\UnguidedRocket.cs" />
-    <Compile Include="Assets\Scripts\Test\UnitLayerMask.cs" />
+    <Compile Include="Assets\Scripts\TestUIBuddy.cs" />
+    <Compile Include="Assets\Scripts\UnguidedBomb.cs" />
+    <Compile Include="Assets\Scripts\UnguidedMissile.cs" />
+    <Compile Include="Assets\Scripts\UnguidedProjectile.cs" />
+    <Compile Include="Assets\Scripts\UnitBase.cs" />
+    <Compile Include="Assets\Scripts\UnitHumanoid.cs" />
+    <Compile Include="Assets\Scripts\UnitLayerMask.cs" />
+    <Compile Include="Assets\Scripts\WeaponAutoCannon.cs" />
+    <Compile Include="Assets\Scripts\WeaponBombDropper.cs" />
+    <Compile Include="Assets\Scripts\WeaponGuidedAAMissileLauncher.cs" />
+    <Compile Include="Assets\Scripts\WeaponGuidedGlideBomb.cs" />
+    <Compile Include="Assets\Scripts\WeaponGuidedSSMissileLauncher.cs" />
+    <Compile Include="Assets\Scripts\WeaponGuidedTorpedoLauncher.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\AircraftThatWorksWithWeapon.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\LoadoutSwitcharoo.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\StrikeFighterThatWorksWithWeapon.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\TurretAngle.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\UnitStructs.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponAntiAirCIWS.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponArtilleryTurret.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponBase.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponBaseCannon.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponBaseGuidedAirMissile.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponBaseUnguidedMissile.cs" />
+    <Compile Include="Assets\Scripts\WeaponUnguidedMissileLauncher.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/UnityProjects2/BlackNavy/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>

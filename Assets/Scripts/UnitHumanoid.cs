@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 #pragma warning disable 0649
-[RequireComponent(typeof(UnitBase))]
 public class UnitHumanoid : MonoBehaviour, IHealth
 {
     [Header("Humanoid Properties")]
