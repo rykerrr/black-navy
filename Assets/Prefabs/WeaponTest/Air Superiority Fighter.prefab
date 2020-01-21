@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 6756666011540704736}
   - component: {fileID: 2052584119}
   m_Layer: 10
-  m_Name: TestAirSuperiortyFighter
+  m_Name: Air Superiority Fighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -329,7 +329,11 @@ MonoBehaviour:
   targetCheckDelay: 0
   targetCheckRadius: 180
   yBaseAltitude: 60
-  speed: 600
+  speed: 800
+  weapons:
+  - {fileID: 8288110331645906446, guid: 10d2d445551b3f94f94fefc603a525a7, type: 3}
+  - {fileID: 8288110331645906446, guid: 10d2d445551b3f94f94fefc603a525a7, type: 3}
+  weaponMounts: []
   target: {fileID: 0}
   timeToTakeOffFully: 5
   waterOffset: 20
@@ -339,9 +343,6 @@ MonoBehaviour:
   evadePosition: {x: 0, y: 0, z: 0}
   evading: 0
   returningToBaseAlt: 0
-  weapons:
-  - {fileID: 8288110331645906446, guid: 10d2d445551b3f94f94fefc603a525a7, type: 3}
-  - {fileID: 8288110331645906446, guid: 10d2d445551b3f94f94fefc603a525a7, type: 3}
   evasionLength: 3
   escapeRange: 15
 --- !u!1 &7399604014859358316

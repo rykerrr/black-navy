@@ -33,6 +33,11 @@ public class WeaponArtilleryTurret : WeaponBase
 
     public override FireState Fire()
     {
+        if(target == null)
+        {
+            return FireState.Failed;
+        }
+
         int results = SolveBallisticArc(spawnLocation.position, projectilePrefab.GetComponent<CannonShell>().Speed * Time.deltaTime, target.position, -Physics2D.gravity.y * projBaseGrav, out Vector3 s0, out Vector3 s1);
         aimPos = s0.normalized;
 
@@ -41,7 +46,8 @@ public class WeaponArtilleryTurret : WeaponBase
             if (prevBull == null)
             {
                 prevBull = Instantiate(projectilePrefab, spawnLocation.position, Quaternion.identity);
-                prevBull.gameObject.layer = 8;
+                int layerValue = whatAreOurProjectiles.layermask_to_layer();
+                prevBull.gameObject.layer = layerValue;
                 prevBull.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 prevBull.gameObject.SetActive(false);
                 bullRb = prevBull.GetComponent<Rigidbody2D>();
@@ -52,10 +58,11 @@ public class WeaponArtilleryTurret : WeaponBase
                 prevBull.position = spawnLocation.position;
                 prevBull.gameObject.SetActive(true);
                 bullRb.AddForce((Vector2)barrel.up * projectilePrefab.GetComponent<CannonShell>().Speed * Time.deltaTime + new Vector2(0f, Random.Range(-inaccuracyOffset, inaccuracyOffset)), ForceMode2D.Impulse);
+                prevBull.GetComponent<TrailRenderer>().material = prevBull.gameObject.layer == 8 ? t1Mat : t2Mat;
                 prevBull = null;
             }
 
-            fireTimer = delayBetweenFire + Time.time;
+            fireTimer = delayBetweenFire + Time.time + Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
 
             return FireState.Fired;
         }

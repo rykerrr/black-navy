@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4770907941987283196}
   - component: {fileID: 8026875690373824381}
   m_Layer: 0
-  m_Name: 30mmCannon
+  m_Name: 30mm Cannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115d0eacedfc066409a0b2c15210deec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatUnitsToTarget:
+    mask: 
+  t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
+  t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
+  targetCheckRadius: 0
+  targetCheckDelay: 0
   owner: {fileID: 0}
   projectilePrefab: {fileID: 5429379112880288251, guid: a422e855c6724b84b887c201f1140e62,
     type: 3}
@@ -51,7 +57,7 @@ MonoBehaviour:
   inaccuracyOffset: 1e-12
   reloadTime: 4
   lookCheckRadius: 3
-  lookCheckRange: 50
+  lookCheckRange: 60
   maxAmmo: 35
   whatIsTarget:
     serializedVersion: 2

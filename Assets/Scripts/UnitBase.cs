@@ -19,6 +19,9 @@ public abstract class UnitBase : Poolable
     [SerializeField] protected float targetCheckRadius;
     [SerializeField] protected float yBaseAltitude;
     [SerializeField] protected float speed;
+    [Header("Weapon properties")]
+    [SerializeField] public WeaponBase[] weapons;
+    [SerializeField] protected Transform[] weaponMounts;
 
     public float BaseAltitude => yBaseAltitude;
 
@@ -87,7 +90,7 @@ public abstract class UnitBase : Poolable
                         Debug.Log(e);
                         Debug.Log(hit + " | " + hit.Count);
 
-                        foreach(var obj in hit)
+                        foreach (var obj in hit)
                         {
                             Debug.Log(obj.name);
                         }
@@ -108,6 +111,14 @@ public abstract class UnitBase : Poolable
                 targRb = target.GetComponent<Rigidbody2D>();
                 targHumanoid = target.GetComponent<UnitHumanoid>();
 
+                foreach (WeaponBase wep in weapons)
+                {
+                    if (!wep.target)
+                    {
+                        wep.target = target;
+                    }
+                }
+
                 return true;
             }
 
@@ -121,6 +132,58 @@ public abstract class UnitBase : Poolable
             return false;
         }
         else return false;
+    }
+
+    protected bool FireWeapons()
+    {
+        foreach (WeaponBase wep in weapons)
+        {
+            FireState ret = wep.Fire();
+
+            if (ret == FireState.OutOfAmmo)
+            {
+                ReloadWeapons();
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public void InitializeWeapons()
+    {
+        int i = 0;
+
+        foreach (WeaponBase wep in weapons)
+        {
+            wep.whatAreOurProjectiles = whatAreOurProjectiles;
+            wep.whatIsTarget = whatIsTarget;
+            wep.owner = transform;
+            wep.currentAmmo = wep.maxAmmo;
+            wep.ownerRb = wep.owner.GetComponent<Rigidbody2D>();
+
+            if (!wep.spawnLocation)
+            {
+                wep.spawnLocation = firePoint;
+            }
+
+            if (weaponMounts.Length > 0)
+            {
+                wep.transform.localPosition = weaponMounts[i++].localPosition;
+            }
+            else
+            {
+                wep.transform.localPosition = firePoint.localPosition;
+            }
+        }
+    }
+
+    protected void ReloadWeapons()
+    {
+        foreach (WeaponBase wep in weapons)
+        {
+            wep.LoadAmmo();
+        }
     }
 
     private void OnDrawGizmosSelected()

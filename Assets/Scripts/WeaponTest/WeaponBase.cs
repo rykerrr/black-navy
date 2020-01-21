@@ -8,6 +8,8 @@ using System.Linq;
 public abstract class WeaponBase : Poolable
 {
     [SerializeField] private UnitLayerMask whatUnitsToTarget;
+    [SerializeField] protected Material t1Mat;
+    [SerializeField] protected Material t2Mat;
     [SerializeField] private float targetCheckRadius;
     [SerializeField] private float targetCheckDelay;
 
@@ -24,6 +26,7 @@ public abstract class WeaponBase : Poolable
     [HideInInspector] public LayerMask whatIsTarget;
     [HideInInspector] public LayerMask whatAreOurProjectiles;
     [HideInInspector] public Transform target;
+    [HideInInspector] public Rigidbody2D ownerRb;
 
     [HideInInspector] public int currentAmmo;
 
@@ -44,6 +47,7 @@ public abstract class WeaponBase : Poolable
         if (target)
         {
             RaycastHit2D[] hits = Physics2D.CircleCastAll(spawnLocation.position, lookCheckRadius, owner.up, range, whatIsTarget);
+            Debug.DrawRay(transform.position, (target.position - transform.position).normalized * 99f, Color.cyan);
 
             foreach (RaycastHit2D hit in hits)
             {

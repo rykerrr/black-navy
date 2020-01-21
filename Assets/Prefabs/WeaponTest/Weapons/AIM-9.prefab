@@ -43,6 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086768c23117fe04b8dcea11dce1fe6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  whatUnitsToTarget:
+    mask: 
+  t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
+  t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
+  targetCheckRadius: 0
+  targetCheckDelay: 0
   owner: {fileID: 0}
   projectilePrefab: {fileID: 9173797744970012537, guid: cadb633a104497544ab20cddb4f3bd77,
     type: 3}

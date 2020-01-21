@@ -6,8 +6,6 @@ using UnityEngine;
 public class AircraftThatWorksWithWeapon : AircraftBase
 {
     [Header("Air superiority fighter properties")]
-    [SerializeField] public WeaponBase[] weapons;
-    [SerializeField] private Transform[] weaponMounts;
     [SerializeField] private float evasionLength;
     [SerializeField] private float escapeRange;
 
@@ -58,7 +56,6 @@ public class AircraftThatWorksWithWeapon : AircraftBase
             bool isNearWater = CheckIfNearWater();
             bool isAboveCeil = CheckifAboveCeil();
 
-
             if (target)
             {
                 Vector3 dist = (target.position - transform.position);
@@ -80,25 +77,16 @@ public class AircraftThatWorksWithWeapon : AircraftBase
 
                 transform.up = Vector3.MoveTowards(transform.up, dist.normalized, rotationSmoothing * Time.deltaTime * 1.4f);
 
-                if (targIsVisual)
+                if (!FireWeapons())
                 {
-                    foreach (WeaponBase wep in weapons)
-                    {
-                        FireState wepFire = wep.Fire();
+                    evadePosition = new Vector3(transform.up.x * 10f * vsi, evadeAlt, transform.position.z);
 
-                        if (wepFire == FireState.OutOfAmmo)
-                        {
-                            Debug.Log("ooa");
-
-                            evadePosition = new Vector3(transform.up.x * 10f * vsi, evadeAlt, transform.position.z);
-
-                            evading = true;
-                            evadeTimer = (Time.time + evasionLength) * 1.2f;
-                            return;
-                        }
-                    }
+                    evading = true;
+                    evadeTimer = (Time.time + evasionLength) * 1.2f;
+                    return;
                 }
-                else
+
+                if (!targIsVisual)
                 {
                     curSpd = Mathf.SmoothDamp(curSpd, speed * 1.2f, ref veloc1, 2f);
                 }
@@ -138,23 +126,6 @@ public class AircraftThatWorksWithWeapon : AircraftBase
     protected override void OnEnable()
     {
         base.OnEnable();
-
-        foreach (WeaponBase weapon in weapons)
-        {
-            weapon.whatAreOurProjectiles = whatAreOurProjectiles;
-            weapon.whatIsTarget = whatIsTarget;
-            weapon.spawnLocation = firePoint;
-        }
-
-        ReloadWeapons();
-    }
-
-    private void ReloadWeapons()
-    {
-        foreach (WeaponBase wep in weapons)
-        {
-            wep.LoadAmmo();
-        }
     }
 }
 #pragma warning disable 0649

@@ -12,6 +12,7 @@ public abstract class ProjectileBase : Poolable
     [SerializeField] protected float speed;
 
     [Header("Debug")]
+    private TrailRenderer projTrail;
     private Vector2 veloc2;
     private float veloc1;
     [SerializeField] private float projectileLifetime;
@@ -28,6 +29,7 @@ public abstract class ProjectileBase : Poolable
         projectileLifetime = GameConfig.Instance.ProjectileLifeTime;
         lifeTimer = Time.time + projectileLifetime;
         origGravScale = thisRb.gravityScale;
+        projTrail = GetComponent<TrailRenderer>();
     }
 
     private void Update()
@@ -68,12 +70,13 @@ public abstract class ProjectileBase : Poolable
     {
         lifeTimer = projectileLifetime + Time.time;
         thisRb.gravityScale = origGravScale;
-        //Debug.Log(lifeTimer + " | " + Time.time);
+        projTrail.gameObject.SetActive(true);
     }
 
     protected virtual void OnDisable()
     {
-        //Debug.Log("disabled proj base");
+        lifeTimer = 0f;
+        projTrail.gameObject.SetActive(false);
     }
 }
 #pragma warning restore 0649

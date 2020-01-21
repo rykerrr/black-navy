@@ -35,8 +35,7 @@ public class GuidedTorpedo : GuidedProjectile
     {
         if (!isOutOfWater)
         {
-            float curSpd = speed * Time.fixedDeltaTime;
-            thisRb.velocity = Vector3.SmoothDamp(thisRb.velocity, transform.up * curSpd, ref veloc3, rotationSmoothing / Time.fixedDeltaTime);
+            thisRb.velocity = Vector3.SmoothDamp(thisRb.velocity, transform.up * speed * Time.fixedDeltaTime, ref veloc3, rotationSmoothing / Time.fixedDeltaTime);
         }
     }
 
@@ -49,7 +48,7 @@ public class GuidedTorpedo : GuidedProjectile
         }
         else
         {
-            thisRb.gravityScale = Mathf.SmoothDamp(thisRb.gravityScale, 0.01f, ref veloc4, timeToChangeGravityOutOfWater);
+            thisRb.gravityScale = Mathf.SmoothDamp(thisRb.gravityScale, 0.001f, ref veloc4, timeToChangeGravityOutOfWater / 1.4f);
             return false;
         }
     }

@@ -2,24 +2,40 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AirSuperiorityFighter
-    - AircraftCarrier
-    - BallisticSubmarine
-    - BitmasksAndShifting
+    - AircraftThatWorksWithWeapon
+    - BallisticSubmarineThatWorksWithWeapon
     - CameraController
+    - CannonShell
+    - CarrierModule
     - CollissionManager
+    - CrateDropperC130
+    - FrigateThatWorksWithWeapon
+    - GameConfig
     - GameSpeedChanger
+    - GuidedAAMissile
     - GuidedBomb
-    - Missile
-    - NormalBomber
-    - NormalShipWeapons
-    - Rocket
-    - Shell
-    - ShipHumanoid
+    - GuidedSSMissile
+    - GuidedTorpedo
+    - LoadoutSwitcharoo
+    - RegularCashCrate
+    - StrategicBomber
+    - StrategicBomberThatWorksWithWeapon
     - StrikeFighter
-    - Submarine
+    - StrikeFighterThatWorksWithWeapon
+    - SubmarineThatWorksWithWeapon
     - TestUIBuddy
-    - Torpedo
-    - UnguidedRocket
+    - UIEffects
+    - UnguidedBomb
+    - UnguidedMissile
+    - UnitHumanoid
+    - WeaponArtilleryTurret
+    - WeaponBaseCannon
+    - WeaponBaseGuidedAirMissile
+    - WeaponBaseGuidedBombs
+    - WeaponBaseGuidedTorpedo
+    - WeaponBaseSurfaceGuidedMissile
+    - WeaponBaseUnguidedBombs
+    - WeaponBaseUnguidedMissile
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
@@ -40,8 +56,10 @@ ScriptsOnlyBuild:
     - UnityEngine.EventSystems.StandaloneInputModule
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.ContentSizeFitter
     - UnityEngine.UI.Dropdown
     - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.InputField
     - UnityEngine.UI.Mask
@@ -50,7 +68,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
   sceneClasses:
-    Assets/Scenes/GameScene.unity:
+    Assets/Scenes/WeaponTestScene.unity:
     - Class: 1
       Script: {instanceID: 0}
     - Class: 4
@@ -75,78 +93,114 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 61
       Script: {instanceID: 0}
-    - Class: 65
-      Script: {instanceID: 0}
     - Class: 70
       Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 96
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 9670}
     - Class: 114
-      Script: {instanceID: 9704}
+      Script: {instanceID: 9706}
+    - Class: 114
+      Script: {instanceID: 9734}
+    - Class: 114
+      Script: {instanceID: 9766}
+    - Class: 114
+      Script: {instanceID: 9800}
     - Class: 114
       Script: {instanceID: 9834}
     - Class: 114
-      Script: {instanceID: 9836}
+      Script: {instanceID: 9852}
     - Class: 114
-      Script: {instanceID: 9874}
+      Script: {instanceID: 9854}
     - Class: 114
-      Script: {instanceID: 9880}
+      Script: {instanceID: 9892}
     - Class: 114
-      Script: {instanceID: 9986}
+      Script: {instanceID: 9948}
     - Class: 114
-      Script: {instanceID: 9988}
+      Script: {instanceID: 10000}
     - Class: 114
-      Script: {instanceID: 10038}
+      Script: {instanceID: 10010}
     - Class: 114
-      Script: {instanceID: 10064}
+      Script: {instanceID: 10024}
     - Class: 114
-      Script: {instanceID: 10110}
+      Script: {instanceID: 10074}
     - Class: 114
       Script: {instanceID: 10190}
     - Class: 114
-      Script: {instanceID: 10192}
-    - Class: 114
       Script: {instanceID: 10226}
     - Class: 114
-      Script: {instanceID: 10290}
+      Script: {instanceID: 10324}
     - Class: 114
-      Script: {instanceID: 10302}
+      Script: {instanceID: 10344}
     - Class: 114
-      Script: {instanceID: 10312}
+      Script: {instanceID: 10352}
     - Class: 114
-      Script: {instanceID: 10470}
+      Script: {instanceID: 10382}
     - Class: 114
-      Script: {instanceID: 10510}
+      Script: {instanceID: 10384}
     - Class: 114
-      Script: {instanceID: 10568}
+      Script: {instanceID: 10448}
     - Class: 114
-      Script: {instanceID: 10666}
+      Script: {instanceID: 10522}
     - Class: 114
-      Script: {instanceID: 10858}
+      Script: {instanceID: 10560}
+    - Class: 114
+      Script: {instanceID: 10578}
+    - Class: 114
+      Script: {instanceID: 10632}
+    - Class: 114
+      Script: {instanceID: 10672}
+    - Class: 114
+      Script: {instanceID: 10732}
     - Class: 114
       Script: {instanceID: 10930}
     - Class: 114
-      Script: {instanceID: 11002}
+      Script: {instanceID: 10956}
     - Class: 114
-      Script: {instanceID: 11100}
+      Script: {instanceID: 11088}
     - Class: 114
-      Script: {instanceID: 11146}
+      Script: {instanceID: 11090}
     - Class: 114
-      Script: {instanceID: 11254}
+      Script: {instanceID: 11132}
     - Class: 114
-      Script: {instanceID: 11466}
+      Script: {instanceID: 11228}
     - Class: 114
-      Script: {instanceID: 11512}
+      Script: {instanceID: 11270}
     - Class: 114
-      Script: {instanceID: 11522}
+      Script: {instanceID: 11272}
     - Class: 114
-      Script: {instanceID: 11538}
+      Script: {instanceID: 11326}
     - Class: 114
-      Script: {instanceID: 11550}
+      Script: {instanceID: 11404}
+    - Class: 114
+      Script: {instanceID: 11564}
+    - Class: 114
+      Script: {instanceID: 11570}
+    - Class: 114
+      Script: {instanceID: 11572}
+    - Class: 114
+      Script: {instanceID: 11620}
+    - Class: 114
+      Script: {instanceID: 11630}
+    - Class: 114
+      Script: {instanceID: 11646}
+    - Class: 114
+      Script: {instanceID: 11658}
+    - Class: 114
+      Script: {instanceID: 22542}
+    - Class: 114
+      Script: {instanceID: 96204}
+    - Class: 114
+      Script: {instanceID: 96240}
+    - Class: 114
+      Script: {instanceID: 102010}
+    - Class: 114
+      Script: {instanceID: 112660}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -200,10 +254,40 @@ ScriptsOnlyBuild:
     className: TMP_Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 657eb11dd5b7f832aa35aa9344d8a187
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StrikeFighter
+  - hash:
+      serializedVersion: 2
+      Hash: 3f43a06278337ea09935656f832ea9c9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ParasiteFighter
+  - hash:
+      serializedVersion: 2
+      Hash: 8f1a33b41d1edf22bbcd155ba2799957
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: FrigateThatWorksWithWeapon
+  - hash:
+      serializedVersion: 2
       Hash: e7a73f5f78ba6445195ec23b74a1ce2d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_ScrollbarEventHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CrateDropper
+  - hash:
+      serializedVersion: 2
+      Hash: b36e2bcf202efec52c4cb0d204856964
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GuidedTorpedo
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -216,6 +300,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 4031ca673379faf7561ab654187f9a1d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponBaseUnguidedMissile
   - hash:
       serializedVersion: 2
       Hash: 72712369a7c681ad84fc255a5ec0b333
@@ -266,6 +356,12 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
+      Hash: d7c81fc0bed0ef250172ddf4f9f92369
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UnguidedBomb
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -284,16 +380,22 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: f7dd7bdb0e38dd737c515c01a23a31ed
+      Hash: 4b64f87d5171d134e5ce322dad1b765a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Missile
   - hash:
       serializedVersion: 2
-      Hash: b3e6542b644679b3b8c28b717ef0a305
+      Hash: b35536a1d0dca1d5c413da37845e010d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TestUIBuddy
+  - hash:
+      serializedVersion: 2
+      Hash: 4031ca673379faf7561ab654187f9a1d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponBaseGuidedAirMissile
   - hash:
       serializedVersion: 2
       Hash: 0dbc3be398b4869a5c8d0d8481ee402c
@@ -317,7 +419,19 @@ ScriptsOnlyBuild:
       Hash: 6c12f6535ce04bd5e2d0a49f5b2b29ab
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: AirSuperiorityFighter
+    className: asfighter
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CrateDropperC130
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponAntiAirCIWS
   - hash:
       serializedVersion: 2
       Hash: bd3cf68c8964d3c66d1c43f4f98508c9
@@ -326,16 +440,16 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
-      Hash: 26e7bcdb18ee4387d4d9e72b8bc7c9ea
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ShipHumanoid
-  - hash:
-      serializedVersion: 2
       Hash: cf9f5cf2c3145a37ac07f00e50e460f9
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: AspectRatioFitter
+  - hash:
+      serializedVersion: 2
+      Hash: 56a331e8f47946bc79c7cd2e7e94d239
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BallisticSubmarine
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -350,16 +464,22 @@ ScriptsOnlyBuild:
     className: TMP_SubMeshUI
   - hash:
       serializedVersion: 2
-      Hash: 1245b311bb6c5fe8fee6e43023dbedb2
+      Hash: 3402c19bb9202416b9995bb3aed8e62f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: StrikeFighter
+    className: sfighterattack
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: AnimationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: fe27dea6bc20ec784685766c593ba4df
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StrategicBomber
   - hash:
       serializedVersion: 2
       Hash: 3fb2d31e8c10050647c86c6fe0557c4d
@@ -383,7 +503,7 @@ ScriptsOnlyBuild:
       Hash: 4d62823a33057d5dab1a8982f90132d8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: BallisticSubmarine
+    className: ballsub
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -402,6 +522,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AircraftCarrier
+  - hash:
+      serializedVersion: 2
+      Hash: 01b7fcd2b8fbb72735cbb3d0594504d1
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponArtilleryTurret
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -428,10 +554,46 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 2ad8a11d95bf43ff9ed030ea162c84ea
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LoadoutSwitcharoo
+  - hash:
+      serializedVersion: 2
+      Hash: 4d55487c6899b4d88d9f0fd3962c59aa
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CarrierModule
+  - hash:
+      serializedVersion: 2
+      Hash: de91956c9903cb5cf717f1e28bb91413
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GuidedAAMissile
+  - hash:
+      serializedVersion: 2
+      Hash: 167b8e55b267914d0acacf907a99d675
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Submarine
+  - hash:
+      serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Asset
+  - hash:
+      serializedVersion: 2
+      Hash: c7c517e149418fb02d9cfc95e7a61882
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RegularCrate
+  - hash:
+      serializedVersion: 2
+      Hash: ddd2fdbde01c28e4a4bba20ab47c2d26
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TurretAngle
   - hash:
       serializedVersion: 2
       Hash: d4020bafcd3ccbb5601a6e6c8ac78be0
@@ -440,16 +602,40 @@ ScriptsOnlyBuild:
     className: ScrollRect
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AdsManager
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 4031ca673379faf7561ab654187f9a1d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponBaseSurfaceGuidedMissile
+  - hash:
+      serializedVersion: 2
       Hash: bfcd276aeab8856e28b5eee56e7eed8e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: NormalBomber
+    className: bombr
+  - hash:
+      serializedVersion: 2
+      Hash: c7c517e149418fb02d9cfc95e7a61882
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RegularCashCrate
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ParasiteCarrier
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -470,6 +656,12 @@ ScriptsOnlyBuild:
     className: RemoteTestResultSender
   - hash:
       serializedVersion: 2
+      Hash: acdb2a795f47be23ee273c87e0c08535
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UnitHumanoid
+  - hash:
+      serializedVersion: 2
       Hash: 4fd8bf02e3089425d3502e26c44ba31a
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -486,6 +678,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: RawImage
+  - hash:
+      serializedVersion: 2
+      Hash: 7f7f52e6e622d19bd194d44975b3aef5
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Frigate
   - hash:
       serializedVersion: 2
       Hash: 5ad4aa237d47ac2bab17bacb672edf7a
@@ -548,10 +746,28 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 7bdcf45a32b5f890485479a3797323e9
+      Hash: ba3c69b4851d22ef77db2976aae70b12
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NormalShipWeapons
+  - hash:
+      serializedVersion: 2
+      Hash: 7e78914e357f7346c9fac874b4b4f8f9
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameConfig
+  - hash:
+      serializedVersion: 2
+      Hash: 05ec276b9bc9abb6c51e3f23c9241c1b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GuidedSSMissile
+  - hash:
+      serializedVersion: 2
+      Hash: d7c81fc0bed0ef250172ddf4f9f92369
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CannonShell
   - hash:
       serializedVersion: 2
       Hash: 3b760e6526e13f7504f59e210145899a
@@ -563,7 +779,7 @@ ScriptsOnlyBuild:
       Hash: 3a770feba705442ddc685d807247f633
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: Submarine
+    className: sub
   - hash:
       serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
@@ -584,10 +800,34 @@ ScriptsOnlyBuild:
     className: BeforeAfterTestCommandState
   - hash:
       serializedVersion: 2
+      Hash: 4031ca673379faf7561ab654187f9a1d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponBaseGuidedTorpedo
+  - hash:
+      serializedVersion: 2
+      Hash: 4031ca673379faf7561ab654187f9a1d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponBaseCannon
+  - hash:
+      serializedVersion: 2
+      Hash: 00fda7728bf7655235d787b038f5726b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UnguidedMissile
+  - hash:
+      serializedVersion: 2
       Hash: a651316b51ca614e2253ff03b0463198
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UnguidedRocket
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: LoadoutHandler
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -596,10 +836,22 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
+      Hash: c25d6325e7b75c2c63faa67a3ca0c0c6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AircraftThatWorksWithWeapon
+  - hash:
+      serializedVersion: 2
       Hash: d791aa6007fa3640be1164ea75bb087d
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_StyleSheet
+  - hash:
+      serializedVersion: 2
+      Hash: bfdc70bfacec1e322d63f148e03eb4b6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GuidedGlideBomb
   - hash:
       serializedVersion: 2
       Hash: df434544c9f7b33d1cc7e635b180d279
@@ -626,10 +878,28 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
+      Hash: 8f1a33b41d1edf22bbcd155ba2799957
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SubmarineThatWorksWithWeapon
+  - hash:
+      serializedVersion: 2
       Hash: caa533b001ae39b864ba8425019e2268
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Outline
+  - hash:
+      serializedVersion: 2
+      Hash: c743a85feef0194945def339a9a1ccde
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AirSuperiorityFighter
+  - hash:
+      serializedVersion: 2
+      Hash: 30b939ff80045c592b21fb5ca1392c6b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StrikeFighterThatWorksWithWeapon
   - hash:
       serializedVersion: 2
       Hash: 89ee3f2c3348e40d890c2ffd90599811
@@ -702,7 +972,37 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 78ae74074b98907b33967fcbcff9ce1f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UIEffects
+  - hash:
+      serializedVersion: 2
+      Hash: 4031ca673379faf7561ab654187f9a1d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponBaseUnguidedBombs
+  - hash:
+      serializedVersion: 2
+      Hash: 731cb329691a6588616bb4071df07625
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: StrategicBomberThatWorksWithWeapon
+  - hash:
+      serializedVersion: 2
+      Hash: 4031ca673379faf7561ab654187f9a1d
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: WeaponBaseGuidedBombs
+  - hash:
+      serializedVersion: 2
+      Hash: 8f1a33b41d1edf22bbcd155ba2799957
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: BallisticSubmarineThatWorksWithWeapon
   platform: 19
   scenePathNames:
-  - Assets/Scenes/GameScene.unity
-  playerPath: C:/Users/Niknesh/Desktop/yayeet/builds/release/v2_64/BlackNavy.exe
+  - Assets/Scenes/WeaponTestScene.unity
+  playerPath: C:/Users/Niknesh/Desktop/yayeet/builds/release/v3_64/BlackNavy.exe

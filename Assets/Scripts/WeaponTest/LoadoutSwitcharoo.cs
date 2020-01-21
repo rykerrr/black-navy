@@ -18,6 +18,7 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
     private int wepNum;
     private int team = 0;
 
+    public int GetUnit => curUnit;
     public UnitWeaponLoadout[] GetTeam1UnitLoadouts => team1UnitLoadouts;
     public UnitWeaponLoadout[] GetTeam2UnitLoadouts => team2UnitLoadouts;
 
@@ -57,12 +58,12 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
 
         List<Dropdown.OptionData> newOptions = new List<Dropdown.OptionData>();
 
-        foreach(WeaponBase weapon in team1UnitLoadouts[unit].availableWeapons)
+        foreach (WeaponBase weapon in team1UnitLoadouts[unit].availableWeapons)
         {
             newOptions.Add(new Dropdown.OptionData(weapon.name));
         }
 
-        for(int i = 0; i < team1UnitLoadouts[unit].weapons.Length; i++)
+        for (int i = 0; i < team1UnitLoadouts[unit].weapons.Length; i++)
         {
             weaponDropdownMenus[i].gameObject.SetActive(true);
 
@@ -71,27 +72,25 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
 
         for (int i = 0; i < team1UnitLoadouts[unit].weapons.Length; i++)
         {
+            weaponDropdownMenus[i].gameObject.SetActive(true);
+
             if (team == 0)
             {
-                weaponDropdownMenus[(int)team1UnitLoadouts[curUnit].unitType * 3 + i].gameObject.SetActive(true);
-
-                for (int j = 0; j < weaponDropdownMenus[(int)team1UnitLoadouts[curUnit].unitType * 3 + i].options.Count; j++)
+                for (int j = 0; j < weaponDropdownMenus[i].options.Count; j++)
                 {
-                    if (team1UnitLoadouts[curUnit].weapons[i].name == weaponDropdownMenus[(int)team1UnitLoadouts[curUnit].unitType * 3 + i].options[j].text)
+                    if (team1UnitLoadouts[curUnit].weapons[i].name == weaponDropdownMenus[i].options[j].text)
                     {
-                        weaponDropdownMenus[(int)team1UnitLoadouts[curUnit].unitType * 3 + i].SetValueWithoutNotify(j);
+                        weaponDropdownMenus[i].SetValueWithoutNotify(j);
                     }
                 }
             }
             else if (team == 1)
             {
-                weaponDropdownMenus[(int)team2UnitLoadouts[curUnit].unitType * 3 + i].gameObject.SetActive(true);
-
-                for (int j = 0; j < weaponDropdownMenus[(int)team2UnitLoadouts[curUnit].unitType * 3 + i].options.Count; j++)
+                for (int j = 0; j < weaponDropdownMenus[i].options.Count; j++)
                 {
-                    if (team2UnitLoadouts[curUnit].weapons[i].name == weaponDropdownMenus[(int)team2UnitLoadouts[curUnit].unitType * 3 + i].options[j].text)
+                    if (team2UnitLoadouts[curUnit].weapons[i].name == weaponDropdownMenus[i].options[j].text)
                     {
-                        weaponDropdownMenus[(int)team2UnitLoadouts[curUnit].unitType * 3 + i].SetValueWithoutNotify(j);
+                        weaponDropdownMenus[i].SetValueWithoutNotify(j);
                     }
                 }
             }

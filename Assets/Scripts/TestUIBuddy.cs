@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -139,138 +140,71 @@ public class TestUIBuddy : MonoBehaviour
 
     public void ClearBattlefield()
     {
-        //List<GameObject> listOfEverything = new List<GameObject>();
+        List<Poolable> listOfEverything = FindObjectsOfType<Poolable>().ToList<Poolable>();
 
-        //foreach(AirSuperiorityFighter obj in FindObjectsOfType<AirSuperiorityFighter>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (NormalBomber obj in FindObjectsOfType<NormalBomber>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (StrikeFighter obj in FindObjectsOfType<StrikeFighter>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (AircraftCarrier obj in FindObjectsOfType<AircraftCarrier>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (NormalShipWeapons obj in FindObjectsOfType<NormalShipWeapons>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (Submarine obj in FindObjectsOfType<Submarine>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (BallisticSubmarine obj in FindObjectsOfType<BallisticSubmarine>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (ParasiteFighter obj in FindObjectsOfType<ParasiteFighter>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (ParasiteCarrier obj in FindObjectsOfType<ParasiteCarrier>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
+        foreach(Poolable obj in listOfEverything)
+        {
+            obj.ReturnToPool();
+        }
 
-        //foreach (Missile obj in FindObjectsOfType<Missile>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (UnguidedRocket obj in FindObjectsOfType<UnguidedRocket>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (Shell obj in FindObjectsOfType<Shell>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (Torpedo obj in FindObjectsOfType<Torpedo>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-        //foreach (Rocket obj in FindObjectsOfType<Rocket>())
-        //{
-        //    listOfEverything.Add(obj.gameObject);
-        //}
-
-        //foreach(GameObject obj in listOfEverything)
-        //{
-        //    Destroy(obj);
-        //}
     }
 
-    private void LoadUnitWeapons(Transform unitClone) // CALLED WHEN SPAWNING UNITS
+    private void LoadUnitWeapons(Transform unitClone, string unitName) // CALLED WHEN SPAWNING UNITS
     {
-        if (unitClone.GetComponent<AircraftThatWorksWithWeapon>())
+        UnitWeaponLoadout[] weaponLoadouts = null;
+        UnitWeaponLoadout? curLoadout = null;
+        int curUnit;
+
+        if (currentUnit.teamLayer == 9)
         {
-            UnitWeaponLoadout[] weaponLoadouts = null;
+            weaponLoadouts = LoadoutSwitcharoo.Instance.GetTeam2UnitLoadouts;
+        }
+        else if (currentUnit.teamLayer == 10)
+        {
+            weaponLoadouts = LoadoutSwitcharoo.Instance.GetTeam1UnitLoadouts;
+        }
 
-            if (currentUnit.teamLayer == 9)
+        foreach (UnitWeaponLoadout loadout in weaponLoadouts)
+        {
+            if (loadout.name == unitName)
             {
-                weaponLoadouts = LoadoutSwitcharoo.Instance.GetTeam2UnitLoadouts;
+                curLoadout = loadout;
+                Debug.Log("Loadout exists");
+                break;
             }
-            else if (currentUnit.teamLayer == 10)
-            {
-                weaponLoadouts = LoadoutSwitcharoo.Instance.GetTeam1UnitLoadouts;
-            }
+        }
 
-            AircraftThatWorksWithWeapon aircr = unitClone.GetComponent<AircraftThatWorksWithWeapon>();
-
-            for (int i = 0; i < aircr.weapons.Length; i++)
+        UnitBase unit = unitClone.GetComponent<UnitBase>();
+        curUnit = LoadoutSwitcharoo.Instance.GetUnit;
+        for (int i = 0; i < unit.weapons.Length; i++)
+        {
+            if (curLoadout.HasValue)
             {
-                WeaponBase weaponClone = Instantiate(weaponLoadouts[0].weapons[i]);
+                WeaponBase weaponClone = Instantiate(curLoadout.Value.weapons[i]); // here
                 weaponClone.transform.parent = unitClone;
                 weaponClone.transform.localPosition = Vector3.zero;
 
-                aircr.weapons[i] = weaponClone;
-                aircr.weapons[i].owner = unitClone;
+                unit.weapons[i] = weaponClone;
+                unit.weapons[i].owner = unitClone;
+            }
+            else
+            {
+                Debug.Log("Error..");
+                Debug.Break();
+
+                return;
             }
         }
-        else if (unitClone.GetComponent<StrikeFighterThatWorksWithWeapon>())
-        {
-            UnitWeaponLoadout[] weaponLoadouts = null;
 
-            if (currentUnit.teamLayer == 9)
-            {
-                weaponLoadouts = LoadoutSwitcharoo.Instance.GetTeam2UnitLoadouts;
-            }
-            else if (currentUnit.teamLayer == 10)
-            {
-                weaponLoadouts = LoadoutSwitcharoo.Instance.GetTeam1UnitLoadouts;
-            }
-
-            StrikeFighterThatWorksWithWeapon aircr = unitClone.GetComponent<StrikeFighterThatWorksWithWeapon>();
-            Debug.Log("Yeet");
-
-            for (int i = 0; i < aircr.weapons.Length; i++)
-            {
-                WeaponBase weaponClone = Instantiate(weaponLoadouts[1].weapons[i]);
-                weaponClone.transform.parent = unitClone;
-                weaponClone.transform.localPosition = Vector3.zero;
-
-                aircr.weapons[i] = weaponClone;
-                aircr.weapons[i].owner = unitClone;
-            }
-        }
-        else
-        {
-            return;
-        }
+        unit.InitializeWeapons();
     }
 
     private IEnumerator SpawnUnitLogic(UnitSettings newUnit)
     {
         for (int i = 0; i < currentUnit.amountOfUnit; i++)
         {
-            Transform newUnitClone = Instantiate(newUnit.unitPrefab, playerBaseSpawn.position, newUnit.unitPrefab.rotation) as Transform; // player team
+            Transform newUnitClone = GetUnit(newUnit);
             newUnitClone.gameObject.layer = (int)newUnit.teamLayer;
-            LoadUnitWeapons(newUnitClone);
 
             //Debug.Log(newUnitClone.gameObject.layer + " | " + (int)newUnit.teamLayer);
 
@@ -336,96 +270,53 @@ public class TestUIBuddy : MonoBehaviour
             cloneUnit.whatAreOurProjectiles = whatAreOurProjectiles;
             cloneUnit.whatIsTarget = whatIsTarget;
             cloneUnit.transform.position = new Vector2(newUnitClone.position.x, cloneUnit.BaseAltitude);
-            ;
             AircraftBase aircraft = cloneUnit as AircraftBase;
 
             if (aircraft != null)
             {
                 aircraft.LoadInAir();
             }
-
-
-            //if (newUnitClone.GetComponent<AirSuperiorityFighter>())
-            //{
-            //    newUnitClone.position = new Vector2(newUnitClone.position.x, newUnitClone.position.y + Random.Range(45f, 55f));
-            //    AirSuperiorityFighter unit = newUnitClone.GetComponent<AirSuperiorityFighter>();
-            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
-            //    unit.whatIsTarget = whatIsTarget;
-            //    unit.LoadInAir();
-            //    //Debug.Log((int)whatAreOurProjectiles + " | " + (int)unit.whatAreOurProjectiles);
-            //    //Debug.Log((int)whatIsTarget + " | " + (int)unit.whatIsTarget);
-            //}
-            //else if (newUnitClone.GetComponent<NormalBomber>())
-            //{
-            //    newUnitClone.position = new Vector2(newUnitClone.position.x, newUnitClone.position.y + Random.Range(40f, 60f));
-            //    NormalBomber unit = newUnitClone.GetComponent<NormalBomber>();
-            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
-            //    unit.whatIsTarget = whatIsTarget;
-            //    unit.LoadInAir();
-            //    //Debug.Log((int)whatAreOurProjectiles + " | " + (int)unit.whatAreOurProjectiles);
-            //    //Debug.Log((int)whatIsTarget + " | " + (int)unit.whatIsTarget);
-            //}
-            //else if (newUnitClone.GetComponent<StrikeFighter>())
-            //{
-            //    newUnitClone.position = new Vector2(newUnitClone.position.x, newUnitClone.position.y + Random.Range(27f, 42f));
-            //    StrikeFighter unit = newUnitClone.GetComponent<StrikeFighter>();
-            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
-            //    unit.whatIsTarget = whatIsTarget;
-            //    unit.LoadInAir();
-            //    //Debug.Log((int)whatAreOurProjectiles + " | " + (int)unit.whatAreOurProjectiles);
-            //    //Debug.Log((int)whatIsTarget + " | " + (int)unit.whatIsTarget);
-            //}
-            //else if (newUnitClone.GetComponent<ParasiteFighter>())
-            //{
-            //    newUnitClone.position = new Vector2(newUnitClone.position.x, newUnitClone.position.y + Random.Range(19f, 24f));
-            //    ParasiteFighter unit = newUnitClone.GetComponent<ParasiteFighter>();
-            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
-            //    unit.whatIsTarget = whatIsTarget;
-            //}
-            //else if (newUnitClone.GetComponent<NormalShipWeapons>())
-            //{
-            //    NormalShipWeapons unit = newUnitClone.GetComponent<NormalShipWeapons>();
-            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
-            //    unit.whatIsTarget = whatIsTarget;
-            //    unit.rocketFireAngle = fireAngle;
-            //    //Debug.Log((int)whatAreOurProjectiles + " | " + (int)unit.whatAreOurProjectiles);
-            //    //Debug.Log((int)whatIsTarget + " | " + (int)unit.whatIsTarget);
-            //}
-            //else if(newUnitClone.GetComponent<AircraftCarrier>())
-            //{
-            //    AircraftCarrier unit = newUnitClone.GetComponent<AircraftCarrier>();
-            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
-            //    unit.whatIsTarget = whatIsTarget;
-            //    unit.rocketFireAngle = fireAngle;
-            //    unit.menu.transform.localPosition = new Vector3(0f, -3f, 0f);
-            //    unit.menu.transform.localEulerAngles = new Vector3(0f, newUnitClone.transform.localEulerAngles.y, newUnitClone.transform.localEulerAngles.y);
-            //    //Debug.Log((int)whatAreOurProjectiles + " | " + (int)unit.whatAreOurProjectiles);
-            //    //Debug.Log((int)whatIsTarget + " | " + (int)unit.whatIsTarget);
-            //}
-            //else if (newUnitClone.GetComponent<Submarine>())
-            //{
-            //    newUnitClone.position = new Vector2(newUnitClone.position.x, newUnitClone.position.y - Random.Range(5f, 17f));
-            //    Submarine unit = newUnitClone.GetComponent<Submarine>();
-            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
-            //    unit.whatIsTarget = whatIsTarget;
-            //    unit.rocketFireAngle = fireAngle;
-            //    //Debug.Log((int)whatAreOurProjectiles + " | " + (int)unit.whatAreOurProjectiles);
-            //    //Debug.Log((int)whatIsTarget + " | " + (int)unit.whatIsTarget);
-            //}
-            //else if (newUnitClone.GetComponent<BallisticSubmarine>())
-            //{
-            //    newUnitClone.position = new Vector2(newUnitClone.position.x, newUnitClone.position.y - Random.Range(20f, 45f));
-            //    BallisticSubmarine unit = newUnitClone.GetComponent<BallisticSubmarine>();
-            //    unit.whatAreOurProjectiles = whatAreOurProjectiles;
-            //    unit.whatIsTarget = whatIsTarget;
-            //    unit.rocketFireAngle = fireAngle;
-            //    //Debug.Log((int)whatAreOurProjectiles + " | " + (int)unit.whatAreOurProjectiles);
-            //    //Debug.Log((int)whatIsTarget + " | " + (int)unit.whatIsTarget);
-            //}
             #endregion
 
+            LoadUnitWeapons(newUnitClone, newUnit.unitPrefab.name);
             yield return new WaitForSecondsRealtime((float)newUnit.delayBetweenEachSpawn);
         }
+    }
+
+    private Transform GetUnit(UnitSettings newUnit)
+    {
+        Transform retunit = null;
+
+        if (newUnit.unitPrefab.GetComponent<AircraftThatWorksWithWeapon>())
+        {
+            retunit = Poolable.Get<AircraftThatWorksWithWeapon>(() => Poolable.CreateObj<AircraftThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
+        }
+        else if (newUnit.unitPrefab.GetComponent<StrikeFighterThatWorksWithWeapon>())
+        {
+            retunit = Poolable.Get<StrikeFighterThatWorksWithWeapon>(() => Poolable.CreateObj<StrikeFighterThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
+        }
+        else if (newUnit.unitPrefab.GetComponent<StrategicBomberThatWorksWithWeapon>())
+        {
+            retunit = Poolable.Get<StrategicBomberThatWorksWithWeapon>(() => Poolable.CreateObj<StrategicBomberThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
+        }
+        else if (newUnit.unitPrefab.GetComponent<CarrierModule>())
+        {
+            retunit = Poolable.Get<FrigateThatWorksWithWeapon>(() => Poolable.CreateObj<FrigateThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
+        }
+        else if (newUnit.unitPrefab.GetComponent<FrigateThatWorksWithWeapon>())
+        {
+            retunit = Poolable.Get<FrigateThatWorksWithWeapon>(() => Poolable.CreateObj<FrigateThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
+        }
+        else if (newUnit.unitPrefab.GetComponent<SubmarineThatWorksWithWeapon>())
+        {
+            retunit = Poolable.Get<SubmarineThatWorksWithWeapon>(() => Poolable.CreateObj<SubmarineThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
+        }
+        else if (newUnit.unitPrefab.GetComponent<BallisticSubmarineThatWorksWithWeapon>())
+        {
+            retunit = Poolable.Get<BallisticSubmarineThatWorksWithWeapon>(() => Poolable.CreateObj<BallisticSubmarineThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
+        }
+
+        return retunit;
     }
 }
 #pragma warning restore 0649

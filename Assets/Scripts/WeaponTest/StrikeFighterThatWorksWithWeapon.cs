@@ -6,8 +6,6 @@ using UnityEngine;
 public class StrikeFighterThatWorksWithWeapon : AircraftBase
 {
     [Header("Strike fighter properties")]
-    [SerializeField] public WeaponBase[] weapons;
-    [SerializeField] private Transform[] weaponMounts;
     [SerializeField] private float aircraftEscapeRange;
     [SerializeField] private float shipEscapeRange;
     [SerializeField] private float evasionLength;
@@ -95,23 +93,13 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
                 {
                     curSpd = Mathf.SmoothDamp(curSpd, speed * 0.8f, ref veloc1, 2f);
 
-                    FireState wep1fire = weapons[0].Fire();
-                    FireState wep2fire = weapons[1].Fire();
-
-                    foreach (WeaponBase wep in weapons)
+                    if(!FireWeapons())
                     {
-                        FireState wepFire = wep.Fire();
+                        evadePosition = new Vector3(transform.up.x * 10f * vsi, evadeAlt, transform.position.z);
 
-                        if (wepFire == FireState.OutOfAmmo)
-                        {
-                            Debug.Log("ooa");
-
-                            evadePosition = new Vector3(transform.up.x * 10f * vsi, evadeAlt, transform.position.z);
-
-                            evading = true;
-                            evadeTimer = (Time.time + evasionLength) * 1.2f;
-                            return;
-                        }
+                        evading = true;
+                        evadeTimer = (Time.time + evasionLength) * 1.2f;
+                        return;
                     }
                 }
             }
@@ -158,33 +146,6 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
     protected override void OnEnable()
     {
         base.OnEnable();
-
-        for (int i = 0; i < weapons.Length; i++)
-        {
-            weapons[i].whatAreOurProjectiles = whatAreOurProjectiles;
-            weapons[i].whatIsTarget = whatIsTarget;
-            weapons[i].spawnLocation = firePoint;
-            weapons[i].transform.localPosition = weaponMounts[i].localPosition;
-        }
-
-        //foreach (WeaponBase weapon in weapons)
-        //{
-        //    weapon.whatAreOurProjectiles = whatAreOurProjectiles;
-        //    weapon.whatIsTarget = whatIsTarget;
-        //    weapon.spawnLocation = firePoint;
-
-        //    weapon.transform.position = weaponMounts;
-        //}
-
-        ReloadWeapons();
-    }
-
-    private void ReloadWeapons()
-    {
-        foreach (WeaponBase wep in weapons)
-        {
-            wep.LoadAmmo();
-        }
     }
 }
 #pragma warning restore 0649
