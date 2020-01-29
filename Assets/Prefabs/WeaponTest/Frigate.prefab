@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780192236}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29, y: 1.42, z: 0}
+  m_LocalPosition: {x: 0.12, y: 1.252, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9120996700087927251}
@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610067084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.139, y: -1.235, z: 0}
+  m_LocalPosition: {x: -0.04, y: -1.269, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9120996700087927251}
@@ -94,8 +94,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.26, y: 0.85}
-  m_SizeDelta: {x: 0.721, y: 0.527}
+  m_AnchoredPosition: {x: 2.0289, y: 2.013}
+  m_SizeDelta: {x: 0.5249, y: 3.061}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4835686824086157834
 CanvasRenderer:
@@ -168,7 +168,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.090740204, y: 6.4505253}
+  m_AnchoredPosition: {x: -2.15, y: 0.87}
   m_SizeDelta: {x: 10.24, y: 17.533}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &3637614145323785321
@@ -239,7 +239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4299063945947942852}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.18, y: -0, z: 0}
   m_LocalScale: {x: 0.256, y: 0.68, z: 1}
   m_Children: []
   m_Father: {fileID: 9120996700087927251}
@@ -318,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9120996698737836668}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.44, y: 0.93, z: 0}
+  m_LocalPosition: {x: 0.26, y: 0.93, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9120996700087927251}
@@ -338,7 +338,7 @@ GameObject:
   - component: {fileID: 9120996700087927257}
   - component: {fileID: 2406341615265846529}
   m_Layer: 10
-  m_Name: TestFrigate
+  m_Name: Frigate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -353,7 +353,7 @@ Transform:
   m_GameObject: {fileID: 9120996700087927263}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -43.734367, y: 29.1166, z: 0}
-  m_LocalScale: {x: 0.7, y: 1.1, z: 1}
+  m_LocalScale: {x: 1.5, y: 3.6, z: 1}
   m_Children:
   - {fileID: 9120996698737836669}
   - {fileID: 7990736040013092347}

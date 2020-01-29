@@ -142,7 +142,7 @@ public class TestUIBuddy : MonoBehaviour
     {
         List<Poolable> listOfEverything = FindObjectsOfType<Poolable>().ToList<Poolable>();
 
-        foreach(Poolable obj in listOfEverything)
+        foreach (Poolable obj in listOfEverything)
         {
             obj.ReturnToPool();
         }
@@ -189,6 +189,7 @@ public class TestUIBuddy : MonoBehaviour
             }
             else
             {
+                Debug.Log(curLoadout);
                 Debug.Log("Error..");
                 Debug.Break();
 
@@ -314,6 +315,14 @@ public class TestUIBuddy : MonoBehaviour
         else if (newUnit.unitPrefab.GetComponent<BallisticSubmarineThatWorksWithWeapon>())
         {
             retunit = Poolable.Get<BallisticSubmarineThatWorksWithWeapon>(() => Poolable.CreateObj<BallisticSubmarineThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
+        }
+        else if (newUnit.unitPrefab.GetComponent<DestroyerThatWorksWithWeapon>())
+        {
+            retunit = Poolable.Get<DestroyerThatWorksWithWeapon>(() => Poolable.CreateObj<DestroyerThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
+        }
+        else if (newUnit.unitPrefab.GetComponent<PatrolBoatThatWorksWithWeapon>())
+        {
+            retunit = Poolable.Get<PatrolBoatThatWorksWithWeapon>(() => Poolable.CreateObj<PatrolBoatThatWorksWithWeapon>(newUnit.unitPrefab.gameObject), playerBaseSpawn.position, newUnit.unitPrefab.rotation).transform;
         }
 
         return retunit;

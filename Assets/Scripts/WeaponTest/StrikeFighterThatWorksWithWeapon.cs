@@ -80,7 +80,7 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
                 {
                     if (dist.magnitude <= shipEscapeRange && !evading)
                     {
-                        evadePosition = new Vector3(transform.up.x * 300, BaseAltitude * 1.4f, transform.position.z);
+                        evadePosition = new Vector3(transform.position.x * 2f, BaseAltitude * 1.4f, transform.position.z);
                         evading = true;
                         evadeTimer = Time.time + evasionLength;
                         return;
@@ -92,15 +92,15 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
                 if (targIsVisual)
                 {
                     curSpd = Mathf.SmoothDamp(curSpd, speed * 0.8f, ref veloc1, 2f);
+                }
 
-                    if(!FireWeapons())
-                    {
-                        evadePosition = new Vector3(transform.up.x * 10f * vsi, evadeAlt, transform.position.z);
+                if (!FireWeapons())
+                {
+                    evadePosition = new Vector3(transform.position.x * 3f, evadeAlt, transform.position.z);
 
-                        evading = true;
-                        evadeTimer = (Time.time + evasionLength) * 1.2f;
-                        return;
-                    }
+                    evading = true;
+                    evadeTimer = (Time.time + evasionLength) * 1.2f;
+                    return;
                 }
             }
             else

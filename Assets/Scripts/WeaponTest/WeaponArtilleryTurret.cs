@@ -18,10 +18,21 @@ public class WeaponArtilleryTurret : WeaponBase
     {
         if (target)
         {
-            Fire();
+            if (target.position.x < transform.position.x)
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.z, 180f, transform.eulerAngles.z);
+            }
+            else if (target.position.x > transform.position.x)
+            {
+                transform.eulerAngles = new Vector3(transform.eulerAngles.z, 0f, transform.eulerAngles.z);
+            }
+
+            //Debug.Log(Fire());
         }
         else
         {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, owner.transform.eulerAngles.y, transform.eulerAngles.z);
+
             if (FindTarget())
             {
                 return;
@@ -33,13 +44,16 @@ public class WeaponArtilleryTurret : WeaponBase
 
     public override FireState Fire()
     {
-        if(target == null)
+        if (target == null)
         {
             return FireState.Failed;
         }
 
-        int results = SolveBallisticArc(spawnLocation.position, projectilePrefab.GetComponent<CannonShell>().Speed * Time.deltaTime, target.position, -Physics2D.gravity.y * projBaseGrav, out Vector3 s0, out Vector3 s1);
+        int results;
+
+        results = SolveBallisticArc(spawnLocation.position, projectilePrefab.GetComponent<ProjectileBase>().Speed * Time.deltaTime, target.position, -Physics2D.gravity.y * projBaseGrav, out Vector3 s0, out Vector3 s1);
         aimPos = s0.normalized;
+
 
         if (Time.time > fireTimer)
         {
@@ -57,8 +71,9 @@ public class WeaponArtilleryTurret : WeaponBase
             {
                 prevBull.position = spawnLocation.position;
                 prevBull.gameObject.SetActive(true);
-                bullRb.AddForce((Vector2)barrel.up * projectilePrefab.GetComponent<CannonShell>().Speed * Time.deltaTime + new Vector2(0f, Random.Range(-inaccuracyOffset, inaccuracyOffset)), ForceMode2D.Impulse);
-                prevBull.GetComponent<TrailRenderer>().material = prevBull.gameObject.layer == 8 ? t1Mat : t2Mat;
+                bullRb.AddForce(((Vector2)barrel.up * projectilePrefab.GetComponent<ProjectileBase>().Speed + new Vector2(0f, Random.Range(-inaccuracyOffset, inaccuracyOffset))) * Time.deltaTime, ForceMode2D.Impulse);
+                TrailRenderer projTrail = prevBull.GetComponent<TrailRenderer>();
+                projTrail.material = prevBull.gameObject.layer == 8 ? t1Mat : t2Mat;
                 prevBull = null;
             }
 
@@ -68,51 +83,6 @@ public class WeaponArtilleryTurret : WeaponBase
         }
 
         return FireState.OnDelay;
-    }
-
-    // https://www.forrestthewoods.com/blog/solving_ballistic_trajectories/
-    private int SolveBallisticArc(Vector3 proj_pos, float proj_speed, Vector3 target, float gravity, out Vector3 s0, out Vector3 s1)
-    {
-        s0 = Vector3.zero;
-        s1 = Vector3.zero;
-
-        Vector3 diff = target - proj_pos;
-        Vector3 diffXZ = new Vector3(diff.x, 0f, diff.z);
-        float groundDist = diffXZ.magnitude;
-
-        float speed2 = proj_speed * proj_speed;
-        float speed4 = proj_speed * proj_speed * proj_speed * proj_speed;
-        float y = diff.y;
-        float x = groundDist;
-        float gx = gravity * x;
-
-        float root = speed4 - gravity * (gravity * x * x + 2 * y * speed2);
-
-        // No solution
-        if (root < 0)
-            return 0;
-
-        root = Mathf.Sqrt(root);
-
-        float lowAng = Mathf.Atan2(speed2 - root, gx);
-        float highAng = Mathf.Atan2(speed2 + root, gx);
-        int numSolutions = lowAng != highAng ? 2 : 1;
-
-        Vector3 groundDir = diffXZ.normalized;
-        s0 = groundDir * Mathf.Cos(lowAng) * proj_speed + Vector3.up * Mathf.Sin(lowAng) * proj_speed;
-        if (numSolutions > 1)
-            s1 = groundDir * Mathf.Cos(highAng) * proj_speed + Vector3.up * Mathf.Sin(highAng) * proj_speed;
-
-        return numSolutions;
-    }
-
-    private bool VecApprox(Vector2 vec1, Vector2 vec2)
-    {
-        if (Mathf.Abs(vec1.x - vec2.x) < 0.005f && Mathf.Abs(vec1.x - vec2.x) < 0.005f)
-        {
-            return true;
-        }
-        else return false;
     }
 
     private void OnEnable()

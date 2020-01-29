@@ -109,7 +109,7 @@ Transform:
   m_GameObject: {fileID: 4991841911693719731}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -491.37158, y: 3.7894478, z: 0}
-  m_LocalScale: {x: 0.253, y: 0.773, z: 1}
+  m_LocalScale: {x: 0.13091943, y: 0.91385067, z: 1}
   m_Children:
   - {fileID: 6143747498390498356}
   m_Father: {fileID: 0}
@@ -223,7 +223,8 @@ MonoBehaviour:
   thisRb: {fileID: 4991841911693719728}
   onHitParticlePrefab: {fileID: 236020772683594545, guid: c610f9ddf80888849838d7542cbbc860,
     type: 3}
-  speed: 120
+  speed: 480
+  inWaterGrav: -0.0005
   projectileLifetime: 0
   lifeTimer: 0
   target: {fileID: 0}
@@ -233,8 +234,8 @@ MonoBehaviour:
   whatUnitsToTarget:
     mask: 0100000002000000
   targetCheckRadius: 70
-  rotationSmoothing: 0.4
-  timeToChangeGravityOutOfWater: 3
+  rotationSmoothing: 0.3
+  timeToChangeGravityOutOfWater: 2
 --- !u!96 &-3562342090180116776
 TrailRenderer:
   serializedVersion: 2
@@ -277,7 +278,7 @@ TrailRenderer:
   m_Time: 0.7
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.45
+    widthMultiplier: 0.2
     widthCurve:
       serializedVersion: 2
       m_Curve:

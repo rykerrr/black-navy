@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatUnitsToTarget:
-    mask: 
+    mask: 010000000200000000000000
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 0
@@ -66,4 +66,5 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   target: {fileID: 0}
+  ownerRb: {fileID: 0}
   currentAmmo: 0

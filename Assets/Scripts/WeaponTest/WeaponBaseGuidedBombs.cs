@@ -18,6 +18,8 @@ public class WeaponBaseGuidedBombs : WeaponBase
             Rigidbody2D bombRb = bombClone.GetComponent<Rigidbody2D>();
             GuidedGlideBomb bomb = bombClone.GetComponent<GuidedGlideBomb>();
             int layerValue = whatAreOurProjectiles.layermask_to_layer();
+            TrailRenderer projTrail = bombClone.GetComponent<TrailRenderer>();
+            projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
             bombClone.gameObject.layer = layerValue;
             bomb.target = target;
             bomb.timeBeforeBoosters = Mathf.Clamp(bomb.timeBeforeBoosters - yOffsetDelay, 0.6f, 2f);

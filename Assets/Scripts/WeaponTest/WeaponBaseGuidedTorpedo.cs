@@ -18,12 +18,15 @@ public class WeaponBaseGuidedTorpedo : WeaponBase
         if (Time.time >= fireTimer)
         {
             Transform torpClone = Poolable.Get<GuidedTorpedo>(() => Poolable.CreateObj<GuidedTorpedo>(projectilePrefab.gameObject), spawnLocation.position, Quaternion.identity).transform;
+            int layerValue = whatAreOurProjectiles.layermask_to_layer();
+            TrailRenderer projTrail = torpClone.GetComponent<TrailRenderer>();
+            projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
+            torpClone.gameObject.layer = layerValue;
+            projTrail.Clear();
             GuidedTorpedo torp = torpClone.GetComponent<GuidedTorpedo>();
             torp.target = target;
             torp.whatIsTarget = whatIsTarget;
-            int layerValue = whatAreOurProjectiles.layermask_to_layer();
             torpClone.gameObject.layer = layerValue;
-            torpClone.GetComponent<TrailRenderer>().material = layerValue == 8 ? t1Mat : t2Mat;
             torpClone.GetComponent<Rigidbody2D>().velocity = owner.up * torp.Speed / 2f * Time.deltaTime;
 
             torpClone.up = owner.up;

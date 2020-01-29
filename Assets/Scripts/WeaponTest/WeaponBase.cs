@@ -23,9 +23,11 @@ public abstract class WeaponBase : Poolable
     public float lookCheckRange;
     public int maxAmmo;
 
+    public UnitLayerMask whatUnitsCanBeTargetted => whatUnitsToTarget;
+
     [HideInInspector] public LayerMask whatIsTarget;
     [HideInInspector] public LayerMask whatAreOurProjectiles;
-    [HideInInspector] public Transform target;
+    [SerializeField] public Transform target;
     [HideInInspector] public Rigidbody2D ownerRb;
 
     [HideInInspector] public int currentAmmo;
@@ -126,6 +128,54 @@ public abstract class WeaponBase : Poolable
 
             findTargetTimer = targetCheckDelay + Time.time;
             return false;
+        }
+        else return false;
+    }
+
+    // https://www.forrestthewoods.com/blog/solving_ballistic_trajectories/
+    protected int SolveBallisticArc(Vector3 proj_pos, float proj_speed, Vector3 target, float gravity, out Vector3 s0, out Vector3 s1)
+    {
+        s0 = Vector3.zero;
+        s1 = Vector3.zero;
+
+        Vector3 diff = target - proj_pos;
+        Vector3 diffXZ = new Vector3(diff.x, 0f, diff.z);
+        float groundDist = diffXZ.magnitude;
+
+        float speed2 = proj_speed * proj_speed;
+        float speed4 = proj_speed * proj_speed * proj_speed * proj_speed;
+        float y = diff.y;
+        float x = groundDist;
+        float gx = gravity * x;
+
+        float root = speed4 - gravity * (gravity * x * x + 2 * y * speed2);
+
+        // No solution
+        if (root < 0)
+        {
+            Debug.Log("no solution");
+            return 0;
+        }
+
+        root = Mathf.Sqrt(root);
+
+        float lowAng = Mathf.Atan2(speed2 - root, gx);
+        float highAng = Mathf.Atan2(speed2 + root, gx);
+        int numSolutions = lowAng != highAng ? 2 : 1;
+
+        Vector3 groundDir = diffXZ.normalized;
+        s0 = groundDir * Mathf.Cos(lowAng) * proj_speed + Vector3.up * Mathf.Sin(lowAng) * proj_speed;
+        if (numSolutions > 1)
+            s1 = groundDir * Mathf.Cos(highAng) * proj_speed + Vector3.up * Mathf.Sin(highAng) * proj_speed;
+
+        return numSolutions;
+    }
+
+    protected bool VecApprox(Vector2 vec1, Vector2 vec2)
+    {
+        if (Mathf.Abs(vec1.x - vec2.x) < 0.005f && Mathf.Abs(vec1.x - vec2.x) < 0.005f)
+        {
+            return true;
         }
         else return false;
     }

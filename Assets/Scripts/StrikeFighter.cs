@@ -91,7 +91,7 @@ public class StrikeFighter : AircraftBase
                 {
                     if (dist.magnitude <= shipEscapeRange && !evading)
                     {
-                        evadePosition = new Vector3(transform.up.x * 300, BaseAltitude * 1.4f, transform.position.z);
+                        evadePosition = new Vector3(transform.position.x * 10, BaseAltitude * 1.4f, transform.position.z);
                         evading = true;
                         evadeTimer = Time.time + evasionLength;
                         return;

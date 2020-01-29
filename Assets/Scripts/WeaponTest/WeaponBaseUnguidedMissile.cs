@@ -17,7 +17,8 @@ public class WeaponBaseUnguidedMissile : WeaponBase
                 int layerValue = whatAreOurProjectiles.layermask_to_layer();
                 missileClone.gameObject.layer = layerValue;
                 UnguidedMissile missile = missileClone.GetComponent<UnguidedMissile>();
-                missileClone.GetComponent<TrailRenderer>().material = layerValue == 8 ? t1Mat : t2Mat;
+                TrailRenderer projTrail = missileClone.GetComponent<TrailRenderer>();
+                projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
                 missile.ActivateBoost();
                 fireTimer = delayBetweenFire + Time.time;
 

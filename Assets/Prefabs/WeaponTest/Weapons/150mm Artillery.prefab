@@ -57,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 3917485656313095270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.14, y: 0.14, z: 1}
   m_Children:
   - {fileID: 3071244524049823097}
   m_Father: {fileID: 0}
@@ -98,6 +98,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   target: {fileID: 0}
+  ownerRb: {fileID: 0}
   currentAmmo: 0
   barrel: {fileID: 3917485656313095271}
   rotationSmoothing: 0.1

@@ -8,55 +8,51 @@ using UnityEngine.EventSystems;
 public class GameSpeedChanger : MonoBehaviour
 {
     [SerializeField] private Text speedText;
+    float lastGameSpeed = 1f;
 
     private void Update()
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            float speed = Time.timeScale;
-
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 Application.Quit();
             }
 
-            if (Input.GetKeyDown(KeyCode.Alpha0) || Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Alpha0) || (Input.GetKeyDown(KeyCode.Space) && Time.timeScale >= 0.0001f))
             {
-                speed = 0f;
-                Time.timeScale = speed;
+                ChangeGameSpeed(0f);
+            }
+            else if((Input.GetKeyDown(KeyCode.Space) && Time.timeScale <= 0.0001f))
+            {
+                ChangeGameSpeed(lastGameSpeed);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                speed = 1f;
-                Time.timeScale = speed;
+                ChangeGameSpeed(1f);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                speed = 2f;
-                Time.timeScale = speed;
+                ChangeGameSpeed(2f);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha4))
             {
-                speed = 4f;
-                Time.timeScale = speed;
+                ChangeGameSpeed(4f);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha6))
             {
-                speed = 6f;
-                Time.timeScale = speed;
+                ChangeGameSpeed(6f);
             }
             else if (Input.GetKeyDown(KeyCode.Alpha8))
             {
-                speed = 8f;
-                Time.timeScale = speed;
+                ChangeGameSpeed(8f);
             }
-
-            speedText.text = "Current Speed: " + System.Convert.ToInt32(speed) + "x";
         }
     }
 
     public void ChangeGameSpeed(float speed)
     {
+        float lastGameSpeed = Time.timeScale;
         Time.timeScale = speed;
         //Time.fixedDeltaTime = 0.02f * Time.timeScale;
         speedText.text = "Current Speed: " + System.Convert.ToInt32(speed) + "x";

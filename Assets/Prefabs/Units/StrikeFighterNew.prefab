@@ -110,16 +110,18 @@ MonoBehaviour:
   whatIsTarget:
     serializedVersion: 2
     m_Bits: 0
-  lookCheckPoint: {fileID: 3948212850884645504}
+  firePoint: {fileID: 3948212850884645504}
   lookCheckRadius: 7
   targetCheckDelay: 0
   targetCheckRadius: 300
-  yBaseAltitude: 55
+  yBaseAltitude: 65
   speed: 900
+  weapons: []
+  weaponMounts: []
   target: {fileID: 0}
   timeToTakeOffFully: 6
-  waterOffset: 6
-  rotationSmoothing: 2.4
+  waterOffset: 10
+  rotationSmoothing: 2.2
   ceilAltitude: 140
   retPosition: {x: 0, y: 0, z: 0}
   evadePosition: {x: 0, y: 0, z: 0}
@@ -148,7 +150,6 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 0
     currentShells: 0
-    cannonTimer: 0
   aircraftEscapeRange: 10
   shipEscapeRange: 30
   evasionLength: 3

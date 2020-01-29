@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatUnitsToTarget:
-    mask: 
+    mask: 0100000002000000
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 0
@@ -53,7 +53,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 1249912895720595739, guid: a3ae4c88a8ffb8947b1e1be98fae4664,
     type: 3}
   spawnLocation: {fileID: 0}
-  delayBetweenFire: 0.5
+  delayBetweenFire: 0.3
   inaccuracyOffset: 1
   reloadTime: 0
   lookCheckRadius: 0

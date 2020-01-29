@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 4948168996430834630}
   - component: {fileID: 4948168996430834629}
   - component: {fileID: 4948168996430834628}
-  - component: {fileID: 5515971402024596765}
+  - component: {fileID: -3022786636518050815}
   m_Layer: 0
   m_Name: GuidedBomb
   m_TagString: Untagged
@@ -198,7 +198,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5515971402024596765
+--- !u!114 &-3022786636518050815
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,19 +207,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 4948168996430834627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4dad7f4e2ddba40b9e2c1fa813f7fa, type: 3}
+  m_Script: {fileID: 11500000, guid: f93aa71ec1cb17940a267cfbb92cd08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whatIsEnemy:
+  thisRb: {fileID: 4948168996430834628}
+  onHitParticlePrefab: {fileID: 0}
+  speed: 0
+  projectileLifetime: 0
+  lifeTimer: 0
+  target: {fileID: 0}
+  whatIsTarget:
     serializedVersion: 2
     m_Bits: 0
-  target: {fileID: 0}
-  thisRb: {fileID: 0}
-  timeBeforeBoosters: 1
-  onHitParticlePrefab: {fileID: 4279926422445998477, guid: 80c91e19dbbe98e419a1417bc2840bab,
-    type: 3}
-  forceGeneration: 700
-  bombSmTime: 0.01
+  whatUnitsToTarget:
+    mask: 02000000
+  targetCheckRadius: 30
+  rotationSmoothing: 0.3
+  forceGeneration: 600
+  timeBeforeBoosters: 0
 --- !u!1 &5034366163266047265
 GameObject:
   m_ObjectHideFlags: 0

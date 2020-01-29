@@ -115,7 +115,10 @@ public abstract class UnitBase : Poolable
                 {
                     if (!wep.target)
                     {
-                        wep.target = target;
+                        if (UnitLayerMask.CheckIfUnitIsInMask(targHumanoid.type, wep.whatUnitsCanBeTargetted))
+                        {
+                            wep.target = target;
+                        }
                     }
                 }
 

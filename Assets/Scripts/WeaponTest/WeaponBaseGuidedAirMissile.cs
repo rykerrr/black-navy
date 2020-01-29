@@ -18,7 +18,9 @@ public class WeaponBaseGuidedAirMissile : WeaponBase
                 GuidedAAMissile missile = missileClone.GetComponent<GuidedAAMissile>();
                 missile.whatIsTarget = whatIsTarget;
                 missile.target = target;
-                missileClone.GetComponent<TrailRenderer>().material = layerValue == 8 ? t1Mat : t2Mat;
+                TrailRenderer projTrail = missileClone.GetComponent<TrailRenderer>();
+                projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
+                projTrail.enabled = true;
                 fireTimer = delayBetweenFire + Time.time + Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
 
                 return FireState.Fired;

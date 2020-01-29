@@ -336,7 +336,7 @@ MonoBehaviour:
   weaponMounts: []
   target: {fileID: 0}
   timeToTakeOffFully: 6
-  waterOffset: 10
+  waterOffset: 14
   rotationSmoothing: 2
   ceilAltitude: 120
   retPosition: {x: 0, y: 0, z: 0}
@@ -344,7 +344,7 @@ MonoBehaviour:
   evading: 0
   returningToBaseAlt: 0
   aircraftEscapeRange: 12
-  shipEscapeRange: 8
+  shipEscapeRange: 10
   evasionLength: 3
   distanceBeforeFire: 50
   targIsVisual: 0

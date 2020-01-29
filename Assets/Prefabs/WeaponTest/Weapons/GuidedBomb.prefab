@@ -169,8 +169,8 @@ GameObject:
   - component: {fileID: 7169227846229453269}
   - component: {fileID: 7169227846229453270}
   - component: {fileID: 7169227846229453271}
-  - component: {fileID: 7735478826958305038}
   - component: {fileID: -1146284411307383405}
+  - component: {fileID: 3635151807202528264}
   m_Layer: 0
   m_Name: GuidedBomb
   m_TagString: Untagged
@@ -277,28 +277,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7735478826958305038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7169227846229453264}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a4dad7f4e2ddba40b9e2c1fa813f7fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whatIsEnemy:
-    serializedVersion: 2
-    m_Bits: 0
-  target: {fileID: 0}
-  thisRb: {fileID: 0}
-  timeBeforeBoosters: 2
-  onHitParticlePrefab: {fileID: 4279926422445998477, guid: 80c91e19dbbe98e419a1417bc2840bab,
-    type: 3}
-  forceGeneration: 700
-  bombSmTime: 0.01
 --- !u!96 &-1146284411307383405
 TrailRenderer:
   serializedVersion: 2
@@ -404,3 +382,31 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &3635151807202528264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169227846229453264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f93aa71ec1cb17940a267cfbb92cd08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisRb: {fileID: 7169227846229453271}
+  onHitParticlePrefab: {fileID: 4279926422445998477, guid: 80c91e19dbbe98e419a1417bc2840bab,
+    type: 3}
+  speed: 0
+  projectileLifetime: 0
+  lifeTimer: 0
+  target: {fileID: 0}
+  whatIsTarget:
+    serializedVersion: 2
+    m_Bits: 0
+  whatUnitsToTarget:
+    mask: 02000000
+  targetCheckRadius: 30
+  rotationSmoothing: 0.8
+  forceGeneration: 700
+  timeBeforeBoosters: 0

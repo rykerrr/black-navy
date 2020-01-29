@@ -57,7 +57,7 @@ public abstract class AircraftBase : UnitBase
 
     protected virtual void ReturnToBaseAlt()
     {
-        transform.up = Vector3.MoveTowards(transform.up, (retPosition - transform.position).normalized, rotationSmoothing * Time.deltaTime * 0.9f);
+        transform.up = Vector3.MoveTowards(transform.up, (retPosition - transform.position).normalized, rotationSmoothing * Time.deltaTime * 3f);
 
         if (transform.position.y >= yBaseAltitude)
         {
@@ -87,12 +87,12 @@ public abstract class AircraftBase : UnitBase
     {
         int rot = transform.up.x >= 0 ? 1 : -1;
         Debug.Log(Mathf.CeilToInt(transform.up.x));
-        transform.up = Vector3.MoveTowards(transform.up, new Vector2(transform.up.x > 0 ? Mathf.CeilToInt(transform.up.x) : Mathf.FloorToInt(transform.up.x), 0f), rotationSmoothing * Time.deltaTime / 1.4f);
+        transform.up = Vector3.MoveTowards(transform.up, new Vector2(transform.up.x > 0 ? Mathf.CeilToInt(transform.up.x) : Mathf.FloorToInt(transform.up.x), 0f), rotationSmoothing * Time.deltaTime * 1.8f);
 
-        if (Mathf.Abs(transform.up.x) - 0.9995 >= 0 && Mathf.Abs(transform.up.y) - 0.98 <= 0.0009)
+        if (transform.up.y >= retPosition.y - 3f)
         {
             Debug.Log("super = true");
-            transform.up = new Vector2(transform.up.x > 0 ? 1 : -1, 0f);
+            //transform.up = new Vector2(transform.up.x > 0 ? 1 : -1, 0f);
             return true;
         }
 
@@ -143,7 +143,7 @@ public abstract class AircraftBase : UnitBase
             returningToBaseAlt = true;
             evading = false;
             engaging = false;
-            retPosition = new Vector3(transform.up.x * 70, yBaseAltitude + Random.Range(4f, 6f), transform.position.z);
+            retPosition = new Vector3(transform.position.x * 3, yBaseAltitude + Random.Range(4f, 6f), transform.position.z);
 
             return true;
         }

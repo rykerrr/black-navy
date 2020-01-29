@@ -19,6 +19,8 @@ public class WeaponBaseUnguidedBombs : WeaponBase
             bombClone.gameObject.layer = layerValue;
             bombClone.right = new Vector2(owner.up.x + Random.Range(-inaccuracyOffset, inaccuracyOffset), owner.up.y).normalized; /*(target.position - transform.position).normalized*/; // i have no fucking idea what is going on at this point
             Rigidbody2D bombRb = bombClone.GetComponent<Rigidbody2D>();
+            TrailRenderer projTrail = bombClone.GetComponent<TrailRenderer>();
+            projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
             bombRb.velocity = new Vector2(ownerRb.velocity.x / 1.5f, ownerRb.velocity.y / 1.1f);
             //Rigidbody2D shellRb = shellClone.GetComponent<Rigidbody2D>();
             fireTimer = delayBetweenFire + Time.time;

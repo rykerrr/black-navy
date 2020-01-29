@@ -22,10 +22,11 @@ public class WeaponBaseCannon : WeaponBase
                 Transform shellClone = Poolable.Get<CannonShell>(() => Poolable.CreateObj<CannonShell>(projectilePrefab.gameObject), spawnLocation.position, Quaternion.identity).transform;
                 int layerValue = whatAreOurProjectiles.layermask_to_layer();
                 shellClone.gameObject.layer = layerValue;
-                shellClone.right = new Vector2(owner.up.x + UnityEngine.Random.Range(-inaccuracyOffset, inaccuracyOffset), owner.up.y).normalized; /*(target.position - transform.position).normalized*/; // i have no fucking idea what is going on at this point
+                shellClone.right = new Vector2(owner.up.x, owner.up.y + UnityEngine.Random.Range(-inaccuracyOffset, inaccuracyOffset)).normalized; /*(target.position - transform.position).normalized*/; // i have no fucking idea what is going on at this point
                                                                                                                                                                                                           //Rigidbody2D shellRb = shellClone.GetComponent<Rigidbody2D>();
                 shellClone.GetComponent<Rigidbody2D>().AddForce(owner.up * shellClone.GetComponent<CannonShell>().Speed * Time.deltaTime, ForceMode2D.Impulse);
-                shellClone.GetComponent<TrailRenderer>().material = layerValue == 8 ? t1Mat : t2Mat;
+                TrailRenderer projTrail = shellClone.GetComponent<TrailRenderer>();
+                projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
                 //SetTrail(shellClone);
 
                 fireTimer = delayBetweenFire + Time.time + UnityEngine.Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
@@ -38,7 +39,10 @@ public class WeaponBaseCannon : WeaponBase
                 return FireState.OnDelay;
             }
         }
-        else return FireState.Failed;
+        else
+        {
+            return FireState.Failed;
+        }
     }
 
     //private void SetTrail(Transform shellClone)

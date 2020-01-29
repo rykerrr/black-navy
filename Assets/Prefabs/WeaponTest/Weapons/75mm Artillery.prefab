@@ -221,7 +221,7 @@ Transform:
   m_GameObject: {fileID: 6189269358865187007}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children:
   - {fileID: 5270978878997664160}
   m_Father: {fileID: 0}
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whatUnitsToTarget:
-    mask: 02000000
+    mask: 0200000000000000
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 160
@@ -262,6 +262,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   target: {fileID: 0}
+  ownerRb: {fileID: 0}
   currentAmmo: 0
   barrel: {fileID: 6189269358865187006}
   rotationSmoothing: 0.1
