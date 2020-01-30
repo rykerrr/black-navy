@@ -24,7 +24,7 @@ public class WeaponBaseCannon : WeaponBase
                 shellClone.gameObject.layer = layerValue;
                 shellClone.right = new Vector2(owner.up.x, owner.up.y + UnityEngine.Random.Range(-inaccuracyOffset, inaccuracyOffset)).normalized; /*(target.position - transform.position).normalized*/; // i have no fucking idea what is going on at this point
                                                                                                                                                                                                           //Rigidbody2D shellRb = shellClone.GetComponent<Rigidbody2D>();
-                shellClone.GetComponent<Rigidbody2D>().AddForce(owner.up * shellClone.GetComponent<CannonShell>().Speed * Time.deltaTime, ForceMode2D.Impulse);
+                shellClone.GetComponent<Rigidbody2D>().AddForce(owner.up * shellClone.GetComponent<CannonShell>().Speed * 0.03f, ForceMode2D.Impulse); // changed Time.deltaTime to 0.03f due to weird physics behaviour on different speeds, change it back if it's not the cause
                 TrailRenderer projTrail = shellClone.GetComponent<TrailRenderer>();
                 projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
                 //SetTrail(shellClone);

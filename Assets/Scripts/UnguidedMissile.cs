@@ -28,7 +28,7 @@ public class UnguidedMissile : UnguidedProjectile
             {
                 if (fuel >= 0)
                 {
-                    thisRb.AddForce(transform.up * speed * Time.deltaTime, ForceMode2D.Force);
+                    thisRb.AddForce(transform.up * speed * 0.03f, ForceMode2D.Force); // changed Time.deltaTime to 0.03f due to weird physics behaviour on different speeds, change it back if it's not the cause
                 }
             }
         }
@@ -43,7 +43,7 @@ public class UnguidedMissile : UnguidedProjectile
             thisRb = GetComponent<Rigidbody2D>();
         }
 
-        thisRb.AddForce(transform.up * speed * Time.deltaTime, ForceMode2D.Impulse);
+        thisRb.AddForce(transform.up * speed * 0.03f, ForceMode2D.Impulse);
     }
 
     protected override void OnEnable()

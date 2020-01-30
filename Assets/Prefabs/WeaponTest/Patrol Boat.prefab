@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 5291514439331324027}
   - component: {fileID: 3570049149993874584}
   - component: {fileID: 3570049149993874591}
+  - component: {fileID: 2157387726264085480}
   m_Layer: 10
   m_Name: Patrol Boat
   m_TagString: Untagged
@@ -164,6 +165,22 @@ MonoBehaviour:
   - {fileID: 5701300827514608076}
   - {fileID: 5701300826695367852}
   target: {fileID: 0}
+--- !u!70 &2157387726264085480
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3570049149993874590}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.09962921, y: 0.17765713}
+  m_Size: {x: 0.8622789, y: 1.1254029}
+  m_Direction: 0
 --- !u!1 &5701300826695367853
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,7 +27,7 @@ public class WeaponArtilleryTurret : WeaponBase
                 transform.eulerAngles = new Vector3(transform.eulerAngles.z, 0f, transform.eulerAngles.z);
             }
 
-            //Debug.Log(Fire());
+            Fire();
         }
         else
         {
@@ -51,7 +51,7 @@ public class WeaponArtilleryTurret : WeaponBase
 
         int results;
 
-        results = SolveBallisticArc(spawnLocation.position, projectilePrefab.GetComponent<ProjectileBase>().Speed * Time.deltaTime, target.position, -Physics2D.gravity.y * projBaseGrav, out Vector3 s0, out Vector3 s1);
+        results = SolveBallisticArc(spawnLocation.position, projectilePrefab.GetComponent<ProjectileBase>().Speed * 0.03f, target.position, -Physics2D.gravity.y * projBaseGrav, out Vector3 s0, out Vector3 s1);
         aimPos = s0.normalized;
 
 
@@ -71,7 +71,7 @@ public class WeaponArtilleryTurret : WeaponBase
             {
                 prevBull.position = spawnLocation.position;
                 prevBull.gameObject.SetActive(true);
-                bullRb.AddForce(((Vector2)barrel.up * projectilePrefab.GetComponent<ProjectileBase>().Speed + new Vector2(0f, Random.Range(-inaccuracyOffset, inaccuracyOffset))) * Time.deltaTime, ForceMode2D.Impulse);
+                bullRb.AddForce(((Vector2)barrel.up * projectilePrefab.GetComponent<ProjectileBase>().Speed + new Vector2(0f, Random.Range(-inaccuracyOffset, inaccuracyOffset))) * 0.03f, ForceMode2D.Impulse);
                 TrailRenderer projTrail = prevBull.GetComponent<TrailRenderer>();
                 projTrail.material = prevBull.gameObject.layer == 8 ? t1Mat : t2Mat;
                 prevBull = null;

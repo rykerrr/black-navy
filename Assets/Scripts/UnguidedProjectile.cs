@@ -10,6 +10,11 @@ public abstract class UnguidedProjectile : ProjectileBase
         //Debug.Log("unguided base created");
     }
 
+    protected override void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
+
     protected override void OnDisable()
     {
         base.OnDisable();

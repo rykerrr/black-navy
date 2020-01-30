@@ -119,7 +119,7 @@ public class Rocket : MonoBehaviour
         yield return new WaitForSeconds(boosterLength);
         abSprite.enabled = false;
         thisRb.velocity = Vector3.zero;
-        thisRb.AddForce(transform.up * speed * Time.fixedDeltaTime / 1.5f, ForceMode2D.Impulse);
+        thisRb.AddForce(transform.up * speed * 0.03f / 1.5f, ForceMode2D.Impulse); // changed Time.deltaTime to 0.03f due to weird physics behaviour on different speeds, change it back if it's not the cause
         intermStage = true;
         boosting = false;
         yield return new WaitForSeconds(intermStageLength);

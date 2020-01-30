@@ -12,6 +12,7 @@ public abstract class WeaponBase : Poolable
     [SerializeField] protected Material t2Mat;
     [SerializeField] private float targetCheckRadius;
     [SerializeField] private float targetCheckDelay;
+    [SerializeField] [Multiline] private string weaponTooltipDesc;
 
     public Transform owner;
     public Transform projectilePrefab;

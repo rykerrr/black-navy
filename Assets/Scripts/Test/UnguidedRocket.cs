@@ -29,7 +29,7 @@ public class UnguidedRocket : MonoBehaviour
         {
             if (IsOutOfWater())
             {
-                thisRb.AddForce(transform.up * forceGen * Time.deltaTime, ForceMode2D.Force);
+                thisRb.AddForce(transform.up * forceGen * 0.03f, ForceMode2D.Force); // changed Time.deltaTime to 0.03f due to weird physics behaviour on different speeds, change it back if it's not the cause
             }
         }
     }
@@ -43,7 +43,7 @@ public class UnguidedRocket : MonoBehaviour
             thisRb = GetComponent<Rigidbody2D>();
         }
 
-        thisRb.AddForce(transform.up * forceGen * Time.deltaTime, ForceMode2D.Impulse);
+        thisRb.AddForce(transform.up * forceGen * 0.03f, ForceMode2D.Impulse); // changed Time.deltaTime to 0.03f due to weird physics behaviour on different speeds, change it back if it's not the cause
     }
 
     private bool IsOutOfWater()

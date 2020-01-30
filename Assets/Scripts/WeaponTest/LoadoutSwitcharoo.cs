@@ -60,7 +60,8 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
 
         foreach (WeaponBase weapon in team1UnitLoadouts[unit].availableWeapons)
         {
-            newOptions.Add(new Dropdown.OptionData(weapon.name));
+            Dropdown.OptionData newOpt = new Dropdown.OptionData(weapon.name);
+            newOptions.Add(newOpt);
         }
 
         for (int i = 0; i < team1UnitLoadouts[unit].weapons.Length; i++)

@@ -57,8 +57,8 @@ public abstract class ProjectileBase : Poolable
     {
         if (transform.position.y <= waterLevel)
         {
-            thisRb.gravityScale = Mathf.SmoothDamp(thisRb.gravityScale, inWaterGrav, ref veloc1, Random.Range(0.4f, 0.9f));
-            thisRb.velocity = Vector2.SmoothDamp(thisRb.velocity, thisRb.velocity / 2f, ref veloc2, Random.Range(0.2f, 0.6f));
+            thisRb.gravityScale = Mathf.SmoothDamp(thisRb.gravityScale, inWaterGrav, ref veloc1, Random.Range(50f, 90f) * Time.deltaTime);
+            thisRb.velocity = Vector2.SmoothDamp(thisRb.velocity, thisRb.velocity / 2f, ref veloc2, Random.Range(10f, 25f) * Time.deltaTime);
             return false;
         }
 

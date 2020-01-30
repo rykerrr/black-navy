@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 463917756520076602}
   - component: {fileID: 9120996700087927257}
   - component: {fileID: 2406341615265846529}
+  - component: {fileID: 4465891431152253549}
   m_Layer: 10
   m_Name: Frigate
   m_TagString: Untagged
@@ -376,7 +377,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.56974787, y: -0.033667207}
+  m_Offset: {x: 0.6085955, y: -0.033667207}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -387,7 +388,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1424369, y: 3.6766417}
+  m_Size: {x: 0.90935254, y: 3.6766417}
   m_EdgeRadius: 0
 --- !u!50 &463917756520076602
 Rigidbody2D:
@@ -458,3 +459,19 @@ MonoBehaviour:
   - {fileID: 1610067085}
   - {fileID: 780192237}
   target: {fileID: 0}
+--- !u!70 &4465891431152253549
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9120996700087927263}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.056837507, y: 0.023682315}
+  m_Size: {x: 0.61367345, y: 1.5345473}
+  m_Direction: 0

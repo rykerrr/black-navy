@@ -55,7 +55,7 @@ public class GuidedBomb : MonoBehaviour
                         thisRb.gravityScale = 0.3f;
                     }
 
-                    thisRb.AddForce(transform.up * forceGeneration * Time.fixedDeltaTime, ForceMode2D.Force);
+                    thisRb.AddForce(transform.up * forceGeneration * 0.03f, ForceMode2D.Force); // changed Time.deltaTime to 0.03f due to weird physics behaviour on different speeds, change it back if it's not the cause
                 }
             }
         }

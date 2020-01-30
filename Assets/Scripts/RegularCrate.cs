@@ -44,7 +44,7 @@ public class RegularCrate : Poolable
 
         if (!hasParachuteOpen && droppedOutOfParachute)
         {
-            if((transform.position.y <= waterLevel + 0.5f && transform.position.y >= waterLevel - 0.5f))
+            if ((transform.position.y <= waterLevel + 0.5f && transform.position.y >= waterLevel - 0.5f))
             {
                 grav = Mathf.SmoothDamp(thisRb.gravityScale, 0.05f, ref veloc1, 0.2f * Time.fixedDeltaTime) * balanceTimer;
             }
@@ -54,12 +54,12 @@ public class RegularCrate : Poolable
             }
             else if (transform.position.y < waterLevel - 0.5f)
             {
-                grav = Mathf.SmoothDamp(thisRb.gravityScale, -0.3f , ref veloc1, 0.5f * Mathf.Abs(transform.position.y) * Time.fixedDeltaTime);
+                grav = Mathf.SmoothDamp(thisRb.gravityScale, -0.3f, ref veloc1, 0.5f * Mathf.Abs(transform.position.y) * Time.fixedDeltaTime);
             }
 
             balanceTimer *= 0.9999f;
 
-            if(thisRb.velocity.y >= 3 * balanceTimer)
+            if (thisRb.velocity.y >= 3 * balanceTimer)
             {
                 thisRb.AddForce(-thisRb.velocity * constantOppositePushForce);
             }
@@ -68,7 +68,7 @@ public class RegularCrate : Poolable
         {
             grav = Mathf.SmoothDamp(grav, 0.1f, ref veloc1, 0.9f * Time.fixedDeltaTime);
 
-            if(transform.position.y <= waterLevel + parachuteCloseAltitude)
+            if (transform.position.y <= waterLevel + parachuteCloseAltitude)
             {
                 hasParachuteOpen = false;
                 droppedOutOfParachute = true;
@@ -78,9 +78,9 @@ public class RegularCrate : Poolable
 
         thisRb.gravityScale = grav;
 
-        if(Mathf.Abs(thisRb.velocity.y) >= maxVelocityYSpeed)
+        if (Mathf.Abs(thisRb.velocity.y) >= maxVelocityYSpeed)
         {
-            thisRb.AddForce(brakeVelocity * Time.fixedDeltaTime);
+            thisRb.AddForce(brakeVelocity * 0.03f); // changed Time.deltaTime to 0.03f due to weird physics behaviour on different speeds, change it back if it's not the cause
         }
     }
 
@@ -88,7 +88,7 @@ public class RegularCrate : Poolable
     {
         yield return new WaitForSeconds(time);
 
-        if(transform.position.y >= waterLevel + minParachuteAltitude)
+        if (transform.position.y >= waterLevel + minParachuteAltitude)
         {
             parachute.gameObject.SetActive(true); // open parachute if above x
             hasParachuteOpen = true;

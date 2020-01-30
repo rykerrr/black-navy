@@ -72,7 +72,7 @@ public abstract class AircraftBase : UnitBase
             }
             else
             {
-                if ((yBaseAltitude - transform.position.y) >= -2f && (yBaseAltitude - transform.position.y) <= 2f)
+                if ((yBaseAltitude - transform.position.y) >= -5f && (yBaseAltitude - transform.position.y) <= 5f)
                 {
                     returningToBaseAlt = false;
                     enemyIsTooCloseEvadeTimer = 0f;
@@ -143,7 +143,7 @@ public abstract class AircraftBase : UnitBase
             returningToBaseAlt = true;
             evading = false;
             engaging = false;
-            retPosition = new Vector3(transform.position.x * 3, yBaseAltitude + Random.Range(4f, 6f), transform.position.z);
+            retPosition = new Vector3(transform.position.x * 1.25f, yBaseAltitude + Random.Range(4f, 6f), transform.position.z);
 
             return true;
         }

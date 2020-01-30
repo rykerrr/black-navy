@@ -134,6 +134,7 @@
     <Compile Include="Assets\Scripts\WeaponTest\SubmarineThatWorksWithWeapon.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\TurretAngle.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\UIEffects.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\UiTooltip.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\UnguidedDepthCharge.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\UnitStructs.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\WeaponAntiAirTurret.cs" />

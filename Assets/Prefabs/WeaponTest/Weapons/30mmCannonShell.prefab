@@ -126,7 +126,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5429379112880288255}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 097fd7bb2d9724a40864eb12d6d54280, type: 3}
   m_Name: 
@@ -135,6 +135,7 @@ MonoBehaviour:
   onHitParticlePrefab: {fileID: 4959489663359783372, guid: 6eeb041e6571c5a40be06923d87fe23f,
     type: 3}
   speed: 3000
+  inWaterGrav: -0.0005
   projectileLifetime: 0
   lifeTimer: 0
 --- !u!96 &-2487662744904128415

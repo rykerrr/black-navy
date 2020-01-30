@@ -70,7 +70,7 @@ public class WeaponAntiAirTurret : WeaponBase
 
             prevBull.position = spawnLocation.position;
             prevBull.gameObject.SetActive(true);
-            bullRb.AddForce(((Vector2)barrel.up * projectilePrefab.GetComponent<CannonShell>().Speed  + new Vector2(0f, Random.Range(-inaccuracyOffset, inaccuracyOffset)) * Time.deltaTime), ForceMode2D.Impulse);
+            bullRb.AddForce(((Vector2)barrel.up * projectilePrefab.GetComponent<CannonShell>().Speed  + new Vector2(0f, Random.Range(-inaccuracyOffset, inaccuracyOffset)) * 0.03f), ForceMode2D.Impulse); // changed Time.deltaTime to 0.03f due to weird physics behaviour on different speeds, change it back if it's not the cause
             TrailRenderer projTrail = prevBull.GetComponent<TrailRenderer>();
             projTrail.material = prevBull.gameObject.layer == 8 ? t1Mat : t2Mat;
             prevBull = null;
