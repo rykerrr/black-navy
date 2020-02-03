@@ -49,6 +49,8 @@ MonoBehaviour:
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 0
   targetCheckDelay: 0
+  weaponTooltipDesc: 
+  typeOfWeapon: 7
   owner: {fileID: 0}
   projectilePrefab: {fileID: 1249912895720595739, guid: a3ae4c88a8ffb8947b1e1be98fae4664,
     type: 3}
@@ -58,6 +60,7 @@ MonoBehaviour:
   reloadTime: 0
   lookCheckRadius: 0
   lookCheckRange: 0
+  damage: 0
   maxAmmo: 35
   whatIsTarget:
     serializedVersion: 2

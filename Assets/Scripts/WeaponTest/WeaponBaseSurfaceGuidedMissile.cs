@@ -25,6 +25,12 @@ public class WeaponBaseSurfaceGuidedMissile : WeaponBase
     {
         if (target)
         {
+            if (!target.gameObject.activeInHierarchy)
+            {
+                target = null;
+                return FireState.Failed;
+            }
+
             if (Time.time > fireTimer)
             {
                 Transform missileClone = Poolable.Get<GuidedSSMissile>(() => Poolable.CreateObj<GuidedSSMissile>(projectilePrefab.gameObject), new Vector3(spawnLocation.position.x + Random.Range(-0.2f, 0.2f), spawnLocation.position.y, spawnLocation.position.z), Quaternion.identity).transform;

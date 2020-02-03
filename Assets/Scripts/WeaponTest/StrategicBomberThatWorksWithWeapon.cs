@@ -63,6 +63,12 @@ public class StrategicBomberThatWorksWithWeapon : AircraftBase
 
             if (target)
             {
+                if (!target.gameObject.activeInHierarchy)
+                {
+                    target = null;
+                    return;
+                }
+
                 curSpd = Mathf.SmoothDamp(curSpd, speed, ref veloc1, 2);
 
                 if (target.position.x >= pos2.x && target.position.x <= pos1.x)

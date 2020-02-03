@@ -16,14 +16,23 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     //private float veloc1;
     //private float veloc2;
 
+    private LoadoutSwitcharoo loadoutLoader;
     private float timeToWait;
     private bool pointerDown;
     private int i = 0;
 
     private void Start()
     {
-        curText = transform.name;
-        Debug.Log(curText);
+        loadoutLoader = LoadoutSwitcharoo.Instance;
+        UnitWeaponLoadout curSelectedUnit = loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit];
+        WeaponBase hoveredWeapon = curSelectedUnit.availableWeapons[int.Parse("" + transform.name[5])];
+        //Debug.Log("" + transform.name[5]);
+        //Debug.Log(int.Parse("" + transform.name[5]));
+        //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit]);
+        //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit].availableWeapons[int.Parse("" + transform.name[5])]);
+        curText = "Name: " + hoveredWeapon.name + "\nMax ammo before rearm: " + (hoveredWeapon.maxAmmo > 5000000 ? Mathf.Infinity : hoveredWeapon.maxAmmo == 0 ? Mathf.Infinity : hoveredWeapon.maxAmmo)
+             + "\nRearmament time: " + hoveredWeapon.reloadTime + "\nDamage per projectile: " + hoveredWeapon.damage + "\nWeapon type: " + FormatString("" + hoveredWeapon.typeOfWeapon)
+             + "\nExtra desc: " + hoveredWeapon.weaponTooltipDesc;
         imgObj.color = new Color(imgObj.color.r, imgObj.color.g, imgObj.color.b, 0f);
         textObj.color = new Color(textObj.color.r, textObj.color.g, textObj.color.b, 0f);
     }
@@ -51,10 +60,10 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         imgObj.StopAllCoroutines();
 
-        if (imgObj.color.a >= 0.00001f)
-        {
-            textObj.text += "\n";
-        }
+        //if (imgObj.color.a >= 0.00001f)
+        //{
+        //    textObj.text += "\n";
+        //}
 
         pointerDown = true;
         Debug.Log("enter");
@@ -75,6 +84,8 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         imgObj.StopAllCoroutines();
         Debug.Log("exit");
         pointerDown = false;
+        textObj.text = "";
+        i = 0;
 
         if (imgObj.color.a <= 0.999f)
         {
@@ -90,10 +101,24 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public void OnPointerDown(PointerEventData pointerEventData)
     {
-        //imgObj.StopAllCoroutines();
+        OnPointerExit(pointerEventData);
+    }
 
-        //timeToWait = appearanceTimer / 3f;
-        //textObj.text = curText;
+    private string FormatString(string str)
+    {
+        string newStr = "" + str[0];
+
+        for(int i = 1; i < str.Length; i++)
+        {
+            if ((int)str[i] > 64 && (int)str[i] < 91)
+            {
+                newStr += " ";
+            }
+
+            newStr += str[i];
+        }
+
+        return newStr;
     }
 
     private IEnumerator StartDamp(float alpha, float waitTime, Image imgObj, Text textObj, string curText, float timeToWait, Action callback = null, bool startText = false)

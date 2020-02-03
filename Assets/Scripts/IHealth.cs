@@ -3,5 +3,5 @@
     int Health { get; }
     int MaxHealth { get; }
 
-    void ChangeHealth(int newHealth);   
+    void TakeDamage(IDamager damager);
 }

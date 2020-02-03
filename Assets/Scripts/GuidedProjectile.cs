@@ -27,7 +27,7 @@ public abstract class GuidedProjectile : ProjectileBase
             {
                 if (UnitLayerMask.CheckIfUnitIsInMask(en.GetComponent<UnitHumanoid>().type, whatUnitsToTarget) == true)
                 {
-                    if ((en.transform.position - transform.position).magnitude <= targetCheckRadius)
+                    if ((en.transform.position - transform.position).magnitude <= targetCheckRadius && en.gameObject.activeInHierarchy)
                     {
                         availableTargets.Add(en);
                     }

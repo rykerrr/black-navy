@@ -6,6 +6,9 @@ using System;
 #pragma warning disable 0649
 public class WeaponBaseCannon : WeaponBase
 {
+    [SerializeField] private ParticleSystem firePartSys;
+    [SerializeField] private int firePartCount;
+
     public override FireState Fire()
     {
         bool isTargVisual = CheckIfLookingAtTarget(lookCheckRange);
@@ -31,6 +34,7 @@ public class WeaponBaseCannon : WeaponBase
 
                 fireTimer = delayBetweenFire + Time.time + UnityEngine.Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
                 currentAmmo--;
+                firePartSys.Emit(firePartCount);
 
                 return FireState.Fired;
             }

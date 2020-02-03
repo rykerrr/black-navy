@@ -12,16 +12,18 @@ public abstract class WeaponBase : Poolable
     [SerializeField] protected Material t2Mat;
     [SerializeField] private float targetCheckRadius;
     [SerializeField] private float targetCheckDelay;
-    [SerializeField] [Multiline] private string weaponTooltipDesc;
 
+    public WeaponType typeOfWeapon;
     public Transform owner;
     public Transform projectilePrefab;
     public Transform spawnLocation;
+    [Multiline] public string weaponTooltipDesc;
     public float delayBetweenFire;
     public float inaccuracyOffset;
     public float reloadTime;
     public float lookCheckRadius;
     public float lookCheckRange;
+    public int damage;
     public int maxAmmo;
 
     public UnitLayerMask whatUnitsCanBeTargetted => whatUnitsToTarget;
@@ -49,6 +51,12 @@ public abstract class WeaponBase : Poolable
     {
         if (target)
         {
+            if (!target.gameObject.activeInHierarchy)
+            {
+                target = null;
+                return false;
+            }
+
             RaycastHit2D[] hits = Physics2D.CircleCastAll(spawnLocation.position, lookCheckRadius, owner.up, range, whatIsTarget);
             Debug.DrawRay(transform.position, (target.position - transform.position).normalized * 99f, Color.cyan);
 
@@ -86,7 +94,7 @@ public abstract class WeaponBase : Poolable
                     {
                         if (UnitLayerMask.CheckIfUnitIsInMask(en.GetComponent<UnitHumanoid>().type, whatUnitsToTarget) == true)
                         {
-                            if ((en.transform.position - transform.position).magnitude <= targetCheckRadius)
+                            if ((en.transform.position - transform.position).magnitude <= targetCheckRadius && en.gameObject.activeInHierarchy)
                             {
                                 availableTargets.Add(en);
                             }
@@ -189,4 +197,5 @@ public abstract class WeaponBase : Poolable
 }
 
 public enum FireState { OutOfAmmo, Fired, OnDelay, Failed }
+public enum WeaponType { SurfaceToSurfaceMissile, AirToAirMissile, Autocannon, NavalArtillery, AntiAirCloseInWeaponSystem, UnguidedMissile, SmartBomb, UnguidedBomb, Torpedo, DepthCharge}
 #pragma warning restore 0649

@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
 {
     [Header("Properties")]
     [SerializeField] private Transform target;
+    [SerializeField] private Transform selectedUnit;
     [SerializeField] private Text zoomLevelText;
     [SerializeField] private float movSensDivisor = 1f;
     [SerializeField] private float mwheelSensDivisor = 1f;
@@ -24,6 +25,7 @@ public class CameraController : MonoBehaviour
     private bool appearing = false;
     private float veloc1;
     private float veloc2;
+    private float unitZoomTimer;
     private float zoomTimer;
 
     private void Start()
@@ -43,8 +45,13 @@ public class CameraController : MonoBehaviour
         zoomLevelText.color = new Color(zoomLevelText.color.r, zoomLevelText.color.g, zoomLevelText.color.b, 0);
     }
 
-    private void Update()
+    private void LateUpdate()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Select();
+        }
+
         xMovement = Input.GetAxis("Horizontal");
         yMovement = Input.GetAxis("Vertical");
 
@@ -64,13 +71,13 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            if(appearing)
+            if (appearing)
             {
                 zoomLevelText.color = new Color(zoomLevelText.color.r, zoomLevelText.color.g, zoomLevelText.color.b, Mathf.SmoothDamp(zoomLevelText.color.a, 1f, ref veloc1, 0.6f));
                 zoomLevelImg.color = new Color(zoomLevelImg.color.r, zoomLevelImg.color.g, zoomLevelImg.color.b, Mathf.SmoothDamp(zoomLevelImg.color.a, 1f, ref veloc2, 0.6f));
             }
 
-            if(Time.time > zoomTimer)
+            if (Time.time > zoomTimer)
             {
                 appearing = false;
 
@@ -88,9 +95,50 @@ public class CameraController : MonoBehaviour
             movMult = 1;
         }
 
+        if (selectedUnit)
+        {
+            if (xMovement != 0 || yMovement != 0)
+            {
+                selectedUnit = null;
+            }
+            else
+            {
+                target.position = new Vector3(selectedUnit.position.x, selectedUnit.position.y, -10f);
+
+                if (mWheelMovement != 0)
+                {
+                    unitZoomTimer = Time.time + 2f;
+                }
+                else
+                {
+                    if (Time.time > unitZoomTimer)
+                    {
+                        targCam.orthographicSize = Mathf.MoveTowards(targCam.orthographicSize, 60f, 0.3f);
+                    }
+                }
+            }
+        }
+
         targCam.orthographicSize = Mathf.Clamp(targCam.orthographicSize - (mWheelMovement / mwheelSensDivisor) * movMult, 5, 100);
         target.position = new Vector3(target.position.x + (xMovement / movSensDivisor) * movMult, target.position.y + (yMovement / movSensDivisor) * movMult, target.position.z);
         zoomLevelText.text = "Zoom level: " + targCam.orthographicSize;
+    }
+
+    private void Select()
+    {
+        Vector2 selectPos = targCam.ScreenToWorldPoint(Input.mousePosition);
+        LayerMask units = new LayerMask();
+        units = (1 << 10) + (1 << 9);
+
+        RaycastHit2D hit = Physics2D.Raycast(selectPos, Vector2.zero, 3f, units);
+
+        if (hit)
+        {
+            if (hit.collider)
+            {
+                selectedUnit = hit.collider.transform;
+            }
+        }
     }
 }
 #pragma warning disable 0649

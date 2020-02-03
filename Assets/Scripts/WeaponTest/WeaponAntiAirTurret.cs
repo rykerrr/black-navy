@@ -6,6 +6,8 @@ using UnityEngine;
 public class WeaponAntiAirTurret : WeaponBase
 {
     [SerializeField] private Transform barrel;
+    [SerializeField] private ParticleSystem firePartSys;
+    [SerializeField] private int firePartCount;
     [SerializeField] private float rotationSmoothing;
 
     private Transform prevBull;
@@ -23,6 +25,12 @@ public class WeaponAntiAirTurret : WeaponBase
     {
         if (target)
         {
+            if (!target.gameObject.activeInHierarchy)
+            {
+                target = null;
+                return;
+            }
+
             if (target.position.x < transform.position.x)
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.z, 180f, transform.eulerAngles.z);
@@ -74,6 +82,7 @@ public class WeaponAntiAirTurret : WeaponBase
             TrailRenderer projTrail = prevBull.GetComponent<TrailRenderer>();
             projTrail.material = prevBull.gameObject.layer == 8 ? t1Mat : t2Mat;
             prevBull = null;
+            firePartSys.Emit(firePartCount);
 
             fireTimer = delayBetweenFire + Time.time + Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
 

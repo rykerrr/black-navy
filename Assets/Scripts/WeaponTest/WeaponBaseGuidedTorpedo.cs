@@ -15,6 +15,14 @@ public class WeaponBaseGuidedTorpedo : WeaponBase
             target = isInView;
         }
 
+        if(target)
+        {
+            if (!target.gameObject.activeInHierarchy)
+            {
+                target = null;
+            }
+        }
+
         if (Time.time >= fireTimer)
         {
             Transform torpClone = Poolable.Get<GuidedTorpedo>(() => Poolable.CreateObj<GuidedTorpedo>(projectilePrefab.gameObject), spawnLocation.position, Quaternion.identity).transform;

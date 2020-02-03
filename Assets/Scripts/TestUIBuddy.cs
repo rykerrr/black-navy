@@ -133,8 +133,7 @@ public class TestUIBuddy : MonoBehaviour
     public void SpawnUnit()
     {
         UnitSettings newUnitCache = currentUnit;
-
-        StartCoroutine(SpawnUnitLogic(newUnitCache));
+        GameConfig.Instance.StartCoroutine(SpawnUnitLogic(newUnitCache));
         // unit spawn logic
     }
 
@@ -211,11 +210,12 @@ public class TestUIBuddy : MonoBehaviour
 
             LayerMask whatAreOurProjectiles;
             LayerMask whatIsTarget;
+            float rand = Mathf.Abs(newUnit.unitPrefab.GetComponent<UnitBase>().BaseAltitude) / 15f;
 
             switch (newUnit.teamLayer)
             {
                 case 10: // player team
-                    newUnitClone.position = playerBaseSpawn.position;
+                    newUnitClone.position = new Vector2(playerBaseSpawn.position.x, playerBaseSpawn.position.y + Random.Range(-rand, rand));
                     //newUnitClone.eulerAngles *= 1;
                     newUnitClone.eulerAngles = new Vector3(newUnitClone.eulerAngles.x, 0f, newUnitClone.eulerAngles.z);
 
@@ -235,7 +235,7 @@ public class TestUIBuddy : MonoBehaviour
                     newUnitClone.name = newUnitClone.name + "Player";
                     break;
                 case 9: // enemy team
-                    newUnitClone.position = enemyBaseSpawn.position;
+                    newUnitClone.position = new Vector2(enemyBaseSpawn.position.x, enemyBaseSpawn.position.y + Random.Range(-rand, rand));
                     //newUnitClone.eulerAngles *= 1;
                     newUnitClone.eulerAngles = new Vector3(0f, 180f, newUnitClone.eulerAngles.z);
 

@@ -27,6 +27,12 @@ public class GuidedAAMissile : GuidedProjectile // air to air
                 {
                     if (target)
                     {
+                        if (!target.gameObject.activeInHierarchy)
+                        {
+                            target = null;
+                            return;
+                        }
+
                         Vector2 dir = target.position - transform.position;
                         Debug.DrawRay(transform.position, dir, Color.magenta); // change this to MoveTowards
                         transform.up = Vector3.MoveTowards(transform.up, dir.normalized, rotationSmoothing * Time.deltaTime); // there we go

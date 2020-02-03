@@ -18,30 +18,24 @@ public class StrikeFighter : AircraftBase
 
     protected override void Start()
     {
-        base.Start();
         OnEnable();
+        Debug.Log(waterLevel);
+        base.Start();
     }
 
     private void Update()
     {
-        int vsi = thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y) >= 0 ? vsi = 1 : vsi = -1;
+        //int vsi = Mathf.RoundToInt(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y));
+        int vsi = (int) System.Math.Round(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y), 0, System.MidpointRounding.AwayFromZero);
+
+        if(transform.position.y < waterLevel)
+        {
+            Debug.Log("help pls: - " + name + " | vsi: " + vsi);
+        }
 
         if (vsi == 0)
         {
-            Debug.Log("possible error @vsi");
-            Debug.Break();
-        }
-
-        if (returningToBaseAlt)
-        {
-            ReturnToBaseAlt();
-            return;
-        }
-
-        if (evading)
-        {
-            Evade(aircraftEscapeRange);
-            return;
+            Debug.Log("vsi is 0");
         }
 
         if (!takenOff)
@@ -52,6 +46,18 @@ public class StrikeFighter : AircraftBase
         {
             bool isNearWater = CheckIfNearWater();
             bool isAboveCeil = CheckifAboveCeil();
+
+            if (returningToBaseAlt)
+            {
+                ReturnToBaseAlt();
+                return;
+            }
+
+            if (evading)
+            {
+                Evade(aircraftEscapeRange);
+                return;
+            }
 
             if (autoCannon.currentShells <= 0)
             {

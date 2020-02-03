@@ -18,6 +18,12 @@ public class BallisticSubmarineThatWorksWithWeapon : ShipBase
     {
         if (target)
         {
+            if (!target.gameObject.activeInHierarchy)
+            {
+                target = null;
+                return;
+            }
+
             FireWeapons();
         }
         else

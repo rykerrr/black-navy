@@ -27,6 +27,12 @@ public class WeaponBaseGuidedAirMissile : WeaponBase
             }
             else
             {
+                if (!target.gameObject.activeInHierarchy)
+                {
+                    target = null;
+                    return FireState.Failed;
+                }
+
                 return FireState.OnDelay;
             }
         }

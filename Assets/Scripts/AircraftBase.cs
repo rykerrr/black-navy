@@ -57,11 +57,24 @@ public abstract class AircraftBase : UnitBase
 
     protected virtual void ReturnToBaseAlt()
     {
-        transform.up = Vector3.MoveTowards(transform.up, (retPosition - transform.position).normalized, rotationSmoothing * Time.deltaTime * 3f);
-
-        if (transform.position.y >= yBaseAltitude)
+        if (takenOff) // IF ITS IN AIR DUMBASS
         {
-            if (!takenOff)
+            if (transform.position.y >= retPosition.y - 2f && transform.position.y <= retPosition.y + 2f)
+            {
+                Debug.Log("F-ing out! | " + name);
+                //retPosition = Vector2.zero;
+                returningToBaseAlt = false;
+                enemyIsTooCloseEvadeTimer = 0f;
+                ReloadWeapons();
+
+                return;
+            }
+
+            transform.up = Vector3.MoveTowards(transform.up, (retPosition - transform.position).normalized, rotationSmoothing * Time.deltaTime * 3f);
+        }
+        else // IF ITS TAKING OFF
+        {
+            if (transform.position.y >= yBaseAltitude - 10f)
             {
                 if (ReturnToBaseRot())
                 {
@@ -72,11 +85,8 @@ public abstract class AircraftBase : UnitBase
             }
             else
             {
-                if ((yBaseAltitude - transform.position.y) >= -5f && (yBaseAltitude - transform.position.y) <= 5f)
-                {
-                    returningToBaseAlt = false;
-                    enemyIsTooCloseEvadeTimer = 0f;
-                }
+                transform.up = Vector3.MoveTowards(transform.up, (retPosition * 10f - transform.position).normalized, rotationSmoothing * Time.deltaTime * 3f);
+                // yeet
             }
         }
 
@@ -132,7 +142,7 @@ public abstract class AircraftBase : UnitBase
         }
 
 
-        transform.up = Vector3.MoveTowards(transform.up, (evadePosition - transform.position).normalized, rotationSmoothing * Time.deltaTime);
+        transform.up = Vector3.MoveTowards(transform.up, (evadePosition - transform.position).normalized, rotationSmoothing * Time.deltaTime * 1.4f);
         return;
     }
 
@@ -153,7 +163,9 @@ public abstract class AircraftBase : UnitBase
 
     protected bool CheckifAboveCeil()
     {
-        if(transform.position.y >= ceilAltitude)
+        Debug.Log("above ceiling motherfucker | " + name);
+
+        if (transform.position.y >= ceilAltitude)
         {
             returningToBaseAlt = true;
             evading = false;

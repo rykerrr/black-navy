@@ -30,6 +30,12 @@ public class WeaponBaseDepthChargeDropper : WeaponBase
     {
         if (target)
         {
+            if (!target.gameObject.activeInHierarchy)
+            {
+                target = null;
+                return FireState.Failed;
+            }
+
             if (Time.time > fireTimer)
             {
                 float forceMult = forceOfThrow;

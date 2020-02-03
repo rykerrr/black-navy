@@ -4,12 +4,13 @@ using UnityEngine;
 
 #pragma warning disable 0649
 [RequireComponent(typeof(Rigidbody2D))]
-public abstract class ProjectileBase : Poolable
+public abstract class ProjectileBase : Poolable, IDamager
 {
     [Header("Projectile base properties")]
     [SerializeField] protected Rigidbody2D thisRb;
     [SerializeField] protected Transform onHitParticlePrefab;
     [SerializeField] protected float speed;
+    [SerializeField] private int damage;
     [SerializeField] public float inWaterGrav = -0.0005f;
 
     [Header("Debug")]
@@ -22,7 +23,8 @@ public abstract class ProjectileBase : Poolable
     private float origGravScale;
     protected bool isOutOfWater;
 
-    [HideInInspector] public float Speed => speed;
+    public float Speed => speed;
+    public int Damage => damage;
 
     protected virtual void Awake()
     {
@@ -69,6 +71,13 @@ public abstract class ProjectileBase : Poolable
     {
         Transform particleClone = Instantiate(onHitParticlePrefab, transform.position, Quaternion.identity) as Transform;
         Destroy(particleClone.gameObject, 1f);
+
+        if(collision.GetComponent<UnitHumanoid>())
+        {
+            UnitHumanoid unitHit = collision.GetComponent<UnitHumanoid>();
+            unitHit.TakeDamage(this);
+        }
+
         ReturnToPool();
     }
 

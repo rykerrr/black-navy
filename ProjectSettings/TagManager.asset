@@ -44,12 +44,12 @@ TagManager:
   - name: Background
     uniqueID: 570569437
     locked: 0
+  - name: Particles
+    uniqueID: 2830712699
+    locked: 0
   - name: Units
     uniqueID: 2914537003
     locked: 0
   - name: Foreground
     uniqueID: 524848487
-    locked: 0
-  - name: Particles
-    uniqueID: 2830712699
     locked: 0

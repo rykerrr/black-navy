@@ -44,6 +44,12 @@ public abstract class UnitBase : Poolable
     {
         if (target)
         {
+            if (!target.gameObject.activeInHierarchy)
+            {
+                target = null;
+                return false;
+            }
+
             RaycastHit2D[] hits = Physics2D.CircleCastAll(firePoint.position, lookCheckRadius, transform.up, range, whatIsTarget);
 
             foreach (RaycastHit2D hit in hits)
@@ -79,7 +85,7 @@ public abstract class UnitBase : Poolable
                     {
                         if (UnitLayerMask.CheckIfUnitIsInMask(en.GetComponent<UnitHumanoid>().type, whatUnitsToTarget) == true)
                         {
-                            if ((en.transform.position - transform.position).magnitude <= targetCheckRadius)
+                            if ((en.transform.position - transform.position).magnitude <= targetCheckRadius && en.gameObject.activeInHierarchy)
                             {
                                 availableTargets.Add(en);
                             }

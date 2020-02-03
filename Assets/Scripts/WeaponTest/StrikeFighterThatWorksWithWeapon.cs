@@ -22,24 +22,16 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
 
     private void Update()
     {
-        int vsi = thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y) >= 0 ? vsi = 1 : vsi = -1;
+        int vsi = (int)System.Math.Round(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y), 0, System.MidpointRounding.AwayFromZero);
+
+        if(transform.position.y < waterLevel)
+        {
+            Debug.Log("HOOT HOOT! | " + name + " | " + vsi);
+        }
 
         if (vsi == 0)
         {
             Debug.Log("possible error @vsi");
-            Debug.Break();
-        }
-
-        if (returningToBaseAlt)
-        {
-            ReturnToBaseAlt();
-            return;
-        }
-
-        if (evading)
-        {
-            Evade(aircraftEscapeRange);
-            return;
         }
 
         if (!takenOff)
@@ -50,6 +42,18 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
         {
             bool isNearWater = CheckIfNearWater();
             bool isAboveCeil = CheckifAboveCeil();
+
+            if (returningToBaseAlt)
+            {
+                ReturnToBaseAlt();
+                return;
+            }
+
+            if (evading)
+            {
+                Evade(aircraftEscapeRange);
+                return;
+            }
 
             if (target)
             {
@@ -136,11 +140,6 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
     protected override void ReturnToBaseAlt()
     {
         base.ReturnToBaseAlt();
-
-        if (returningToBaseAlt == false)
-        {
-            ReloadWeapons();
-        }
     }
 
     protected override void OnEnable()
