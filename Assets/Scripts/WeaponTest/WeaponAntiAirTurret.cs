@@ -16,8 +16,9 @@ public class WeaponAntiAirTurret : WeaponBase
 
     private float grav = 0f;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         grav = -projectilePrefab.GetComponent<Rigidbody2D>().gravityScale * Physics2D.gravity.y;
     }
 

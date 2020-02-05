@@ -15,10 +15,10 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (!objToPlayAudioOn)
         {
-            objToPlayAudioOn = new GameObject("Sound slave object");
+            objToPlayAudioOn = new GameObject("Theme song sound slave object");
             AudioSource sourc = objToPlayAudioOn.AddComponent<AudioSource>();
             sourc.dopplerLevel = 0f;
-            sourc.spatialBlend = 1f;
+            sourc.spatialBlend = 0.5f;
             sourc.panStereo = 0f;
         }
     }
@@ -30,11 +30,11 @@ public class SoundManager : Singleton<SoundManager>
 
     private Sound FindSound(string soundName)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Sound s = Array.Find(sounds, sound => sound.name == soundName);
 
         if (s == null)
         {
-            Debug.LogWarning("Sound not found by said name, name: " + name);
+            Debug.LogWarning("Sound not found by said name, name: " + soundName);
             return null;
         }
         else
@@ -161,7 +161,7 @@ public class SoundManager : Singleton<SoundManager>
         currentSound = s;
         sourc.Play();
     }
-    public void PlayEnviroSound(GameObject objToPlayOn, string name, float volume = 1f, float pitch = 1f, bool loop = false)
+    public void PlayEnviroSound(GameObject soundObj, string name, float dist, float volume = 1f, float pitch = 1f, bool loop = false)
     {
         Sound s = FindSound(name);
 
@@ -170,16 +170,135 @@ public class SoundManager : Singleton<SoundManager>
             return;
         }
 
-        AudioSource sourc = objToPlayOn.AddComponent<AudioSource>();
+        AudioSource sourc = null;
+
+        if (objToPlayAudioOn.GetComponents<AudioSource>() != null)
+        {
+            AudioSource[] possibleSources = soundObj.GetComponents<AudioSource>();
+
+            foreach (AudioSource source in possibleSources)
+            {
+                if (!source.isPlaying)
+                {
+                    sourc = source;
+                    break;
+                }
+            }
+        }
+
+        if (sourc == null)
+        {
+            sourc = soundObj.AddComponent<AudioSource>();
+        }
 
         sourc.dopplerLevel = 0;
         sourc.spatialBlend = 1f;
         sourc.panStereo = 0f;
 
+        sourc.maxDistance = dist;
         sourc.clip = s.clip;
         sourc.playOnAwake = false;
         sourc.volume = volume;
         sourc.pitch = pitch;
+        sourc.loop = loop;
+        currentSound = s;
+        sourc.Play();
+    }
+    public void PlayEnviroSound(GameObject soundObj, string name, float dist, bool loop)
+    {
+        Sound s = FindSound(name);
+
+        if (s == null)
+        {
+            return;
+        }
+
+        AudioSource sourc = null;
+
+        if (objToPlayAudioOn.GetComponents<AudioSource>() != null)
+        {
+            AudioSource[] possibleSources = soundObj.GetComponents<AudioSource>();
+
+            foreach (AudioSource source in possibleSources)
+            {
+                if (!source.isPlaying)
+                {
+                    sourc = source;
+                    break;
+                }
+            }
+        }
+
+        if (sourc == null)
+        {
+            sourc = soundObj.AddComponent<AudioSource>();
+        }
+
+        sourc.dopplerLevel = 0;
+        sourc.spatialBlend = 1f;
+        sourc.panStereo = 0f;
+
+        sourc.maxDistance = dist;
+        sourc.clip = s.clip;
+        sourc.playOnAwake = false;
+        sourc.loop = loop;
+        currentSound = s;
+        sourc.Play();
+    }
+    public void PlayEnviroSound(Vector3 position, string name, float dist, float volume = 1f, float pitch = 1f, bool loop = false)
+    {
+        Sound s = FindSound(name);
+
+        if (s == null)
+        {
+            return;
+        }
+
+        AudioSource sourc = new GameObject("sound").AddComponent<AudioSource>();
+        sourc.transform.position = position;
+
+        if (!loop)
+        {
+            Destroy(sourc.gameObject, sourc.clip.length + 1f);
+        }
+
+        sourc.dopplerLevel = 0;
+        sourc.spatialBlend = 1f;
+        sourc.panStereo = 0f;
+
+        sourc.maxDistance = dist;
+        sourc.clip = s.clip;
+        sourc.playOnAwake = false;
+        sourc.volume = volume;
+        sourc.pitch = pitch;
+        sourc.loop = loop;
+        currentSound = s;
+        sourc.Play();
+    }
+    public void PlayEnviroSound(Vector3 position, string name, float dist, bool loop)
+    {
+        Sound s = FindSound(name);
+
+        if (s == null)
+        {
+            return;
+        }
+
+        AudioSource sourc = new GameObject("sound").AddComponent<AudioSource>();
+        sourc.transform.position = position;
+
+        if (!loop)
+        {
+            Destroy(sourc.gameObject, sourc.clip.length + 1f);
+        }
+
+        sourc.dopplerLevel = 0;
+        sourc.spatialBlend = 1f;
+        sourc.panStereo = 0f;
+
+        sourc.maxDistance = dist;
+        sourc.clip = s.clip;
+        sourc.playOnAwake = false;
         sourc.loop = loop;
         currentSound = s;
         sourc.Play();

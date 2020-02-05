@@ -15,6 +15,13 @@ public class WeaponArtilleryTurret : WeaponBase
     private Rigidbody2D bullRb;
     private Vector2 aimPos;
     private float projBaseGrav;
+    private int projVol;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        projVol = Mathf.CeilToInt(delayBetweenFire);
+    }
 
     private void Update()
     {
@@ -93,6 +100,7 @@ public class WeaponArtilleryTurret : WeaponBase
                     prevBull = null;
                 }
 
+                soundMngr.PlayEnviroSound(spawnLocation.gameObject, "cannonfire1", 30f, projVol);
                 fireTimer = delayBetweenFire + Time.time + Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
 
                 return FireState.Fired;

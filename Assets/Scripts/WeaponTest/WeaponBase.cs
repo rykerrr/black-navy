@@ -36,11 +36,17 @@ public abstract class WeaponBase : Poolable
     [HideInInspector] public int currentAmmo;
 
     protected UnitHumanoid targHumanoid;
+    protected SoundManager soundMngr;
     protected Rigidbody2D targRb;
     protected float findTargetTimer;
     protected float fireTimer;
 
     public abstract FireState Fire();
+
+    protected virtual void Awake()
+    {
+        soundMngr = SoundManager.Instance;
+    }
 
     public void LoadAmmo()
     {

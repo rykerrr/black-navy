@@ -16,6 +16,7 @@ public abstract class ProjectileBase : Poolable, IDamager
     [Header("Debug")]
     [SerializeField] private float projectileLifetime;
     [SerializeField] private float lifeTimer;
+    private SoundManager soundMngr;
     private TrailRenderer projTrail;
     private Vector2 veloc2;
     private float veloc1;
@@ -28,6 +29,7 @@ public abstract class ProjectileBase : Poolable, IDamager
 
     protected virtual void Awake()
     {
+        soundMngr = SoundManager.Instance;
         waterLevel = GameConfig.Instance.WaterLevel;
         projectileLifetime = GameConfig.Instance.ProjectileLifeTime;
         lifeTimer = Time.time + projectileLifetime;
@@ -70,9 +72,10 @@ public abstract class ProjectileBase : Poolable, IDamager
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         Transform particleClone = Instantiate(onHitParticlePrefab, transform.position, Quaternion.identity) as Transform;
-        Destroy(particleClone.gameObject, 1f);
+        soundMngr.PlayEnviroSound(particleClone.gameObject, "explosion1", 50f, 0.4f);
+        Destroy(particleClone.gameObject, projectileLifetime / 3f);
 
-        if(collision.GetComponent<UnitHumanoid>())
+        if (collision.GetComponent<UnitHumanoid>())
         {
             UnitHumanoid unitHit = collision.GetComponent<UnitHumanoid>();
             unitHit.TakeDamage(this);

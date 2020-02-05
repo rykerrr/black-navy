@@ -38,8 +38,11 @@ public class TestUIBuddy : MonoBehaviour
     [Header("Shown for debug purposes")]
     [SerializeField] private UnitSettings currentUnit;
 
+    private SoundManager soundMngr;
+
     private void Start()
     {
+        soundMngr = SoundManager.Instance;
         currentUnit.unitPrefab = unitPrefabs[0];
         currentUnit.typeOfUnit = UnitType.Aircraft;
         currentUnit.teamLayer = 10;
@@ -275,6 +278,7 @@ public class TestUIBuddy : MonoBehaviour
 
             if (aircraft != null)
             {
+                soundMngr.PlayEnviroSound(cloneUnit.gameObject, "aircraftflight1", 40f, true);
                 aircraft.LoadInAir();
             }
             #endregion

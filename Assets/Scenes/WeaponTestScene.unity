@@ -2951,7 +2951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curText: 
-  imgObj: {fileID: 0}
+  imgObj: {fileID: 1078691721}
   textObj: {fileID: 0}
   appearanceTimer: 0.03
   waitBeforeReappTimer: 0.6
@@ -5666,7 +5666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curText: 
-  imgObj: {fileID: 0}
+  imgObj: {fileID: 1078691721}
   textObj: {fileID: 0}
   appearanceTimer: 0.03
   waitBeforeReappTimer: 0.6
@@ -9538,6 +9538,60 @@ MonoBehaviour:
   - name: theonlythingtheyfearisyou
     clip: {fileID: 8300000, guid: d84df807c21c5b047a531d51a509ca27, type: 3}
     loop: 1
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: cannonfire1
+    clip: {fileID: 8300000, guid: 16cc3ec94eb99b644abe8de4fb3ecae8, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: cannonfire2
+    clip: {fileID: 8300000, guid: b7a1505c4705fd8489c3e9e8e1e137e5, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: antiair1
+    clip: {fileID: 8300000, guid: 0b88feeaac692674bb5ea9ce21755a8e, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: antiair2
+    clip: {fileID: 8300000, guid: ee535c1249c938b43b593586172be343, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: aircraftflight1
+    clip: {fileID: 8300000, guid: 975f4b148540571489dbcf1a56c99415, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: missile1
+    clip: {fileID: 8300000, guid: 865ed71b968ecc045be67b70271b2233, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: missile2
+    clip: {fileID: 8300000, guid: be896b57873ad8c4285104a9dd73f3f5, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: a10fire
+    clip: {fileID: 8300000, guid: 206dfea06be1c35429de3fbefeae8bfc, type: 3}
+    loop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: explosion1
+    clip: {fileID: 8300000, guid: 026a6f7dfcc894c418c647732d2e2833, type: 3}
+    loop: 0
     volume: 1
     pitch: 1
     source: {fileID: 0}
@@ -14715,7 +14769,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curText: 
-  imgObj: {fileID: 0}
+  imgObj: {fileID: 1078691721}
   textObj: {fileID: 0}
   appearanceTimer: 0.03
   waitBeforeReappTimer: 0.6
