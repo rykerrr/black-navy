@@ -22,8 +22,13 @@ public abstract class UnitBase : Poolable
     [Header("Weapon properties")]
     [SerializeField] public WeaponBase[] weapons;
     [SerializeField] protected Transform[] weaponMounts;
+    [SerializeField] private GameObject unitInfo;
 
     public float BaseAltitude => yBaseAltitude;
+    public float CurSpeed => curSpd;
+    public int VSI => vsi;
+    public WeaponBase[] Weapons => weapons;
+    public GameObject UnitInfoUI => unitInfo;
 
     [Header("Base unit debug")]
     protected Rigidbody2D targRb;
@@ -32,6 +37,7 @@ public abstract class UnitBase : Poolable
     private float findTargetTimer;
     protected float waterLevel;
     protected float curSpd;
+    protected int vsi;
 
     protected virtual void Awake()
     {

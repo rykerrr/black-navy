@@ -40,6 +40,8 @@ public class WeaponBaseGuidedTorpedo : WeaponBase
             torpClone.up = owner.up;
 
             fireTimer = delayBetweenFire + Time.time + Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
+            fireSound.Play();
+
             return FireState.Fired;
         }
         else

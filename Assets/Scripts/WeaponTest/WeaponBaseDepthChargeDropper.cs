@@ -59,38 +59,38 @@ public class WeaponBaseDepthChargeDropper : WeaponBase
                 }
 
                 fireTimer = delayBetweenFire + Time.time + Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
-                Debug.Log("Fired");
+                fireSound.Play();
                 return FireState.Fired;
             }
             if (Time.time <= fireTimer)
             {
-                Debug.Log("On fire timer");
+                //Debug.Log("On fire timer");
                 return FireState.OnDelay;
             }
 
-            Debug.Log("target but failed?");
+            //Debug.Log("target but failed?");
             return FireState.Failed;
         }
 
-        Debug.Log("no target");
+        //Debug.Log("no target");
         return FireState.Failed;
     }
 
     private void DropCharge(float dir, float forceMult)
     {
         Transform chargeClone = Poolable.Get<UnguidedDepthCharge>(() => Poolable.CreateObj<UnguidedDepthCharge>(projectilePrefab.gameObject), spawnLocation.position, Quaternion.identity).transform;
-        Debug.Log("here");
+       // Debug.Log("here");
         int layerValue = whatAreOurProjectiles.layermask_to_layer();
         TrailRenderer projTrail = chargeClone.GetComponent<TrailRenderer>();
         projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
         projTrail.Clear();
         chargeClone.gameObject.layer = layerValue;
-        Debug.Log("yes | " + chargeClone);
+        //Debug.Log("yes | " + chargeClone);
 
         Rigidbody2D thisRb = chargeClone.GetComponent<Rigidbody2D>();
 
         thisRb.velocity = ((Vector2.right * dir + (Vector2)transform.up).normalized) * forceMult;
-        Debug.Log("commeth once again");
+       // Debug.Log("commeth once again");
         return;
     }
 }

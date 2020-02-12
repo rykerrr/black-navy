@@ -44,7 +44,8 @@ public class WeaponBaseSurfaceGuidedMissile : WeaponBase
                 missile.whatIsTarget = whatIsTarget;
                 missile.BoostStage();
                 fireTimer = delayBetweenFire + Time.time;
-                soundMngr.PlayEnviroSound(spawnLocation.gameObject, "missile1", 10f);   
+                fireSound.Play();
+                //soundMngr.PlayEnviroSound(spawnLocation.gameObject, "missile1", 10f);   
 
                 return FireState.Fired;
             }

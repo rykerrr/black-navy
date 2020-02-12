@@ -25,6 +25,7 @@ public class WeaponBaseUnguidedBombs : WeaponBase
             //Rigidbody2D shellRb = shellClone.GetComponent<Rigidbody2D>();
             fireTimer = delayBetweenFire + Time.time;
             currentAmmo--;
+            fireSound.Play();
             return FireState.Fired;
         }
         else if(Time.time <= fireTimer) return FireState.OnDelay;

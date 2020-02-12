@@ -7,7 +7,10 @@ using System.Linq;
 #pragma warning disable 0649
 public abstract class WeaponBase : Poolable
 {
+    public bool unlocked = false;
+
     [SerializeField] private UnitLayerMask whatUnitsToTarget;
+    [SerializeField] protected AudioSource afterEffect;
     [SerializeField] protected Material t1Mat;
     [SerializeField] protected Material t2Mat;
     [SerializeField] private float targetCheckRadius;
@@ -36,7 +39,9 @@ public abstract class WeaponBase : Poolable
     [HideInInspector] public int currentAmmo;
 
     protected UnitHumanoid targHumanoid;
-    protected SoundManager soundMngr;
+    protected AudioSource fireSound;
+
+    //protected SoundManager soundMngr;
     protected Rigidbody2D targRb;
     protected float findTargetTimer;
     protected float fireTimer;
@@ -45,7 +50,16 @@ public abstract class WeaponBase : Poolable
 
     protected virtual void Awake()
     {
-        soundMngr = SoundManager.Instance;
+        //soundMngr = SoundManager.Instance;
+        fireSound = GetComponent<AudioSource>();
+
+        if (fireSound == null)
+        {
+            if (transform.parent)
+            {
+                Debug.LogWarning("No audio source on weapon? | " + transform.parent.name + " , " + name);
+            }
+        }
     }
 
     public void LoadAmmo()
@@ -203,5 +217,5 @@ public abstract class WeaponBase : Poolable
 }
 
 public enum FireState { OutOfAmmo, Fired, OnDelay, Failed }
-public enum WeaponType { SurfaceToSurfaceMissile, AirToAirMissile, Autocannon, NavalArtillery, AntiAirCloseInWeaponSystem, UnguidedMissile, SmartBomb, UnguidedBomb, Torpedo, DepthCharge}
+public enum WeaponType { SurfaceToSurfaceMissile, AirToAirMissile, Autocannon, NavalArtillery, AntiAirCloseInWeaponSystem, UnguidedMissile, SmartBomb, UnguidedBomb, Torpedo, DepthCharge }
 #pragma warning restore 0649

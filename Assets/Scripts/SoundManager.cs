@@ -8,6 +8,7 @@ public class SoundManager : Singleton<SoundManager>
 {
     [SerializeField] private Sound[] sounds;
     [SerializeField] private GameObject objToPlayAudioOn;
+    [SerializeField] private AudioSource explosionAudioObj;
 
     private Sound currentSound = null;
 
@@ -26,6 +27,14 @@ public class SoundManager : Singleton<SoundManager>
     private void Start()
     {
         // play beginning theme or smth?
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            objToPlayAudioOn.GetComponent<AudioSource>().Stop(); // maybe turn this into a button or smth?
+        }
     }
 
     private Sound FindSound(string soundName)
@@ -302,6 +311,23 @@ public class SoundManager : Singleton<SoundManager>
         sourc.loop = loop;
         currentSound = s;
         sourc.Play();
+    }
+    public void PlayExplosion(Vector3 position, AudioSource sound)
+    {
+        explosionAudioObj.Stop();
+
+        explosionAudioObj.transform.position = position;
+
+        explosionAudioObj.clip = sound.clip;
+        explosionAudioObj.volume = sound.volume;
+        explosionAudioObj.pitch = sound.pitch;
+        explosionAudioObj.spatialBlend = sound.spatialBlend;
+        explosionAudioObj.dopplerLevel = sound.dopplerLevel;
+        explosionAudioObj.maxDistance = sound.maxDistance;
+        explosionAudioObj.minDistance = sound.minDistance;
+        explosionAudioObj.priority = sound.priority;
+
+        explosionAudioObj.Play();
     }
     #endregion
 }

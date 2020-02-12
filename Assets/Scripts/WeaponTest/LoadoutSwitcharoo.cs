@@ -24,22 +24,22 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
 
     private void Awake()
     {
-        LoadBaseWeapons();
+        //LoadBaseWeapons();
     }
 
     private void LoadBaseWeapons()
     {
         for (int i = 0; i < team1UnitLoadouts.Length; i++)
         {
-            for (int j = 0; j < team1UnitLoadouts[i].weapons.Length; j++)
+            for (int j = 0; j < team1UnitLoadouts[i].weapons.Count; j++)
             {
-                team1UnitLoadouts[i].weapons[j] = team1UnitLoadouts[i].availableWeapons[0];
+                team1UnitLoadouts[i].weapons[j] = team1UnitLoadouts[i].unlockedWeapons[0];
             }
         }
 
         for (int i = 0; i < team2UnitLoadouts.Length; i++)
         {
-            for (int j = 0; j < team2UnitLoadouts[i].weapons.Length; j++)
+            for (int j = 0; j < team2UnitLoadouts[i].weapons.Count; j++)
             {
                 team2UnitLoadouts[i].weapons[j] = team2UnitLoadouts[i].availableWeapons[0];
             }
@@ -49,6 +49,7 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
     public void SwitchUnit(int unit)
     {
         curUnit = unit;
+        Debug.Log(team1UnitLoadouts[curUnit].name);
 
         foreach (Dropdown drop in weaponDropdownMenus) // disables dropdown menus
         {
@@ -58,20 +59,20 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
 
         List<Dropdown.OptionData> newOptions = new List<Dropdown.OptionData>();
 
-        foreach (WeaponBase weapon in team1UnitLoadouts[unit].availableWeapons)
+        foreach (WeaponBase weapon in team1UnitLoadouts[unit].unlockedWeapons)
         {
             Dropdown.OptionData newOpt = new Dropdown.OptionData(weapon.name);
             newOptions.Add(newOpt);
         }
 
-        for (int i = 0; i < team1UnitLoadouts[unit].weapons.Length; i++)
+        for (int i = 0; i < team1UnitLoadouts[unit].weapons.Capacity; i++)
         {
             weaponDropdownMenus[i].gameObject.SetActive(true);
 
             weaponDropdownMenus[i].AddOptions(newOptions);
         }
 
-        for (int i = 0; i < team1UnitLoadouts[unit].weapons.Length; i++)
+        for (int i = 0; i < team1UnitLoadouts[unit].weapons.Capacity; i++)
         {
             weaponDropdownMenus[i].gameObject.SetActive(true);
 
@@ -107,9 +108,10 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
     {
         //unitLoadouts[curUnit].weapons[wepNum] = PickableWeapons[(int) unitLoadouts[curUnit].unitType][wep];
         //unitLoadouts[curUnit].weapons[wepNum] = PickableWeapons[(int) unitLoadouts[curUnit].unitType]
+
         if (team == 0)
         {
-            team1UnitLoadouts[curUnit].weapons[wepNum] = team1UnitLoadouts[curUnit].availableWeapons[wep];
+            team1UnitLoadouts[curUnit].weapons[wepNum] = team1UnitLoadouts[curUnit].unlockedWeapons[wep];
         }
         else if (team == 1)
         {

@@ -28,6 +28,8 @@ public class CameraController : MonoBehaviour
     private float unitZoomTimer;
     private float zoomTimer;
 
+    public Transform SelectedUnit => selectedUnit;
+
     private void Start()
     {
         if (target.GetComponent<Camera>() == null)

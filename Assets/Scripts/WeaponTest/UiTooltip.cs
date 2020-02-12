@@ -25,11 +25,11 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         loadoutLoader = LoadoutSwitcharoo.Instance;
         UnitWeaponLoadout curSelectedUnit = loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit];
-        WeaponBase hoveredWeapon = curSelectedUnit.availableWeapons[int.Parse("" + transform.name[5])];
+        WeaponBase hoveredWeapon = curSelectedUnit.unlockedWeapons[int.Parse("" + transform.name[5])];
         //Debug.Log("" + transform.name[5]);
         //Debug.Log(int.Parse("" + transform.name[5]));
         //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit]);
-        //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit].availableWeapons[int.Parse("" + transform.name[5])]);
+        //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit].unlockedWeapons[int.Parse("" + transform.name[5])]);
         curText = "Name: " + hoveredWeapon.name + "\nMax ammo before rearm: " + (hoveredWeapon.maxAmmo > 5000000 ? Mathf.Infinity : hoveredWeapon.maxAmmo == 0 ? Mathf.Infinity : hoveredWeapon.maxAmmo)
              + "\nRearmament time: " + hoveredWeapon.reloadTime + "\nDamage per projectile: " + hoveredWeapon.damage + "\nWeapon type: " + FormatString("" + hoveredWeapon.typeOfWeapon)
              + "\nExtra desc: " + hoveredWeapon.weaponTooltipDesc;

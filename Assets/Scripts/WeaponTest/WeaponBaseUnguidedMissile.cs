@@ -21,6 +21,7 @@ public class WeaponBaseUnguidedMissile : WeaponBase
                 projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
                 missile.ActivateBoost();
                 fireTimer = delayBetweenFire + Time.time;
+                fireSound.Play();
 
                 return FireState.Fired;
             }

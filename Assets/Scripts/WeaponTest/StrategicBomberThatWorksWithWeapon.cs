@@ -24,13 +24,7 @@ public class StrategicBomberThatWorksWithWeapon : AircraftBase
 
     private void Update()
     {
-        int vsi = thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y) >= 0 ? vsi = 1 : vsi = -1;
-
-        if (vsi == 0)
-        {
-            Debug.Log("possible error @vsi");
-            Debug.Break();
-        }
+        vsi = (int)System.Math.Round(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y), 0, System.MidpointRounding.AwayFromZero);
 
         if (returningToBaseAlt)
         {

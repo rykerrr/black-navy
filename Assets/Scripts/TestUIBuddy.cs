@@ -154,7 +154,7 @@ public class TestUIBuddy : MonoBehaviour
     private void LoadUnitWeapons(Transform unitClone, string unitName) // CALLED WHEN SPAWNING UNITS
     {
         UnitWeaponLoadout[] weaponLoadouts = null;
-        UnitWeaponLoadout? curLoadout = null;
+        UnitWeaponLoadout curLoadout = null;
         int curUnit;
 
         if (currentUnit.teamLayer == 9)
@@ -180,9 +180,9 @@ public class TestUIBuddy : MonoBehaviour
         curUnit = LoadoutSwitcharoo.Instance.GetUnit;
         for (int i = 0; i < unit.weapons.Length; i++)
         {
-            if (curLoadout.HasValue)
+            if (curLoadout)
             {
-                WeaponBase weaponClone = Instantiate(curLoadout.Value.weapons[i]); // here
+                WeaponBase weaponClone = Instantiate(curLoadout.weapons[i]); // here
                 weaponClone.transform.parent = unitClone;
                 weaponClone.transform.localPosition = Vector3.zero;
 

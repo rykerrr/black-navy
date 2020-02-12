@@ -98,16 +98,23 @@ public class WeaponArtilleryTurret : WeaponBase
                     projTrail.material = prevBull.gameObject.layer == 8 ? t1Mat : t2Mat;
                     firePartSys.Emit(firePartCount);
                     prevBull = null;
+
+                    fireSound.Play();
+                    //soundMngr.PlayEnviroSound(spawnLocation.gameObject, "cannonfire1", 30f, projVol);
+                    fireTimer = delayBetweenFire + Time.time + Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
+
+                    return FireState.Fired;
                 }
 
-                soundMngr.PlayEnviroSound(spawnLocation.gameObject, "cannonfire1", 30f, projVol);
-                fireTimer = delayBetweenFire + Time.time + Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
 
-                return FireState.Fired;
             }
-
-            return FireState.OnDelay;
+            else
+            {
+                return FireState.OnDelay;
+            }
         }
+
+        return FireState.Failed;
     }
 
     private void OnEnable()

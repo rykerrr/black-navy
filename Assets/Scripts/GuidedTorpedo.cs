@@ -8,52 +8,64 @@ public class GuidedTorpedo : GuidedProjectile
     [Header("Guided torpedo properties")]
     [SerializeField] private float timeToChangeGravityOutOfWater;
 
-    private float veloc3;
-    private float veloc4;
-    private float newSpeed;
+    [SerializeField] private float newSpeed;
 
     private void Update()
     {
-        isOutOfWater = IsOutOfWater(); // dont touch
-
         if (!target)
         {
-            Debug.Log(target + ", finding target?");
             FindTarget();
         }
 
-        if (Time.timeScale >= 0.1f && !isOutOfWater)
+        if (Time.timeScale >= 0.1f)
         {
-            if (target)
+            isOutOfWater = IsOutOfWater(); // dont touch
+
+            if (isOutOfWater)
             {
-                Vector3 dist = (target.position - transform.position).normalized;
-                transform.up = Vector3.MoveTowards(transform.up, dist, rotationSmoothing * Time.deltaTime);
+                newSpeed = Mathf.MoveTowards(newSpeed, 0f, rotationSmoothing * 5f * Time.deltaTime);
+
+                transform.up = Vector2.MoveTowards(transform.up, thisRb.velocity.normalized, 0.1f * Time.deltaTime);
             }
+            else
+            {
+                newSpeed = Mathf.MoveTowards(newSpeed, speed, rotationSmoothing * Time.deltaTime);
+
+                if (target)
+                {
+                    Vector3 dist = (target.position - transform.position).normalized;
+                    transform.up = Vector3.MoveTowards(transform.up, dist, rotationSmoothing * 2f * Time.deltaTime);
+                }
+            }
+
+
         }
+
     }
 
     protected override void FixedUpdate()
     {
-        if (!isOutOfWater) // its a variable, check Update()
+        if (isOutOfWater)
         {
-            Debug.Log("is this even being called the fuck");
-            newSpeed = Mathf.SmoothDamp(newSpeed, speed, ref veloc3, rotationSmoothing * Time.fixedDeltaTime);
-            thisRb.velocity = transform.up * newSpeed * Time.fixedDeltaTime;
+            //thisRb.velocity = Vector2.MoveTowards(thisRb.velocity, Vector2.zero, 1f * Time.deltaTime);
+        }
+        else
+        { // its only being set here so that gravity negates the velocity change when out of water and i dont get headaches about that yes
+            thisRb.velocity = Vector2.MoveTowards(thisRb.velocity, transform.up * newSpeed * Time.fixedDeltaTime, rotationSmoothing);
         }
     }
 
     protected override bool IsOutOfWater()
     {
         if (transform.position.y >= waterLevel)
-        {
-            thisRb.gravityScale = Mathf.SmoothDamp(thisRb.gravityScale, 1f, ref veloc4, timeToChangeGravityOutOfWater / 3f);
-            Debug.Log("yeet");
+        {// is out of water
+            thisRb.gravityScale = Mathf.MoveTowards(thisRb.gravityScale, 1f, timeToChangeGravityOutOfWater * Time.deltaTime);
+            thisRb.velocity = new Vector2(Mathf.MoveTowards(thisRb.velocity.x, 0f, timeToChangeGravityOutOfWater * 2f * Time.deltaTime), thisRb.velocity.y);
             return true;
         }
         else
-        {
-            thisRb.gravityScale = Mathf.SmoothDamp(thisRb.gravityScale, inWaterGrav, ref veloc4, timeToChangeGravityOutOfWater / 1.2f);
-            Debug.Log("nigger");
+        { // is in water
+            thisRb.gravityScale = Mathf.MoveTowards(thisRb.gravityScale, inWaterGrav, timeToChangeGravityOutOfWater / 1.2f * Time.deltaTime);
             return false;
         }
     }

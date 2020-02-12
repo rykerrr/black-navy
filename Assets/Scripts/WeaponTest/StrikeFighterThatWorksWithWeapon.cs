@@ -22,7 +22,7 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
 
     private void Update()
     {
-        int vsi = (int)System.Math.Round(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y), 0, System.MidpointRounding.AwayFromZero);
+        vsi = (int)System.Math.Round(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y), 0, System.MidpointRounding.AwayFromZero);
 
         if(transform.position.y < waterLevel)
         {
@@ -115,7 +115,7 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
                 }
                 else
                 {
-                    transform.up = Vector3.MoveTowards(transform.up, new Vector3(transform.up.x, 0f, transform.position.z), rotationSmoothing);
+                    transform.up = Vector3.MoveTowards(transform.up, new Vector3(transform.up.x, 0f, transform.position.z), rotationSmoothing * Time.time);
                 }
             }
 

@@ -8,11 +8,29 @@ public class WeaponBaseCannon : WeaponBase
 {
     [SerializeField] private ParticleSystem firePartSys;
     [SerializeField] private int firePartCount;
+    [SerializeField] private bool continuousFire = false;
+
+    private float soundTimer;
+    bool isTargVisual;
+
+    private void Update()
+    {
+        isTargVisual = CheckIfLookingAtTarget(lookCheckRange);
+
+        if (fireTimer > Time.time)
+        {
+            if(fireSound.isPlaying)
+            {
+                if(!isTargVisual)
+                {
+                    FireAftereffectSound();
+                }
+            }
+        }
+    }
 
     public override FireState Fire()
     {
-        bool isTargVisual = CheckIfLookingAtTarget(lookCheckRange);
-
         if (currentAmmo <= 0)
         {
             return FireState.OutOfAmmo;
@@ -36,16 +54,44 @@ public class WeaponBaseCannon : WeaponBase
                 currentAmmo--;
                 firePartSys.Emit(firePartCount);
 
+                if(!continuousFire)
+                {
+                    fireSound.Play();
+                }
+                else
+                {
+                    if(!fireSound.isPlaying)
+                    {
+                        fireSound.Play();
+                        soundTimer = Time.time + 2f;
+                    }
+                }
+
                 return FireState.Fired;
             }
             else
             {
+
                 return FireState.OnDelay;
             }
         }
         else
         {
+            FireAftereffectSound();
             return FireState.Failed;
+        }
+    }
+
+    private void FireAftereffectSound()
+    {
+        if (fireSound.isPlaying)
+        {
+            fireSound.Stop();
+
+            if (afterEffect)
+            {
+                afterEffect.Play();
+            }
         }
     }
 

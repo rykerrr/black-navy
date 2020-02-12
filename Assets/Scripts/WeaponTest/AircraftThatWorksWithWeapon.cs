@@ -19,7 +19,7 @@ public class AircraftThatWorksWithWeapon : AircraftBase
 
     private void Update()
     {
-        int vsi = (int)System.Math.Round(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y), 0, System.MidpointRounding.AwayFromZero);
+        vsi = (int)System.Math.Round(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y), 0, System.MidpointRounding.AwayFromZero);
 
         if (transform.position.y < waterLevel)
         {

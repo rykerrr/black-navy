@@ -25,7 +25,7 @@ public class WeaponBombDropper
             Transform bombClone = Poolable.Get<UnguidedBomb>(() => Poolable.CreateObj<UnguidedBomb>(bombPrefab.gameObject), ranPos, Quaternion.identity).transform;
             int layerValue = whatAreOurProjectiles.layermask_to_layer();
             bombClone.gameObject.layer = layerValue;
-            bombClone.right = new Vector2(owner.up.x + Random.Range(-inaccuracyOffset, inaccuracyOffset), owner.up.y).normalized; /*(target.position - transform.position).normalized*/; // i have no fucking idea what is going on at this point
+            bombClone.right = new Vector2(owner.up.x + Random.Range(-inaccuracyOffset, inaccuracyOffset), owner.up.y).normalized/*(target.position - transform.position).normalized*/; // i have no fucking idea what is going on at this point
             Rigidbody2D bombRb = bombClone.GetComponent<Rigidbody2D>();
             bombRb.velocity = new Vector2(ownerRb.velocity.x / 1.5f, ownerRb.velocity.y / 1.1f);
             //Rigidbody2D shellRb = shellClone.GetComponent<Rigidbody2D>();

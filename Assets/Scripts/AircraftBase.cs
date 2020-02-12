@@ -97,7 +97,7 @@ public abstract class AircraftBase : UnitBase
     {
         int rot = transform.up.x >= 0 ? 1 : -1;
         Debug.Log(Mathf.CeilToInt(transform.up.x));
-        transform.up = Vector3.MoveTowards(transform.up, new Vector2(transform.up.x > 0 ? Mathf.CeilToInt(transform.up.x) : Mathf.FloorToInt(transform.up.x), 0f), rotationSmoothing * Time.deltaTime * 1.8f);
+        transform.up = Vector3.MoveTowards(transform.up, new Vector2(transform.up.x > 0 ? Mathf.CeilToInt(transform.up.x) : Mathf.FloorToInt(transform.up.x), 0f), rotationSmoothing * Time.deltaTime);
 
         if (transform.up.y >= retPosition.y - 3f)
         {
@@ -163,10 +163,10 @@ public abstract class AircraftBase : UnitBase
 
     protected bool CheckifAboveCeil()
     {
-        Debug.Log("above ceiling motherfucker | " + name);
-
         if (transform.position.y >= ceilAltitude)
         {
+            Debug.Log("above ceiling motherfucker | " + name);
+
             returningToBaseAlt = true;
             evading = false;
             engaging = false;

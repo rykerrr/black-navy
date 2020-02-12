@@ -22,6 +22,7 @@ public class WeaponBaseGuidedAirMissile : WeaponBase
                 projTrail.material = layerValue == 8 ? t1Mat : t2Mat;
                 projTrail.enabled = true;
                 fireTimer = delayBetweenFire + Time.time + Random.Range(-delayBetweenFire / 5f, delayBetweenFire / 3.4f);
+                fireSound.Play();
 
                 return FireState.Fired;
             }

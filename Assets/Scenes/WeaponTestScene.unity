@@ -2197,7 +2197,6 @@ GameObject:
   - component: {fileID: 372212785}
   - component: {fileID: 372212784}
   - component: {fileID: 372212788}
-  - component: {fileID: 372212789}
   - component: {fileID: 372212790}
   - component: {fileID: 372212791}
   m_Layer: 5
@@ -2286,6 +2285,7 @@ RectTransform:
   - {fileID: 515136328}
   - {fileID: 1142709158}
   - {fileID: 839434847}
+  - {fileID: 1970304926}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2307,27 +2307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedText: {fileID: 348706001}
---- !u!114 &372212789
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 372212783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f4eb2d754549724eb262415de008759, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 519420032}
-  selectedUnit: {fileID: 0}
-  zoomLevelText: {fileID: 1447455125}
-  movSensDivisor: 2
-  mwheelSensDivisor: 2
-  xMovement: 0
-  yMovement: 0
-  movMult: 1
-  mWheelMovement: 0
 --- !u!114 &372212790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2345,173 +2324,25 @@ MonoBehaviour:
   - {fileID: 864183925}
   - {fileID: 1022610801}
   team1UnitLoadouts:
-  - name: Air Superiority Fighter
-    unitType: 0
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 8288110331645906446, guid: 10d2d445551b3f94f94fefc603a525a7, type: 3}
-    - {fileID: 8026875690373824381, guid: 142b8d8d702d94848860d361e431c3d5, type: 3}
-    - {fileID: 8664147023450718145, guid: 1a61a7a5f2bbbe342b82aca97ce8e280, type: 3}
-  - name: Strike Fighter
-    unitType: 0
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 8288110331645906446, guid: 10d2d445551b3f94f94fefc603a525a7, type: 3}
-    - {fileID: 8026875690373824381, guid: 142b8d8d702d94848860d361e431c3d5, type: 3}
-    - {fileID: 6189269358865187000, guid: fd927dbd9177e82478deb84c6c248972, type: 3}
-    - {fileID: 376923180312627170, guid: 28e262cf20f772d40b0f2939085e4f98, type: 3}
-  - name: Frigate
-    unitType: 2
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 6189269358865187000, guid: fd927dbd9177e82478deb84c6c248972, type: 3}
-    - {fileID: 7859879970289041619, guid: a127b41690c99384db1582dad861484d, type: 3}
-    - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-  - name: Submarine
-    unitType: 1
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-    - {fileID: 2515568725933732493, guid: 18afff5ea45f1464bbc0f8cb63f7721f, type: 3}
-  - name: Ballistic Submarine
-    unitType: 1
-    weapons:
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 7476648859782138402, guid: d4d22479d21349a42befe339d8b05f60, type: 3}
-  - name: Aircraft Carrier
-    unitType: 2
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-    - {fileID: 6189269358865187000, guid: fd927dbd9177e82478deb84c6c248972, type: 3}
-    - {fileID: 3917485656313095265, guid: f3496fabf562aeb47878da6e06daf489, type: 3}
-    - {fileID: 7859879970289041619, guid: a127b41690c99384db1582dad861484d, type: 3}
-  - name: Strategic Bomber
-    unitType: 0
-    weapons:
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 6537335178373915020, guid: fbc5c7235e5252a4c8e3cfe99703bcdb, type: 3}
-    - {fileID: 7111609351897286890, guid: 9efd342e2c94a904e8301d9bdbe789a5, type: 3}
-  - name: Destroyer
-    unitType: 2
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 6785413893576594604, guid: d4512d3385535cf4cb36d01795ff0913, type: 3}
-    - {fileID: 6189269358865187000, guid: fd927dbd9177e82478deb84c6c248972, type: 3}
-    - {fileID: 3917485656313095265, guid: f3496fabf562aeb47878da6e06daf489, type: 3}
-    - {fileID: 7536146421221858862, guid: 0d20faa8f86b50540a236457eb4f1694, type: 3}
-    - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-  - name: Patrol Boat
-    unitType: 2
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 6785413893576594604, guid: d4512d3385535cf4cb36d01795ff0913, type: 3}
-    - {fileID: 7536146421221858862, guid: 0d20faa8f86b50540a236457eb4f1694, type: 3}
-    - {fileID: 7859879970289041619, guid: a127b41690c99384db1582dad861484d, type: 3}
-    - {fileID: 2515568725933732493, guid: 18afff5ea45f1464bbc0f8cb63f7721f, type: 3}
+  - {fileID: 11400000, guid: 049cd5b07d70eef4f8ccc9bfc2e88704, type: 2}
+  - {fileID: 11400000, guid: c9211b35f0563854b987cef76184eef3, type: 2}
+  - {fileID: 11400000, guid: a2f9d37589cb9a94f9ac65b93e92f7b1, type: 2}
+  - {fileID: 11400000, guid: d97a343f99f199a4f885aa0198698988, type: 2}
+  - {fileID: 11400000, guid: 6fe3613db9f2b004f8029b757a6216f9, type: 2}
+  - {fileID: 11400000, guid: cb128f12160e77640a701abccf1ab4ec, type: 2}
+  - {fileID: 11400000, guid: cb128f12160e77640a701abccf1ab4ec, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   team2UnitLoadouts:
-  - name: Air Superiority Fighter
-    unitType: 0
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 8288110331645906446, guid: 10d2d445551b3f94f94fefc603a525a7, type: 3}
-    - {fileID: 8026875690373824381, guid: 142b8d8d702d94848860d361e431c3d5, type: 3}
-    - {fileID: 8664147023450718145, guid: 1a61a7a5f2bbbe342b82aca97ce8e280, type: 3}
-  - name: Strike Fighter
-    unitType: 0
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 8288110331645906446, guid: 10d2d445551b3f94f94fefc603a525a7, type: 3}
-    - {fileID: 8026875690373824381, guid: 142b8d8d702d94848860d361e431c3d5, type: 3}
-    - {fileID: 6189269358865187000, guid: fd927dbd9177e82478deb84c6c248972, type: 3}
-    - {fileID: 376923180312627170, guid: 28e262cf20f772d40b0f2939085e4f98, type: 3}
-  - name: Frigate
-    unitType: 2
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 6189269358865187000, guid: fd927dbd9177e82478deb84c6c248972, type: 3}
-    - {fileID: 7859879970289041619, guid: a127b41690c99384db1582dad861484d, type: 3}
-    - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-  - name: Submarine
-    unitType: 1
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-    - {fileID: 2515568725933732493, guid: 18afff5ea45f1464bbc0f8cb63f7721f, type: 3}
-  - name: Ballistic Submarine
-    unitType: 1
-    weapons:
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 7476648859782138402, guid: d4d22479d21349a42befe339d8b05f60, type: 3}
-  - name: Aircraft Carrier
-    unitType: 2
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-    - {fileID: 6189269358865187000, guid: fd927dbd9177e82478deb84c6c248972, type: 3}
-    - {fileID: 3917485656313095265, guid: f3496fabf562aeb47878da6e06daf489, type: 3}
-    - {fileID: 7859879970289041619, guid: a127b41690c99384db1582dad861484d, type: 3}
-  - name: Strategic Bomber
-    unitType: 0
-    weapons:
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 6537335178373915020, guid: fbc5c7235e5252a4c8e3cfe99703bcdb, type: 3}
-    - {fileID: 7111609351897286890, guid: 9efd342e2c94a904e8301d9bdbe789a5, type: 3}
-  - name: Destroyer
-    unitType: 2
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 6785413893576594604, guid: d4512d3385535cf4cb36d01795ff0913, type: 3}
-    - {fileID: 6189269358865187000, guid: fd927dbd9177e82478deb84c6c248972, type: 3}
-    - {fileID: 3917485656313095265, guid: f3496fabf562aeb47878da6e06daf489, type: 3}
-    - {fileID: 7536146421221858862, guid: 0d20faa8f86b50540a236457eb4f1694, type: 3}
-    - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-  - name: Patrol Boat
-    unitType: 2
-    weapons:
-    - {fileID: 0}
-    - {fileID: 0}
-    availableWeapons:
-    - {fileID: 6785413893576594604, guid: d4512d3385535cf4cb36d01795ff0913, type: 3}
-    - {fileID: 7536146421221858862, guid: 0d20faa8f86b50540a236457eb4f1694, type: 3}
-    - {fileID: 7859879970289041619, guid: a127b41690c99384db1582dad861484d, type: 3}
-    - {fileID: 2515568725933732493, guid: 18afff5ea45f1464bbc0f8cb63f7721f, type: 3}
+  - {fileID: 11400000, guid: 049cd5b07d70eef4f8ccc9bfc2e88704, type: 2}
+  - {fileID: 11400000, guid: c9211b35f0563854b987cef76184eef3, type: 2}
+  - {fileID: 11400000, guid: a2f9d37589cb9a94f9ac65b93e92f7b1, type: 2}
+  - {fileID: 11400000, guid: d97a343f99f199a4f885aa0198698988, type: 2}
+  - {fileID: 11400000, guid: 6fe3613db9f2b004f8029b757a6216f9, type: 2}
+  - {fileID: 11400000, guid: cb128f12160e77640a701abccf1ab4ec, type: 2}
+  - {fileID: 11400000, guid: cb128f12160e77640a701abccf1ab4ec, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &372212791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2952,7 +2783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curText: 
   imgObj: {fileID: 1078691721}
-  textObj: {fileID: 0}
+  textObj: {fileID: 751814501}
   appearanceTimer: 0.03
   waitBeforeReappTimer: 0.6
 --- !u!1 &441918039
@@ -3533,6 +3364,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3548,6 +3380,27 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f4eb2d754549724eb262415de008759, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 519420032}
+  selectedUnit: {fileID: 0}
+  zoomLevelText: {fileID: 1447455125}
+  movSensDivisor: 2
+  mwheelSensDivisor: 2
+  xMovement: 0
+  yMovement: 0
+  movMult: 1
+  mWheelMovement: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -5667,7 +5520,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curText: 
   imgObj: {fileID: 1078691721}
-  textObj: {fileID: 0}
+  textObj: {fileID: 751814501}
   appearanceTimer: 0.03
   waitBeforeReappTimer: 0.6
 --- !u!1 &722912650
@@ -9457,6 +9310,7 @@ GameObject:
   - component: {fileID: 1362657533}
   - component: {fileID: 1362657535}
   - component: {fileID: 1362657536}
+  - component: {fileID: 1362657537}
   m_Layer: 0
   m_Name: ManagerManager
   m_TagString: Untagged
@@ -9502,8 +9356,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957dea4bf06eb3e4584c9e7bda2bc3dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  showBuf: {fileID: 1970304925}
   waterLevel: -0.5
   projectileLifetime: 90
+  bufferSound: 1
 --- !u!114 &1362657536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9595,7 +9451,32 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     source: {fileID: 0}
+  - name: athellsgate
+    clip: {fileID: 8300000, guid: 0c15f3da76512b741b4130c5226407b4, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: secret
+    clip: {fileID: 8300000, guid: bca255bc762e228478f06520115d25bc, type: 3}
+    loop: 1
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
   objToPlayAudioOn: {fileID: 0}
+  explosionAudioObj: {fileID: 1478923951}
+--- !u!114 &1362657537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362657532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3a03762d63278d4497a658e30ac69bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1397053530
 GameObject:
   m_ObjectHideFlags: 0
@@ -10676,6 +10557,10 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Battle mode
       m_Image: {fileID: 0}
+    - m_Text: At Hells Gate
+      m_Image: {fileID: 0}
+    - m_Text: secret
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -10804,6 +10689,133 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1469304232}
   m_CullTransparentMesh: 0
+--- !u!1 &1478923949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1478923950}
+  - component: {fileID: 1478923951}
+  m_Layer: 0
+  m_Name: ExplosionAudioObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1478923950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478923949}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -121.83381, y: 71.76247, z: -94.72222}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1478923951
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478923949}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 026a6f7dfcc894c418c647732d2e2833, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 0.5
+  MaxDistance: 60
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1490564509
 GameObject:
   m_ObjectHideFlags: 0
@@ -14123,6 +14135,83 @@ Transform:
   m_Father: {fileID: 1325546295}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1970304925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1970304926}
+  - component: {fileID: 1970304928}
+  - component: {fileID: 1970304927}
+  m_Layer: 5
+  m_Name: tempbufferindication
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1970304926
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970304925}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 372212787}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 351.88, y: 49.61}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1970304927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970304925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 5f8c4364ecdadec46a7ade202ca06cb3, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: explosions are being buffered
+--- !u!222 &1970304928
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970304925}
+  m_CullTransparentMesh: 0
 --- !u!1 &2022943783
 GameObject:
   m_ObjectHideFlags: 0
@@ -14770,7 +14859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   curText: 
   imgObj: {fileID: 1078691721}
-  textObj: {fileID: 0}
+  textObj: {fileID: 751814501}
   appearanceTimer: 0.03
   waitBeforeReappTimer: 0.6
 --- !u!1 &2103285997

@@ -27,6 +27,7 @@ public class WeaponBaseGuidedBombs : WeaponBase
             bombRb.velocity = ownerRb.velocity;
 
             fireTimer = delayBetweenFire + Time.time;
+            fireSound.Play();
 
             return FireState.Fired;
         }

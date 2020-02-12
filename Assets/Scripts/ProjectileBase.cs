@@ -8,6 +8,7 @@ public abstract class ProjectileBase : Poolable, IDamager
 {
     [Header("Projectile base properties")]
     [SerializeField] protected Rigidbody2D thisRb;
+    [SerializeField] private AudioSource waterEnterSound;
     [SerializeField] protected Transform onHitParticlePrefab;
     [SerializeField] protected float speed;
     [SerializeField] private int damage;
@@ -18,6 +19,8 @@ public abstract class ProjectileBase : Poolable, IDamager
     [SerializeField] private float lifeTimer;
     private SoundManager soundMngr;
     private TrailRenderer projTrail;
+    private AudioSource hitSound;
+    
     private Vector2 veloc2;
     private float veloc1;
     protected float waterLevel;
@@ -35,6 +38,7 @@ public abstract class ProjectileBase : Poolable, IDamager
         lifeTimer = Time.time + projectileLifetime;
         origGravScale = thisRb.gravityScale;
         projTrail = GetComponent<TrailRenderer>();
+        hitSound = GetComponent<AudioSource>();
 
         if (!thisRb)
         {
@@ -61,6 +65,11 @@ public abstract class ProjectileBase : Poolable, IDamager
     {
         if (transform.position.y <= waterLevel)
         {
+            if(isOutOfWater)
+            {
+                waterEnterSound.Play();
+            }
+
             thisRb.gravityScale = Mathf.SmoothDamp(thisRb.gravityScale, inWaterGrav, ref veloc1, Random.Range(50f, 90f) * Time.deltaTime);
             thisRb.velocity = Vector2.SmoothDamp(thisRb.velocity, thisRb.velocity / 2f, ref veloc2, Random.Range(10f, 25f) * Time.deltaTime);
             return false;
@@ -72,8 +81,26 @@ public abstract class ProjectileBase : Poolable, IDamager
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         Transform particleClone = Instantiate(onHitParticlePrefab, transform.position, Quaternion.identity) as Transform;
-        soundMngr.PlayEnviroSound(particleClone.gameObject, "explosion1", 50f, 0.4f);
-        Destroy(particleClone.gameObject, projectileLifetime / 3f);
+
+        if (GameConfig.Instance.BufferSound)
+        {
+            soundMngr.PlayExplosion(transform.position, hitSound);
+        }
+        else
+        {
+            AudioSource partSound = particleClone.GetComponent<AudioSource>();
+
+            partSound.clip = hitSound.clip;
+            partSound.volume = hitSound.volume;
+            partSound.pitch = hitSound.pitch;
+            partSound.dopplerLevel = hitSound.dopplerLevel;
+            partSound.spatialBlend = hitSound.spatialBlend;
+
+            partSound.Play();
+        }
+
+        //Debug.Log(partSound);
+        Destroy(particleClone.gameObject, hitSound.clip.length * 1.4f);
 
         if (collision.GetComponent<UnitHumanoid>())
         {
