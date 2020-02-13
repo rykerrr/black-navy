@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-#pragma warning disable 0649
-[CreateAssetMenu(fileName = "New loadout", menuName = "Loadout")]
+[CreateAssetMenu(fileName = "New Unit Loadout", menuName = "Unit Loadout")]
 public class UnitWeaponLoadout : ScriptableObject
 {
     public UnitType unitType;
@@ -13,32 +12,38 @@ public class UnitWeaponLoadout : ScriptableObject
 
     private void OnEnable()
     {
-        unlockedWeapons.Clear();
+        if(unlockedWeapons != null)
+        {
+            unlockedWeapons.Clear();
+        }
+
         InitializeWeapons();
-        Debug.Log("init'd");
+        //Debug.Log("init'd");
     }
 
     private void OnDisable()
     {
-        Debug.Log("uninit'd");
+        //Debug.Log("uninit'd");
         unlockedWeapons.Clear();
     }
 
     private void InitializeWeapons()
     {
-        if(availableWeapons != null)
+        if (availableWeapons != null)
         {
             if (availableWeapons.Count > 0)
             {
                 foreach (WeaponBase possible in availableWeapons)
                 {
-                    if (possible.unlocked)
+                    if (possible)
                     {
-                        unlockedWeapons.Add(possible);
+                        if (possible.unlocked)
+                        {
+                            unlockedWeapons.Add(possible);
+                        }
                     }
                 }
             }
         }
     }
 }
-#pragma warning disable 0649

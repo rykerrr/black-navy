@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: df6218b0383fc7548ba0a5c0aae5a9eb, type: 3}
   m_Name: Submarine
-  m_EditorClassIdentifier: Assembly-CSharp::UnitWeaponLoadout
+  m_EditorClassIdentifier: 
   unitType: 1
   weapons:
   - {fileID: 0}
   - {fileID: 0}
   unlockedWeapons: []
   availableWeapons:
-  - {fileID: 2515568725933732493, guid: 18afff5ea45f1464bbc0f8cb63f7721f, type: 3}
   - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
+  - {fileID: 2515568725933732493, guid: 18afff5ea45f1464bbc0f8cb63f7721f, type: 3}

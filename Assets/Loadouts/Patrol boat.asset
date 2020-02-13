@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df6218b0383fc7548ba0a5c0aae5a9eb, type: 3}
-  m_Name: StrategicBomber
+  m_Name: Patrol boat
   m_EditorClassIdentifier: 
-  unitType: 0
+  unitType: 2
   weapons:
   - {fileID: 0}
-  unlockedWeapons:
-  - {fileID: 6537335178373915020, guid: fbc5c7235e5252a4c8e3cfe99703bcdb, type: 3}
+  - {fileID: 0}
+  unlockedWeapons: []
   availableWeapons:
-  - {fileID: 6537335178373915020, guid: fbc5c7235e5252a4c8e3cfe99703bcdb, type: 3}
-  - {fileID: 7111609351897286890, guid: 9efd342e2c94a904e8301d9bdbe789a5, type: 3}
+  - {fileID: 6785413893576594604, guid: d4512d3385535cf4cb36d01795ff0913, type: 3}
+  - {fileID: 7536146421221858862, guid: 0d20faa8f86b50540a236457eb4f1694, type: 3}
+  - {fileID: 7859879970289041619, guid: a127b41690c99384db1582dad861484d, type: 3}
+  - {fileID: 2515568725933732493, guid: 18afff5ea45f1464bbc0f8cb63f7721f, type: 3}

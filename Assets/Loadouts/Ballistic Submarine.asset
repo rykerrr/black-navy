@@ -10,16 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df6218b0383fc7548ba0a5c0aae5a9eb, type: 3}
-  m_Name: AircraftCarrier
+  m_Name: Ballistic Submarine
   m_EditorClassIdentifier: 
-  unitType: 2
+  unitType: 1
   weapons:
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  unlockedWeapons:
-  - {fileID: 6785413893576594604, guid: d4512d3385535cf4cb36d01795ff0913, type: 3}
+  unlockedWeapons: []
   availableWeapons:
-  - {fileID: 6785413893576594604, guid: d4512d3385535cf4cb36d01795ff0913, type: 3}
-  - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-  - {fileID: 7859879970289041619, guid: a127b41690c99384db1582dad861484d, type: 3}
+  - {fileID: 7476648859782138402, guid: d4d22479d21349a42befe339d8b05f60, type: 3}

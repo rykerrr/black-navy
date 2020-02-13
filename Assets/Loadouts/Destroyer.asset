@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: df6218b0383fc7548ba0a5c0aae5a9eb, type: 3}
   m_Name: Destroyer
-  m_EditorClassIdentifier: Assembly-CSharp::UnitWeaponLoadout
+  m_EditorClassIdentifier: 
   unitType: 2
   weapons:
   - {fileID: 0}
@@ -23,4 +23,4 @@ MonoBehaviour:
   - {fileID: 6189269358865187000, guid: fd927dbd9177e82478deb84c6c248972, type: 3}
   - {fileID: 3917485656313095265, guid: f3496fabf562aeb47878da6e06daf489, type: 3}
   - {fileID: 3308256499120776870, guid: 2b58894424469974fb6b2e35c49d6d7f, type: 3}
-  - {fileID: 7859879970289041619, guid: a127b41690c99384db1582dad861484d, type: 3}
+  - {fileID: 7536146421221858862, guid: 0d20faa8f86b50540a236457eb4f1694, type: 3}

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df6218b0383fc7548ba0a5c0aae5a9eb, type: 3}
-  m_Name: PatrolBoat
+  m_Name: Air Superiority Fighter
   m_EditorClassIdentifier: 
-  unitType: 2
+  unitType: 0
   weapons:
   - {fileID: 0}
   - {fileID: 0}
   unlockedWeapons: []
   availableWeapons:
-  - {fileID: 6785413893576594604, guid: d4512d3385535cf4cb36d01795ff0913, type: 3}
-  - {fileID: 7536146421221858862, guid: 0d20faa8f86b50540a236457eb4f1694, type: 3}
-  - {fileID: 2515568725933732493, guid: 18afff5ea45f1464bbc0f8cb63f7721f, type: 3}
+  - {fileID: 8288110331645906446, guid: 10d2d445551b3f94f94fefc603a525a7, type: 3}
+  - {fileID: 8026875690373824381, guid: 142b8d8d702d94848860d361e431c3d5, type: 3}
+  - {fileID: 8664147023450718145, guid: 1a61a7a5f2bbbe342b82aca97ce8e280, type: 3}

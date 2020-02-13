@@ -24,7 +24,7 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
 
     private void Awake()
     {
-        //LoadBaseWeapons();
+        LoadBaseWeapons();
     }
 
     private void LoadBaseWeapons()
@@ -80,6 +80,10 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
             {
                 for (int j = 0; j < weaponDropdownMenus[i].options.Count; j++)
                 {
+                    //Debug.Log(team1UnitLoadouts[curUnit].weapons.Count);
+                    //Debug.Log(team1UnitLoadouts[curUnit].weapons[i].name);
+                    //Debug.Log(weaponDropdownMenus[i].options[j]);
+                    //Debug.Log(weaponDropdownMenus[i].options[j].text);
                     if (team1UnitLoadouts[curUnit].weapons[i].name == weaponDropdownMenus[i].options[j].text)
                     {
                         weaponDropdownMenus[i].SetValueWithoutNotify(j);

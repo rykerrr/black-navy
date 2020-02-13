@@ -41,7 +41,7 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if(pointerDown)
         {
-            Debug.Log("pointer's down!");
+            //Debug.Log("pointer's down!");
             if (imgObj.color.a >= 0.00001f)
             {
                 timeToWait = appearanceTimer;
@@ -66,7 +66,7 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         //}
 
         pointerDown = true;
-        Debug.Log("enter");
+        //Debug.Log("enter");
         //if (imgObj.color.a >= 0.00001f)
         //{
         //    StartCoroutine(StartDamp(1, 0f, imgObj, textObj, curText, timeToWait, null, false));
@@ -82,7 +82,7 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         imgObj.StopAllCoroutines();
-        Debug.Log("exit");
+        //Debug.Log("exit");
         pointerDown = false;
         textObj.text = "";
         i = 0;

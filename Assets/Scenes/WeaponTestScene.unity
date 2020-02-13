@@ -2324,25 +2324,25 @@ MonoBehaviour:
   - {fileID: 864183925}
   - {fileID: 1022610801}
   team1UnitLoadouts:
-  - {fileID: 11400000, guid: 049cd5b07d70eef4f8ccc9bfc2e88704, type: 2}
-  - {fileID: 11400000, guid: c9211b35f0563854b987cef76184eef3, type: 2}
+  - {fileID: 11400000, guid: d8d58fbe16dd6004aaa6e050089004bd, type: 2}
+  - {fileID: 11400000, guid: b375150a8c1a356449dc67f3845884ec, type: 2}
   - {fileID: 11400000, guid: a2f9d37589cb9a94f9ac65b93e92f7b1, type: 2}
   - {fileID: 11400000, guid: d97a343f99f199a4f885aa0198698988, type: 2}
-  - {fileID: 11400000, guid: 6fe3613db9f2b004f8029b757a6216f9, type: 2}
+  - {fileID: 11400000, guid: cb87385f36aaf784782c9557f0490b84, type: 2}
+  - {fileID: 11400000, guid: e849e2802f47d3b42b0416effc099cfe, type: 2}
+  - {fileID: 11400000, guid: d2e8c2e920fe76d48a0979a80a565ad7, type: 2}
   - {fileID: 11400000, guid: cb128f12160e77640a701abccf1ab4ec, type: 2}
-  - {fileID: 11400000, guid: cb128f12160e77640a701abccf1ab4ec, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b7dff4e924e80674aa943e8107bb0e43, type: 2}
   team2UnitLoadouts:
-  - {fileID: 11400000, guid: 049cd5b07d70eef4f8ccc9bfc2e88704, type: 2}
-  - {fileID: 11400000, guid: c9211b35f0563854b987cef76184eef3, type: 2}
+  - {fileID: 11400000, guid: d8d58fbe16dd6004aaa6e050089004bd, type: 2}
+  - {fileID: 11400000, guid: b375150a8c1a356449dc67f3845884ec, type: 2}
   - {fileID: 11400000, guid: a2f9d37589cb9a94f9ac65b93e92f7b1, type: 2}
   - {fileID: 11400000, guid: d97a343f99f199a4f885aa0198698988, type: 2}
-  - {fileID: 11400000, guid: 6fe3613db9f2b004f8029b757a6216f9, type: 2}
+  - {fileID: 11400000, guid: cb87385f36aaf784782c9557f0490b84, type: 2}
+  - {fileID: 11400000, guid: e849e2802f47d3b42b0416effc099cfe, type: 2}
+  - {fileID: 11400000, guid: d2e8c2e920fe76d48a0979a80a565ad7, type: 2}
   - {fileID: 11400000, guid: cb128f12160e77640a701abccf1ab4ec, type: 2}
-  - {fileID: 11400000, guid: cb128f12160e77640a701abccf1ab4ec, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: b7dff4e924e80674aa943e8107bb0e43, type: 2}
 --- !u!114 &372212791
 MonoBehaviour:
   m_ObjectHideFlags: 0
