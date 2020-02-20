@@ -4252,7 +4252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Content: {fileID: 1924126538}
   m_Horizontal: 1
-  m_Vertical: 1
+  m_Vertical: 0
   m_MovementType: 1
   m_Elasticity: 0.1
   m_Inertia: 1
@@ -9360,6 +9360,7 @@ MonoBehaviour:
   waterLevel: -0.5
   projectileLifetime: 90
   bufferSound: 1
+  isSandbox: 0
 --- !u!114 &1362657536
 MonoBehaviour:
   m_ObjectHideFlags: 0

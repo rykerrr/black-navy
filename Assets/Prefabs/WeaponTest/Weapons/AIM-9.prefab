@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4181751334715019067}
   - component: {fileID: 8664147023450718145}
   - component: {fileID: 6913027141420317288}
+  - component: {fileID: 8947035511257817874}
   m_Layer: 0
   m_Name: AIM-9
   m_TagString: Untagged
@@ -44,19 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086768c23117fe04b8dcea11dce1fe6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlocked: 0
   whatUnitsToTarget:
-    mask: 00000000
+    mask: 0000000003000000
   afterEffect: {fileID: 0}
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 0
   targetCheckDelay: 0
+  shopCost: 0
   typeOfWeapon: 1
+  typeOfMountRequired: 0
   owner: {fileID: 0}
   projectilePrefab: {fileID: 9173797744970012537, guid: cadb633a104497544ab20cddb4f3bd77,
     type: 3}
   spawnLocation: {fileID: 0}
-  weaponTooltipDesc: 
   delayBetweenFire: 4
   inaccuracyOffset: 0
   reloadTime: 20
@@ -169,3 +172,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8947035511257817874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4316392488291592272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfffeab160f6f4459af83b3b75250a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIImage: {fileID: 21300000, guid: 552b009de77e2a84797e59b9478827cb, type: 3}
+  strongAgainst:
+  - {fileID: 7732785840351420874, guid: e17d66acfb51c0b499d48244bbba728f, type: 3}
+  - {fileID: 3931465128590362852, guid: 2731dd44a0acd5247b6ee3556cc293e7, type: 3}
+  - {fileID: 6004467122027487915, guid: 9626410608b85cc41a0d5e8175ebbb9a, type: 3}
+  desc: 

@@ -16,7 +16,7 @@ public class Stationary : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = new Vector2(transform.parent.position.x, transform.parent.position.y + 10f);
+        transform.position = new Vector2(transform.parent.position.x, transform.parent.position.y + offset);
         transform.eulerAngles = new Vector3(0f, 0f, angle);
     }
 }

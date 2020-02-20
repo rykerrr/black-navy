@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8483793406942512432}
   - component: {fileID: 3917485656313095265}
   - component: {fileID: 6191048379649087059}
+  - component: {fileID: -2606731338595335753}
   m_Layer: 0
   m_Name: 150mm Artillery
   m_TagString: Untagged
@@ -76,25 +77,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f03bd05e4d38f745a3a422a27e78acf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlocked: 1
   whatUnitsToTarget:
-    mask: 02000000
+    mask: 0200000003000000
   afterEffect: {fileID: 0}
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 200
   targetCheckDelay: 0
+  shopCost: 721
   typeOfWeapon: 3
+  typeOfMountRequired: 1
   owner: {fileID: 0}
   projectilePrefab: {fileID: 1206317541626549056, guid: 82b897e324b743f41b31d3ace865af43,
     type: 3}
   spawnLocation: {fileID: 3917485656313095264}
-  weaponTooltipDesc: 
   delayBetweenFire: 3
   inaccuracyOffset: 1
   reloadTime: 0
   lookCheckRadius: 0
   lookCheckRange: 0
-  damage: 0
+  damage: 666
   maxAmmo: 0
   whatIsTarget:
     serializedVersion: 2
@@ -107,7 +110,7 @@ MonoBehaviour:
   currentAmmo: 0
   barrel: {fileID: 3917485656313095271}
   firePartSys: {fileID: 1264172245}
-  firePartCount: 35
+  firePartCount: 50
   rotationSmoothing: 0.1
 --- !u!82 &6191048379649087059
 AudioSource:
@@ -205,6 +208,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-2606731338595335753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3917485656313095270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfffeab160f6f4459af83b3b75250a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIImage: {fileID: 21300000, guid: 97bf5f5f2c3be5b45a8aef8ed6acaa86, type: 3}
+  strongAgainst:
+  - {fileID: 2406341615265846529, guid: 2f20ebe3fd0e0624f8a2f75ce7ba64fd, type: 3}
+  - {fileID: 49874012249916127, guid: ebde2d3ee101e494c8081b00c8cbdfbc, type: 3}
+  - {fileID: 749258210565338905, guid: ea7f707aa56b653439736dbb8429c346, type: 3}
+  desc: 
 --- !u!1 &4440431389835402899
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
       propertyPath: InitialModule.startSize.scalar
@@ -460,6 +481,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19800000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
       propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5a97962f7d5ba4df0823334b52c7c02c, type: 3}

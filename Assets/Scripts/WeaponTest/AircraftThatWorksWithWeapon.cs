@@ -21,6 +21,12 @@ public class AircraftThatWorksWithWeapon : AircraftBase
     {
         vsi = (int)System.Math.Round(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y), 0, System.MidpointRounding.AwayFromZero);
 
+        if (returningToBaseAlt)
+        {
+            ReturnToBaseAlt();
+            return;
+        }
+
         if (transform.position.y < waterLevel)
         {
             Debug.Log("HOOT HOOT! | " + name + " | " + vsi);
@@ -34,18 +40,12 @@ public class AircraftThatWorksWithWeapon : AircraftBase
         if (!takenOff)
         {
             curSpd = Mathf.SmoothDamp(curSpd, speed, ref veloc1, timeToTakeOffFully / 3f);
-            Debug.Log("hello");
+            //Debug.Log("hello");
         }
         else
         {
             bool isNearWater = CheckIfNearWater();
             bool isAboveCeil = CheckifAboveCeil();
-
-            if (returningToBaseAlt)
-            {
-                ReturnToBaseAlt();
-                return;
-            }
 
             if (evading)
             {
@@ -55,6 +55,11 @@ public class AircraftThatWorksWithWeapon : AircraftBase
 
             if (target)
             {
+                if (targHumanoid.type == UnitType.Base)
+                {
+                    FindTarget(3f);
+                }
+
                 if (!target.gameObject.activeInHierarchy)
                 {
                     target = null;

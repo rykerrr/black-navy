@@ -21,53 +21,64 @@ public class UnitInfoUI : MonoBehaviour
         camContrll = cam.GetComponent<CameraController>();
     }
 
-    void LateUpdate()
+    private void LateUpdate()
     {
-        if (camContrll.SelectedUnit != null)
+        if (camContrll)
         {
-            if (!selUnit)
+            if (camContrll.SelectedUnit != null)
             {
-                selUnit = camContrll.SelectedUnit;
-                selUnitScript = selUnit.GetComponent<UnitBase>();
-                selUnitHum = selUnit.GetComponent<UnitHumanoid>();
-
-                if (selUnit.GetComponent<UnitBase>())
+                if (!selUnit)
                 {
-                    unitInfoObj = selUnit.GetComponent<UnitBase>().UnitInfoUI;
-                    unitInfoText = unitInfoObj.GetComponent<Text>();
+                    selUnit = camContrll.SelectedUnit;
+                    selUnitScript = selUnit.GetComponent<UnitBase>();
+                    selUnitHum = selUnit.GetComponent<UnitHumanoid>();
+
+                    if (selUnitHum.type == UnitType.Base)
+                    {
+                        camContrll.ClearUnitSelection();
+                        selUnit = null;
+
+                        return;
+                    }
+
+                    if (selUnitScript)
+                    {
+                        unitInfoObj = selUnit.GetComponent<UnitBase>().UnitInfoUI;
+                        unitInfoText = unitInfoObj.GetComponent<Text>();
+                    }
+
+                    int i = 1;
+
+                    foreach (WeaponBase wep in selUnitScript.Weapons)
+                    {
+                        weaponStr = "Weapon " + i++ + ": " + wep.name + "\n - RPM: " + (60 / wep.delayBetweenFire) + "\n - Damage per hit: " + wep.damage + "\n";
+                    }
                 }
 
-                int i = 1;
-
-                foreach (WeaponBase wep in selUnitScript.Weapons)
-                {
-                    weaponStr = "Weapon " + i++ + ": " + wep.name + "\n - RPM: " + (60 / wep.delayBetweenFire) + "\n - Damage per hit: " + wep.damage + "\n";
-                }
             }
-
-        }
-        else
-        {
-            if(unitInfoText)
+            else
             {
-                unitInfoText.text = "";
+                if (unitInfoText)
+                {
+                    unitInfoText.text = "";
+                }
+
+                selUnit = null;
+                return;
             }
 
-            selUnit = null;
-            return;
-        }
+            if (selUnit)
+            {
+                string newInfo = "";
 
-        if(selUnit)
-        {
-            string newInfo = "";
+                newInfo += "Health: " + selUnitHum.Health + " / " + selUnitHum.MaxHealth + "\n";
+                newInfo += "Speed: " + selUnitScript.CurSpeed + "\n";
+                newInfo += "Altitude: " + (GameConfig.Instance.WaterLevel + selUnit.transform.position.y) + "\n";
+                newInfo += "VSI: " + selUnitScript.VSI;
+                newInfo += weaponStr;
 
-            newInfo += "Health: " + selUnitHum.Health + " / " + selUnitHum.MaxHealth + "\n";
-            newInfo += "Speed: " + selUnitScript.CurSpeed + "\n";
-            newInfo += "Altitude: " + (GameConfig.Instance.WaterLevel + selUnit.transform.position.y) + "\n";
-            newInfo += "VSI: " + selUnitScript.VSI;
-            newInfo += weaponStr;
-
-            unitInfoText.text = newInfo; // figure out a way to size it or smth
+                unitInfoText.text = newInfo; // figure out a way to size it or smth
+            }
         }
     }
 }

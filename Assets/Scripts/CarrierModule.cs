@@ -15,13 +15,20 @@ public class CarrierModule : MonoBehaviour
     [SerializeField] private Image spawningButton;
     [SerializeField] private Sprite[] spawningImages;
     [SerializeField] private float aircraftLaunchDelay;
+    [SerializeField] private bool isLaunchingAircraft;
 
     [HideInInspector] private LayerMask whatAreOurProjectiles;
     [HideInInspector] private LayerMask whatIsTarget;
 
     private Transform currentPlane;
     private float aircraftLaunchTimer;
-    private bool isLaunchingAircraft;
+
+    private void Start()
+    {
+        currentPlane = planePrefabs[0];
+        aircraftLaunchTimer = Time.time + aircraftLaunchDelay;
+        isLaunchingAircraft = true;
+    }
 
     private void Update()
     {
@@ -32,9 +39,10 @@ public class CarrierModule : MonoBehaviour
     {
         if (isLaunchingAircraft)
         {
+            //Debug.Log("Launch!");
             if (Time.time > aircraftLaunchTimer)
             {
-                Debug.Log("launching plane");
+                //Debug.Log("launching plane");
                 Transform planeClone = GetPlane();
 
                 switch (planeClone.gameObject.layer) // temporary before i commit seppuku, retard
@@ -84,18 +92,19 @@ public class CarrierModule : MonoBehaviour
                 aircraft.whatIsTarget = whatIsTarget;
                 aircraft.TakeOff();
 
-                Debug.Log("takeoff");
+                //Debug.Log("takeoff");
 
                 aircraftLaunchTimer = Time.time + aircraftLaunchDelay;
             }
             else
             {
-                Debug.Log("not spawning aircraft anymore");
+                //Debug.Log("on delay");
                 return;
             }
         }
         else
         {
+            //Debug.Log("wut");
             return;
         }
     }
@@ -103,27 +112,29 @@ public class CarrierModule : MonoBehaviour
     private void OnMouseDown()
     {
         Debug.Log("Clicked");
-        carrierMenu.SetActive(!carrierMenu.activeInHierarchy);
+        carrierMenu.SetActive(!carrierMenu.activeSelf);
     }
 
     private Transform GetPlane()
     {
         Transform planeClone = null;
 
-        if (currentPlane.GetComponent<AirSuperiorityFighter>())
+        if (currentPlane.GetComponent<AircraftThatWorksWithWeapon>())
         {
-            planeClone = Poolable.Get<AirSuperiorityFighter>(() => Poolable.CreateObj<AirSuperiorityFighter>(currentPlane.gameObject), aircraftSpawnPoint.position, transform.rotation, null).transform;
+            //Debug.Log("1");
+            planeClone = Poolable.Get<AircraftThatWorksWithWeapon>(() => Poolable.CreateObj<AircraftThatWorksWithWeapon>(currentPlane.gameObject), aircraftSpawnPoint.position, transform.rotation, null).transform;
         }
-        else if (currentPlane.GetComponent<StrikeFighter>())
+        else if (currentPlane.GetComponent<StrikeFighterThatWorksWithWeapon>())
         {
-            planeClone = Poolable.Get<StrikeFighter>(() => Poolable.CreateObj<StrikeFighter>(currentPlane.gameObject), aircraftSpawnPoint.position, transform.rotation, null).transform;
+            //Debug.Log("2");
+            planeClone = Poolable.Get<StrikeFighterThatWorksWithWeapon>(() => Poolable.CreateObj<StrikeFighterThatWorksWithWeapon>(currentPlane.gameObject), aircraftSpawnPoint.position, transform.rotation, null).transform;
         }
-        else if (currentPlane.GetComponent<StrategicBomber>())
+        else if (currentPlane.GetComponent<StrategicBomberThatWorksWithWeapon>())
         {
-            planeClone = Poolable.Get<StrategicBomber>(() => Poolable.CreateObj<StrategicBomber>(currentPlane.gameObject), aircraftSpawnPoint.position, transform.rotation, null).transform;
+            //Debug.Log("3");
+            planeClone = Poolable.Get<StrategicBomberThatWorksWithWeapon>(() => Poolable.CreateObj<StrategicBomberThatWorksWithWeapon>(currentPlane.gameObject), aircraftSpawnPoint.position, transform.rotation, null).transform;
         }
 
-        Debug.Log(planeClone);
         return planeClone;
     }
 

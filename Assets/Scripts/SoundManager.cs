@@ -12,7 +12,7 @@ public class SoundManager : Singleton<SoundManager>
 
     private Sound currentSound = null;
 
-    public void Awake()
+    protected override void Awake()
     {
         if (!objToPlayAudioOn)
         {

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1017306884245416738}
   - component: {fileID: 7536146421221858862}
   - component: {fileID: 2480298278415866096}
+  - component: {fileID: -3153271316175344524}
   m_Layer: 0
   m_Name: Depth Charge Dropper
   m_TagString: Untagged
@@ -92,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f426e97d075796e48879aca1485fd4f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlocked: 0
   whatUnitsToTarget:
     mask: 01000000
   afterEffect: {fileID: 0}
@@ -99,12 +101,13 @@ MonoBehaviour:
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 60
   targetCheckDelay: 0
+  shopCost: 447
   typeOfWeapon: 9
+  typeOfMountRequired: 0
   owner: {fileID: 0}
   projectilePrefab: {fileID: 8813527685008090021, guid: ec1ac7a511b0ec84782820fb193f792c,
     type: 3}
   spawnLocation: {fileID: 4397834637279384732}
-  weaponTooltipDesc: 
   delayBetweenFire: 4
   inaccuracyOffset: 0
   reloadTime: 0
@@ -219,3 +222,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3153271316175344524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8457049140930953965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfffeab160f6f4459af83b3b75250a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIImage: {fileID: 21300000, guid: 62b06a01fb92c6a479f8cadbf487fd4b, type: 3}
+  strongAgainst:
+  - {fileID: 7283421868221115318, guid: d2981ec8780240a4aa3befc49cf79e16, type: 3}
+  - {fileID: 3335100288510253354, guid: 3dcac7c01f87d274b89bb9dccb552765, type: 3}
+  desc: 

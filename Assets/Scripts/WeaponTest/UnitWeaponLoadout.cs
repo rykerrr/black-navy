@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#pragma warning disable 0649
 [CreateAssetMenu(fileName = "New Unit Loadout", menuName = "Unit Loadout")]
 public class UnitWeaponLoadout : ScriptableObject
 {
@@ -12,11 +13,6 @@ public class UnitWeaponLoadout : ScriptableObject
 
     private void OnEnable()
     {
-        if(unlockedWeapons != null)
-        {
-            unlockedWeapons.Clear();
-        }
-
         InitializeWeapons();
         //Debug.Log("init'd");
     }
@@ -27,8 +23,13 @@ public class UnitWeaponLoadout : ScriptableObject
         unlockedWeapons.Clear();
     }
 
-    private void InitializeWeapons()
+    public void InitializeWeapons()
     {
+        if (unlockedWeapons != null)
+        {
+            unlockedWeapons.Clear();
+        }
+
         if (availableWeapons != null)
         {
             if (availableWeapons.Count > 0)
@@ -47,3 +48,4 @@ public class UnitWeaponLoadout : ScriptableObject
         }
     }
 }
+#pragma warning restore 0649

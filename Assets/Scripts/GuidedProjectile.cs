@@ -45,14 +45,17 @@ public abstract class GuidedProjectile : ProjectileBase
             }
         }
 
+
+
         /*for (int i = 0; i < availableTargets.Count; i++)
         {
             Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
         }*/
 
-        availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
         if (availableTargets.Count > 0)
         {
+            availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
+
             target = availableTargets[0].transform;
             targRb = target.GetComponent<Rigidbody2D>();
             targHumanoid = target.GetComponent<UnitHumanoid>();

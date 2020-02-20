@@ -29,15 +29,25 @@ public abstract class UnitBase : Poolable
     public int VSI => vsi;
     public WeaponBase[] Weapons => weapons;
     public GameObject UnitInfoUI => unitInfo;
+    public SpriteRenderer Graphics => graphics;
+    public UnitHumanoid Humanoid => humanoid;
 
     [Header("Base unit debug")]
+    protected SpriteRenderer graphics;
     protected Rigidbody2D targRb;
     protected UnitHumanoid targHumanoid;
+    protected UnitHumanoid humanoid;
     [SerializeField] protected Transform target;
     private float findTargetTimer;
     protected float waterLevel;
     protected float curSpd;
     protected int vsi;
+
+    protected virtual void OnValidate()
+    {
+        graphics = GetComponentInChildren<SpriteRenderer>();
+        humanoid = GetComponent<UnitHumanoid>();
+    }
 
     protected virtual void Awake()
     {
@@ -76,7 +86,7 @@ public abstract class UnitBase : Poolable
             return false;
         }
     }
-    protected bool FindTarget()
+    protected bool FindTarget(float addTime = 0f)
     {
         if (Time.time > findTargetTimer)
         {
@@ -116,9 +126,24 @@ public abstract class UnitBase : Poolable
                 Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
             }*/
 
-            availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
+
+
             if (availableTargets.Count > 0)
             {
+                Collider2D targetBase;
+                if (targetBase = availableTargets.Find(obj => obj.GetComponent<Base>()))
+                {
+                    availableTargets.Remove(targetBase);
+                }
+
+                availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
+
+                if (targetBase)
+                {
+                    availableTargets.Add(targetBase);
+                    Debug.Log("found base + base is target: " + availableTargets[availableTargets.Count - 1]);
+                }
+
                 target = availableTargets[0].transform;
                 targRb = target.GetComponent<Rigidbody2D>();
                 targHumanoid = target.GetComponent<UnitHumanoid>();
@@ -143,7 +168,7 @@ public abstract class UnitBase : Poolable
                 return true;
             }*/
 
-            findTargetTimer = targetCheckDelay + Time.time;
+            findTargetTimer = targetCheckDelay + Time.time + addTime;
             return false;
         }
         else return false;

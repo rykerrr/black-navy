@@ -168,10 +168,13 @@ public class TestUIBuddy : MonoBehaviour
 
         foreach (UnitWeaponLoadout loadout in weaponLoadouts)
         {
-            if (loadout.name == unitName)
+            string str1 = loadout.name.ToLower().Replace(" ", string.Empty);
+            string str2 = unitName.ToLower().Replace(" ", string.Empty);
+
+            if (str1 == str2)
             {
                 curLoadout = loadout;
-                Debug.Log("Loadout exists");
+                //Debug.Log(str1 + " == " + str2);
                 break;
             }
         }
@@ -191,7 +194,7 @@ public class TestUIBuddy : MonoBehaviour
             }
             else
             {
-                Debug.Log(curLoadout);
+                Debug.Log(curLoadout + " | " + currentUnit.unitPrefab);
                 Debug.Log("Error..");
                 Debug.Break();
 
@@ -286,6 +289,11 @@ public class TestUIBuddy : MonoBehaviour
             LoadUnitWeapons(newUnitClone, newUnit.unitPrefab.name);
             yield return new WaitForSecondsRealtime((float)newUnit.delayBetweenEachSpawn);
         }
+    }
+
+    public void OpenCloseTest(GameObject obj)
+    {
+        obj.SetActive(!obj.activeSelf);
     }
 
     private Transform GetUnit(UnitSettings newUnit)

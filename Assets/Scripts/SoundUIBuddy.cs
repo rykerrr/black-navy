@@ -30,6 +30,7 @@ public class SoundUIBuddy : MonoBehaviour
         if (soundMngr == null)
         {
             Debug.Log("REEEEEEEEEEEEEE");
+            Debug.Log(SoundManager.Instance);
         }
 
         SetSong(0);

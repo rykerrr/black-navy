@@ -1773,9 +1773,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carrierMenu: {fileID: 9169331267112036835}
   planePrefabs:
-  - {fileID: 3683194980317544552, guid: 87fd4f24dc7ec9644a63388213eff168, type: 3}
-  - {fileID: 3067428702628535426, guid: abfb18900f125434f8b962b1401f0b6a, type: 3}
-  - {fileID: 3948212849932630992, guid: d21eb075c77f1594eb828c5bbc73065c, type: 3}
+  - {fileID: 3932803766806388372, guid: e17d66acfb51c0b499d48244bbba728f, type: 3}
+  - {fileID: 2026316999918097512, guid: 2731dd44a0acd5247b6ee3556cc293e7, type: 3}
+  - {fileID: 7322564526655150461, guid: 9626410608b85cc41a0d5e8175ebbb9a, type: 3}
   aircraftSpawnPoint: {fileID: 1218826659671599309}
   owner: {fileID: 434455924}
   spawningButton: {fileID: 6636438023435718284}
@@ -1783,6 +1783,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8547192578782374eb461adb913d22c3, type: 3}
   - {fileID: 21300000, guid: f17bb4570186de54c9d9405bd260e966, type: 3}
   aircraftLaunchDelay: 5
+  isLaunchingAircraft: 0
 --- !u!61 &749258208779496599
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1823,7 +1824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisRb: {fileID: 0}
   whatUnitsToTarget:
-    mask: 0200000000000000
+    mask: 020000000000000003000000
   whatAreOurProjectiles:
     serializedVersion: 2
     m_Bits: 0

@@ -52,9 +52,9 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         }
     }
 
-    private void Awake()
+    protected virtual void Awake()
     {
-        
+        m_ShuttingDown = false;
     }
 
     private void OnApplicationQuit()
@@ -62,8 +62,12 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         m_ShuttingDown = true;
     }
 
+    private void OnEnable()
+    {
+        m_ShuttingDown = false;
+    }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         m_ShuttingDown = true;
     }

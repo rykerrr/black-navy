@@ -24,7 +24,13 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
     {
         vsi = (int)System.Math.Round(thisRb.velocity.y / Mathf.Abs(thisRb.velocity.y), 0, System.MidpointRounding.AwayFromZero);
 
-        if(transform.position.y < waterLevel)
+        if (returningToBaseAlt)
+        {
+            ReturnToBaseAlt();
+            return;
+        }
+
+        if (transform.position.y < waterLevel)
         {
             Debug.Log("HOOT HOOT! | " + name + " | " + vsi);
         }
@@ -43,12 +49,6 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
             bool isNearWater = CheckIfNearWater();
             bool isAboveCeil = CheckifAboveCeil();
 
-            if (returningToBaseAlt)
-            {
-                ReturnToBaseAlt();
-                return;
-            }
-
             if (evading)
             {
                 Evade(aircraftEscapeRange);
@@ -59,6 +59,11 @@ public class StrikeFighterThatWorksWithWeapon : AircraftBase
             {
                 Vector3 dist = (target.position - transform.position);
                 targIsVisual = CheckIfLookingAtTarget(distanceBeforeFire);
+
+                if (targHumanoid.type == UnitType.Base)
+                {
+                    FindTarget(3f);
+                }
 
                 if (dist.magnitude >= targetCheckRadius)
                 {

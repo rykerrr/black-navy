@@ -16,6 +16,11 @@ public class DestroyerThatWorksWithWeapon : ShipBase
     {
         if (target)
         {
+            if (targHumanoid.type == UnitType.Base)
+            {
+                FindTarget(3f);
+            }
+
             if (!target.gameObject.activeInHierarchy)
             {
                 target = null;

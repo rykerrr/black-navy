@@ -15,6 +15,11 @@ public class CannonShell : UnguidedProjectile
         OnEnable();
     }
 
+    private void Update()
+    {
+        graphics.transform.right = thisRb.velocity;
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();

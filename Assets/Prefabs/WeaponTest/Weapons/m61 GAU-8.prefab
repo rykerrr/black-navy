@@ -4737,6 +4737,7 @@ GameObject:
   - component: {fileID: 4208404123265811249}
   - component: {fileID: 1673046406501403824}
   - component: {fileID: 2718167422582850683}
+  - component: {fileID: -6668896867834326265}
   m_Layer: 0
   m_Name: m61 GAU-8
   m_TagString: Untagged
@@ -4774,18 +4775,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 1
   whatUnitsToTarget:
-    mask: 000000000200000001000000
+    mask: 00000000020000000100000003000000
   afterEffect: {fileID: 6808594640011718858}
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 0
   targetCheckDelay: 0
+  shopCost: 2000
   typeOfWeapon: 2
+  typeOfMountRequired: 0
   owner: {fileID: 0}
   projectilePrefab: {fileID: 4298638471715326967, guid: dcd3f081c4230c247ad1bdb4a463caad,
     type: 3}
   spawnLocation: {fileID: 0}
-  weaponTooltipDesc: 
   delayBetweenFire: 0.07
   inaccuracyOffset: 0
   reloadTime: 3
@@ -4901,6 +4903,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-6668896867834326265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4290023854508663898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfffeab160f6f4459af83b3b75250a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIImage: {fileID: 21300000, guid: cd3ebcfc550ab1a4599a76f49d3cff12, type: 3}
+  strongAgainst:
+  - {fileID: 7732785840351420874, guid: e17d66acfb51c0b499d48244bbba728f, type: 3}
+  - {fileID: 3931465128590362852, guid: 2731dd44a0acd5247b6ee3556cc293e7, type: 3}
+  - {fileID: 6004467122027487915, guid: 9626410608b85cc41a0d5e8175ebbb9a, type: 3}
+  - {fileID: 3570049149993874591, guid: 32accdf646e9ee24e99350f7e10b63ce, type: 3}
+  - {fileID: 2406341615265846529, guid: 2f20ebe3fd0e0624f8a2f75ce7ba64fd, type: 3}
+  desc: 
 --- !u!1 &4443529024431305231
 GameObject:
   m_ObjectHideFlags: 0

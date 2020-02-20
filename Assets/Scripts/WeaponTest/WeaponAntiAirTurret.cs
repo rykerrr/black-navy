@@ -26,6 +26,11 @@ public class WeaponAntiAirTurret : WeaponBase
     {
         if (target)
         {
+            if (targHumanoid.type == UnitType.Base)
+            {
+                FindTarget(3f);
+            }
+
             if (!target.gameObject.activeInHierarchy)
             {
                 target = null;

@@ -25,14 +25,24 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         loadoutLoader = LoadoutSwitcharoo.Instance;
         UnitWeaponLoadout curSelectedUnit = loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit];
-        WeaponBase hoveredWeapon = curSelectedUnit.unlockedWeapons[int.Parse("" + transform.name[5])];
+        WeaponBase hoveredWeapon = curSelectedUnit.availableWeapons[int.Parse("" + transform.name[5])];
+
+
+        //if (GameConfig.Instance.IsSandbox)
+        //{
+        //}
+        //else
+        //{
+
+        //}
+
         //Debug.Log("" + transform.name[5]);
         //Debug.Log(int.Parse("" + transform.name[5]));
         //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit]);
         //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit].unlockedWeapons[int.Parse("" + transform.name[5])]);
-        curText = "Name: " + hoveredWeapon.name + "\nMax ammo before rearm: " + (hoveredWeapon.maxAmmo > 5000000 ? Mathf.Infinity : hoveredWeapon.maxAmmo == 0 ? Mathf.Infinity : hoveredWeapon.maxAmmo)
+        curText = "Name: " + hoveredWeapon.name + "\nMax ammo before rearm: " + (hoveredWeapon.maxAmmo > 50000 ? Mathf.Infinity : hoveredWeapon.maxAmmo == 0 ? Mathf.Infinity : hoveredWeapon.maxAmmo)
              + "\nRearmament time: " + hoveredWeapon.reloadTime + "\nDamage per projectile: " + hoveredWeapon.damage + "\nWeapon type: " + FormatString("" + hoveredWeapon.typeOfWeapon)
-             + "\nExtra desc: " + hoveredWeapon.weaponTooltipDesc;
+             + "\nExtra desc: " + hoveredWeapon.GetComponent<WeaponAdditionalInfo>().desc;
         imgObj.color = new Color(imgObj.color.r, imgObj.color.g, imgObj.color.b, 0f);
         textObj.color = new Color(textObj.color.r, textObj.color.g, textObj.color.b, 0f);
     }
@@ -160,7 +170,7 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             if (i > curText.Length - 1)
             {
-                Debug.Log("breaking out");
+                //Debug.Log("breaking out");
                 yield break;
             }
 

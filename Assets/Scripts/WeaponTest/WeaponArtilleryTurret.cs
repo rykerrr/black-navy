@@ -33,6 +33,17 @@ public class WeaponArtilleryTurret : WeaponBase
                 return;
             }
 
+            if(targHumanoid == null)
+            {
+                target = null;
+                return;
+            }
+
+            if (targHumanoid.type == UnitType.Base)
+            {
+                FindTarget(3f);
+            }
+
             if (target.position.x < transform.position.x)
             {
                 transform.eulerAngles = new Vector3(transform.eulerAngles.z, 180f, transform.eulerAngles.z);

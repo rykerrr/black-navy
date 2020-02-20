@@ -20,7 +20,8 @@ public abstract class ProjectileBase : Poolable, IDamager
     private SoundManager soundMngr;
     private TrailRenderer projTrail;
     private AudioSource hitSound;
-    
+
+    protected SpriteRenderer graphics;
     private Vector2 veloc2;
     private float veloc1;
     protected float waterLevel;
@@ -43,6 +44,14 @@ public abstract class ProjectileBase : Poolable, IDamager
         if (!thisRb)
         {
             thisRb = GetComponent<Rigidbody2D>();
+        }
+
+        if((graphics = GetComponent<SpriteRenderer>()) == null)
+        {
+            if ((graphics = GetComponentInChildren<SpriteRenderer>()) == null)
+            {
+                Debug.Log("No graphics??");
+            }
         }
     }
 

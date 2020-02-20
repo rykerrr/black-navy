@@ -281,7 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisRb: {fileID: 0}
   whatUnitsToTarget:
-    mask: 02000000
+    mask: 0200000003000000
   whatAreOurProjectiles:
     serializedVersion: 2
     m_Bits: 0

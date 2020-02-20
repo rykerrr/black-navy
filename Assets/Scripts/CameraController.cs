@@ -136,11 +136,23 @@ public class CameraController : MonoBehaviour
 
         if (hit)
         {
-            if (hit.collider)
+            UnitHumanoid tempHum;
+
+            if (hit.collider && (tempHum = hit.collider.GetComponent<UnitHumanoid>()) != null)
             {
+                if(tempHum.type == UnitType.Base)
+                {
+                    return;
+                }
+
                 selectedUnit = hit.collider.transform;
             }
         }
+    }
+
+    public void ClearUnitSelection()
+    {
+        selectedUnit = null;
     }
 }
 #pragma warning disable 0649

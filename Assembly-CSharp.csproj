@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\CrateDropper.cs" />
     <Compile Include="Assets\Scripts\CrateDropperC130.cs" />
     <Compile Include="Assets\Scripts\Extensions\LayerMaskExtensions.cs" />
+    <Compile Include="Assets\Scripts\Extensions\ReflectionHelpers.cs" />
     <Compile Include="Assets\Scripts\Frigate.cs" />
     <Compile Include="Assets\Scripts\GameConfig.cs" />
     <Compile Include="Assets\Scripts\GameSpeedChanger.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Assets\Scripts\WeaponGuidedTorpedoLauncher.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\AircraftThatWorksWithWeapon.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\BallisticSubmarineThatWorksWithWeapon.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\Base.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\DestroyerThatWorksWithWeapon.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\Follow.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\FrigateThatWorksWithWeapon.cs" />
@@ -138,13 +140,17 @@
     <Compile Include="Assets\Scripts\WeaponTest\Stationary.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\StrategicBomberThatWorksWithWeapon.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\StrikeFighterThatWorksWithWeapon.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\StrongAgainstTooltip.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\SubmarineThatWorksWithWeapon.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\TurretAngle.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\UIEffects.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\UIShopHandler.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\UiTooltip.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\UIWeaponHelpScript.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\UnguidedDepthCharge.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\UnitInfoUI.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\UnitWeaponLoadout.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponAdditionalInfo.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\WeaponAntiAirTurret.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\WeaponArtilleryTurret.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\WeaponBase.cs" />
@@ -156,6 +162,9 @@
     <Compile Include="Assets\Scripts\WeaponTest\WeaponBaseSurfaceGuidedMissile.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\WeaponBaseUnguidedBombs.cs" />
     <Compile Include="Assets\Scripts\WeaponTest\WeaponBaseUnguidedMissile.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponPlacementNode.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponshopTooltip.cs" />
+    <Compile Include="Assets\Scripts\WeaponTest\WeaponTurretPlacer.cs" />
     <Compile Include="Assets\Scripts\WeaponUnguidedMissileLauncher.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/UnityProjects2/BlackNavy/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

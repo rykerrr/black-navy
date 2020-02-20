@@ -32,10 +32,12 @@ public class MenuUIBuddy : MonoBehaviour
             }
 
             StopAllCoroutines();
-            Debug.Log("Previous pan: " + curVisiblePanel);
             StartCoroutine(MovePanelSmooth(curVisiblePanel, newPos, panelSwitchSpeedFactor));
             curVisiblePanel = panels[panelNum];
-            Debug.Log("Current pan: " + curVisiblePanel);
+            //Debug.Log("Current pan: " + curVisiblePanel);
+            //Debug.Log(Mathf.Abs(curVisiblePanel.localPosition.x));
+            //Debug.Log(Mathf.Abs(curVisiblePanel.localPosition.x) / panelOffset);
+            //Debug.Log(Mathf.Abs(curVisiblePanel.localPosition.x) / panelOffset * panelSwitchSpeedFactor);
             StartCoroutine(MovePanelSmooth(curVisiblePanel, Vector2.zero, Mathf.Abs(curVisiblePanel.localPosition.x) / panelOffset * panelSwitchSpeedFactor));
         }
     }

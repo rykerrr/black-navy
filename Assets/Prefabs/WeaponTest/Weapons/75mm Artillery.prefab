@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 1586809571441664489}
   - component: {fileID: 6189269358865187000}
   - component: {fileID: 3368059994088566681}
+  - component: {fileID: -3341363725609641708}
   m_Layer: 0
   m_Name: 75mm Artillery
   m_TagString: Untagged
@@ -242,18 +243,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 0
   whatUnitsToTarget:
-    mask: 0200000000000000
+    mask: 020000000000000003000000
   afterEffect: {fileID: 0}
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 160
   targetCheckDelay: 0
+  shopCost: 641
   typeOfWeapon: 3
+  typeOfMountRequired: 1
   owner: {fileID: 0}
   projectilePrefab: {fileID: 7504479321141009797, guid: e94472901365bf6489525e57bf9dd9a6,
     type: 3}
   spawnLocation: {fileID: 6189269358865187001}
-  weaponTooltipDesc: 
   delayBetweenFire: 1.4
   inaccuracyOffset: 0.5
   reloadTime: 0
@@ -370,6 +372,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3341363725609641708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6189269358865187007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfffeab160f6f4459af83b3b75250a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIImage: {fileID: 21300000, guid: 1095b45b94a4c4f44a25b792dca80048, type: 3}
+  strongAgainst:
+  - {fileID: 49874012249916127, guid: ebde2d3ee101e494c8081b00c8cbdfbc, type: 3}
+  - {fileID: 2406341615265846529, guid: 2f20ebe3fd0e0624f8a2f75ce7ba64fd, type: 3}
+  - {fileID: 3570049149993874591, guid: 32accdf646e9ee24e99350f7e10b63ce, type: 3}
+  desc: 
 --- !u!1 &6314684069590169012
 GameObject:
   m_ObjectHideFlags: 0

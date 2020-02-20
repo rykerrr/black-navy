@@ -15,12 +15,13 @@ public abstract class WeaponBase : Poolable
     [SerializeField] protected Material t2Mat;
     [SerializeField] private float targetCheckRadius;
     [SerializeField] private float targetCheckDelay;
+    [SerializeField] protected int shopCost;
 
     public WeaponType typeOfWeapon;
+    public MountType typeOfMountRequired;
     public Transform owner;
     public Transform projectilePrefab;
     public Transform spawnLocation;
-    [Multiline] public string weaponTooltipDesc;
     public float delayBetweenFire;
     public float inaccuracyOffset;
     public float reloadTime;
@@ -30,6 +31,7 @@ public abstract class WeaponBase : Poolable
     public int maxAmmo;
 
     public UnitLayerMask whatUnitsCanBeTargetted => whatUnitsToTarget;
+    public int ShopCost => shopCost;
 
     [HideInInspector] public LayerMask whatIsTarget;
     [HideInInspector] public LayerMask whatAreOurProjectiles;
@@ -99,8 +101,9 @@ public abstract class WeaponBase : Poolable
         }
     }
 
-    protected virtual bool FindTarget()
+    protected virtual bool FindTarget(float addTime = 0f)
     {
+        Debug.Log("yes");
         if (Time.time > findTargetTimer)
         {
             List<Collider2D> hit = (Physics2D.OverlapCircleAll(transform.position, targetCheckRadius, whatIsTarget)).ToList();
@@ -139,12 +142,27 @@ public abstract class WeaponBase : Poolable
                 Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
             }*/
 
-            availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
             if (availableTargets.Count > 0)
             {
+                Collider2D targetBase;
+                if (targetBase = availableTargets.Find(obj => obj.GetComponent<Base>()))
+                {
+                    availableTargets.Remove(targetBase);
+                }
+
+                availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
+
+                if (targetBase)
+                {
+                    availableTargets.Add(targetBase);
+                    Debug.Log("found base + base is target: " + availableTargets[availableTargets.Count - 1]);
+                }
+
                 target = availableTargets[0].transform;
-                targRb = target.GetComponent<Rigidbody2D>();
+                Debug.Log(availableTargets.Count);
+                Debug.Log(target);
                 targHumanoid = target.GetComponent<UnitHumanoid>();
+                targRb = target.GetComponent<Rigidbody2D>();
 
                 return true;
             }
@@ -155,7 +173,7 @@ public abstract class WeaponBase : Poolable
                 return true;
             }*/
 
-            findTargetTimer = targetCheckDelay + Time.time;
+            findTargetTimer = targetCheckDelay + Time.time + addTime;
             return false;
         }
         else return false;

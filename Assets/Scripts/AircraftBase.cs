@@ -31,7 +31,6 @@ public abstract class AircraftBase : UnitBase
 
     protected virtual IEnumerator TakeOffRoutine()
     {
-        Debug.Log("taking off yes");
         takenOff = false;
         curSpd = 0f;
 
@@ -45,7 +44,7 @@ public abstract class AircraftBase : UnitBase
 
     public void TakeOff()
     {
-        Debug.Log("starting takeoff routine");
+        //Debug.Log("starting takeoff routine");
         StartCoroutine(TakeOffRoutine());
     }
 
@@ -96,7 +95,7 @@ public abstract class AircraftBase : UnitBase
     protected virtual bool ReturnToBaseRot()
     {
         int rot = transform.up.x >= 0 ? 1 : -1;
-        Debug.Log(Mathf.CeilToInt(transform.up.x));
+        //Debug.Log(Mathf.CeilToInt(transform.up.x));
         transform.up = Vector3.MoveTowards(transform.up, new Vector2(transform.up.x > 0 ? Mathf.CeilToInt(transform.up.x) : Mathf.FloorToInt(transform.up.x), 0f), rotationSmoothing * Time.deltaTime);
 
         if (transform.up.y >= retPosition.y - 3f)

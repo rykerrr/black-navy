@@ -70,5 +70,5 @@ public class UnitLayerMask
     }
 }
 
-public enum UnitType { Aircraft, Submarine, Ship }
+public enum UnitType { Aircraft, Submarine, Ship, Base }
 #pragma warning disable 0649

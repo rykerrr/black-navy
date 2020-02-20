@@ -268,6 +268,7 @@ GameObject:
   - component: {fileID: 2146924722448037373}
   - component: {fileID: 6785413893576594604}
   - component: {fileID: 916384500648164023}
+  - component: {fileID: 204508854475058599}
   m_Layer: 0
   m_Name: 30mm Autocannon
   m_TagString: Untagged
@@ -304,18 +305,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 1
   whatUnitsToTarget:
-    mask: 0200000000000000
+    mask: 020000000000000003000000
   afterEffect: {fileID: 0}
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 160
   targetCheckDelay: 0
+  shopCost: 147
   typeOfWeapon: 3
+  typeOfMountRequired: 1
   owner: {fileID: 0}
   projectilePrefab: {fileID: 5429379112880288251, guid: a422e855c6724b84b887c201f1140e62,
     type: 3}
   spawnLocation: {fileID: 6785413893576594605}
-  weaponTooltipDesc: 
   delayBetweenFire: 0.5
   inaccuracyOffset: 0.7
   reloadTime: 0
@@ -432,6 +434,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &204508854475058599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6785413893576594603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfffeab160f6f4459af83b3b75250a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIImage: {fileID: 21300000, guid: 30194849bea02e1469627784bae773e0, type: 3}
+  strongAgainst:
+  - {fileID: 2406341615265846529, guid: 2f20ebe3fd0e0624f8a2f75ce7ba64fd, type: 3}
+  - {fileID: 3570049149993874591, guid: 32accdf646e9ee24e99350f7e10b63ce, type: 3}
+  - {fileID: 6004467122027487915, guid: 9626410608b85cc41a0d5e8175ebbb9a, type: 3}
+  desc: 
 --- !u!1001 &82461674
 PrefabInstance:
   m_ObjectHideFlags: 0

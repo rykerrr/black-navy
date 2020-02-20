@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 3215811206717577614}
   - component: {fileID: 7476648859782138402}
   - component: {fileID: -7236677498033322136}
+  - component: {fileID: 5972955988661370468}
   m_Layer: 0
-  m_Name: Ballistic Missile
+  m_Name: Ballistic Missile Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,18 +95,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unlocked: 1
   whatUnitsToTarget:
-    mask: 
+    mask: 0200000003000000
   afterEffect: {fileID: 0}
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 60
   targetCheckDelay: 0
+  shopCost: 318
   typeOfWeapon: 0
+  typeOfMountRequired: 0
   owner: {fileID: 0}
   projectilePrefab: {fileID: 4669977145655853685, guid: c602090dfe38507448350afdb19e1666,
     type: 3}
   spawnLocation: {fileID: 2285250482528888368}
-  weaponTooltipDesc: 
   delayBetweenFire: 0.7
   inaccuracyOffset: 0
   reloadTime: 5
@@ -218,3 +220,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5972955988661370468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6333065047826804801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfffeab160f6f4459af83b3b75250a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIImage: {fileID: 21300000, guid: f07dea53abc4fa54292514bab14e9f04, type: 3}
+  strongAgainst:
+  - {fileID: 749258210565338905, guid: ea7f707aa56b653439736dbb8429c346, type: 3}
+  - {fileID: 3570049149993874591, guid: 32accdf646e9ee24e99350f7e10b63ce, type: 3}
+  - {fileID: 2406341615265846529, guid: 2f20ebe3fd0e0624f8a2f75ce7ba64fd, type: 3}
+  - {fileID: 49874012249916127, guid: ebde2d3ee101e494c8081b00c8cbdfbc, type: 3}
+  desc: 

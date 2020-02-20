@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7389270116229412106}
   - component: {fileID: 3308256499120776870}
   - component: {fileID: 3128877032092273054}
+  - component: {fileID: 3725100633422184632}
   m_Layer: 0
   m_Name: ALAS SSM
   m_TagString: Untagged
@@ -92,18 +93,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181652273d939fa4eb27b5fdd66454e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlocked: 0
   whatUnitsToTarget:
-    mask: 02000000
+    mask: 0200000003000000
+  afterEffect: {fileID: 0}
   t1Mat: {fileID: 2100000, guid: 9fbc1c20d7780bc4e8e1d04fd2131f46, type: 2}
   t2Mat: {fileID: 2100000, guid: be5008639acbdaf46a05b875a8b53420, type: 2}
   targetCheckRadius: 60
   targetCheckDelay: 0
+  shopCost: 2422
   typeOfWeapon: 0
+  typeOfMountRequired: 0
   owner: {fileID: 0}
   projectilePrefab: {fileID: 8659805166965540539, guid: 21d0ea5c10b88da4d9bd0c9206a929b5,
     type: 3}
   spawnLocation: {fileID: 6169362426391218868}
-  weaponTooltipDesc: 
   delayBetweenFire: 0.7
   inaccuracyOffset: 0
   reloadTime: 5
@@ -216,3 +220,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3725100633422184632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146172338808609989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dfffeab160f6f4459af83b3b75250a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UIImage: {fileID: 21300000, guid: a086b277d02ee5a42ab67cf4d5e61d1d, type: 3}
+  strongAgainst:
+  - {fileID: 749258210565338905, guid: ea7f707aa56b653439736dbb8429c346, type: 3}
+  - {fileID: 3570049149993874591, guid: 32accdf646e9ee24e99350f7e10b63ce, type: 3}
+  - {fileID: 2406341615265846529, guid: 2f20ebe3fd0e0624f8a2f75ce7ba64fd, type: 3}
+  - {fileID: 49874012249916127, guid: ebde2d3ee101e494c8081b00c8cbdfbc, type: 3}
+  desc: 

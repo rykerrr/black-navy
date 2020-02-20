@@ -6,6 +6,8 @@ using UnityEngine.UI;
 #pragma warning disable 0649
 public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
 {
+    private static bool isLoaded;
+
     [SerializeField] private Dropdown[] weaponDropdownMenus; // [unit][dropdownmenu] -> aircraft/submarine/ship [number], there needs to be a second number aka a 2d matrix
     // so that it doesn't activate 3 buttons if there are 2 weapons
     //[SerializeField] private WeaponBase[] AircraftWeapons; // [aircraft, submarine, ship][wep]
@@ -22,9 +24,12 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
     public UnitWeaponLoadout[] GetTeam1UnitLoadouts => team1UnitLoadouts;
     public UnitWeaponLoadout[] GetTeam2UnitLoadouts => team2UnitLoadouts;
 
-    private void Awake()
+    protected override void Awake()
     {
-        LoadBaseWeapons();
+        if(!isLoaded)
+        {
+            LoadBaseWeapons();
+        }
     }
 
     private void LoadBaseWeapons()
@@ -44,6 +49,8 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
                 team2UnitLoadouts[i].weapons[j] = team2UnitLoadouts[i].availableWeapons[0];
             }
         }
+
+        isLoaded = true;
     }
 
     public void SwitchUnit(int unit)
@@ -59,11 +66,23 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
 
         List<Dropdown.OptionData> newOptions = new List<Dropdown.OptionData>();
 
-        foreach (WeaponBase weapon in team1UnitLoadouts[unit].unlockedWeapons)
+        if (GameConfig.Instance.IsSandbox)
         {
-            Dropdown.OptionData newOpt = new Dropdown.OptionData(weapon.name);
-            newOptions.Add(newOpt);
+            foreach (WeaponBase weapon in team1UnitLoadouts[unit].availableWeapons)
+            {
+                Dropdown.OptionData newOpt = new Dropdown.OptionData(weapon.name);
+                newOptions.Add(newOpt);
+            }
         }
+        else
+        {
+            foreach (WeaponBase weapon in team1UnitLoadouts[unit].unlockedWeapons)
+            {
+                Dropdown.OptionData newOpt = new Dropdown.OptionData(weapon.name);
+                newOptions.Add(newOpt);
+            }
+        }
+
 
         for (int i = 0; i < team1UnitLoadouts[unit].weapons.Capacity; i++)
         {
@@ -108,14 +127,31 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
         this.wepNum = wepNum;
     }
 
+    public void RefreshLoadouts()
+    {
+        foreach(UnitWeaponLoadout loadout in team1UnitLoadouts)
+        {
+            loadout.InitializeWeapons();
+        }
+    }
+
     public void SwitchWeapon(int wep) // gets called as second function for weapon switch dropdown menu
     {
         //unitLoadouts[curUnit].weapons[wepNum] = PickableWeapons[(int) unitLoadouts[curUnit].unitType][wep];
         //unitLoadouts[curUnit].weapons[wepNum] = PickableWeapons[(int) unitLoadouts[curUnit].unitType]
 
+        Debug.Log(team + " | " + wep);
+
         if (team == 0)
         {
-            team1UnitLoadouts[curUnit].weapons[wepNum] = team1UnitLoadouts[curUnit].unlockedWeapons[wep];
+            if(GameConfig.Instance.IsSandbox)
+            {
+                team1UnitLoadouts[curUnit].weapons[wepNum] = team1UnitLoadouts[curUnit].availableWeapons[wep];
+            }
+            else
+            {
+                team1UnitLoadouts[curUnit].weapons[wepNum] = team1UnitLoadouts[curUnit].unlockedWeapons[wep];
+            }
         }
         else if (team == 1)
         {
