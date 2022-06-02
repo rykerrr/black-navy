@@ -16,7 +16,7 @@ public class WeaponTurretPlacer : MonoBehaviour
     {
         targCam = Camera.main;
         nodes = Resources.FindObjectsOfTypeAll<WeaponPlacementNode>().ToList();
-        //Debug.Log(FindObjectsOfTypeAll(typeof(WeaponPlacementNode)));
+        //LogUtils.DebugLog(FindObjectsOfTypeAll(typeof(WeaponPlacementNode)));
     }
 
     private void Update()
@@ -46,7 +46,7 @@ public class WeaponTurretPlacer : MonoBehaviour
         {
             if (hit.collider)
             {
-                Debug.Log("Found node!");
+                LogUtils.DebugLog("Found node!");
                 WeaponBase newTurr = Instantiate(selectedTurret).GetComponent<WeaponBase>();
                 hit.collider.GetComponent<WeaponPlacementNode>().PlaceTurret(newTurr);
             }
@@ -70,7 +70,7 @@ public class WeaponTurretPlacer : MonoBehaviour
     {
         if (!newTurret.GetComponent<WeaponBase>().unlocked)
         {
-            Debug.Log("Weapon isn't unlocked, doofus");
+            LogUtils.DebugLog("Weapon isn't unlocked, doofus");
             return;
         }
 
@@ -85,20 +85,20 @@ public class WeaponTurretPlacer : MonoBehaviour
                 if (!nod.HasWeapon)
                 {
                     nod.gameObject.SetActive(true);
-                    Debug.Log("found 1");
+                    LogUtils.DebugLog("found 1");
                     nodeAmn++;
                 }
             }
             else
             {
-                Debug.Log(nod.TypeOfMount + " | " + selectedTurret.typeOfMountRequired);
+                LogUtils.DebugLog(nod.TypeOfMount + " | " + selectedTurret.typeOfMountRequired);
             }
         }
 
         if (nodeAmn <= 0)
         {
             TurnOffPlacer();
-            Debug.Log("Not enough nodes that can mount said weapon, " + nodeAmn + " | " + nodes.Count);
+            LogUtils.DebugLog("Not enough nodes that can mount said weapon, " + nodeAmn + " | " + nodes.Count);
             return;
         }
 

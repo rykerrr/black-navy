@@ -29,18 +29,18 @@ public class AircraftThatWorksWithWeapon : AircraftBase
 
         if (transform.position.y < waterLevel)
         {
-            Debug.Log("HOOT HOOT! | " + name + " | " + vsi);
+            LogUtils.DebugLog("HOOT HOOT! | " + name + " | " + vsi);
         }
 
         if (vsi == 0)
         {
-            Debug.Log("possible error @vsi");
+            LogUtils.DebugLog("possible error @vsi");
         }
 
         if (!takenOff)
         {
             curSpd = Mathf.SmoothDamp(curSpd, speed, ref veloc1, timeToTakeOffFully / 3f);
-            //Debug.Log("hello");
+            //LogUtils.DebugLog("hello");
         }
         else
         {

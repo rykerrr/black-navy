@@ -32,7 +32,7 @@ public class StrategicBomber : AircraftBase
 
         if (vsi == 0)
         {
-            Debug.Log("possible error @vsi");
+            LogUtils.DebugLog("possible error @vsi");
             Debug.Break();
         }
 
@@ -95,7 +95,7 @@ public class StrategicBomber : AircraftBase
                     {
                         if (!bombing)
                         {
-                            Debug.Log("Beyond sortie range, " + (target.up.x <= -0.95f ? transform.up.x <= -0.95f ? false : true : transform.up.x >= 0.95f ? true : false) + " " + bombing);
+                            LogUtils.DebugLog("Beyond sortie range, " + (target.up.x <= -0.95f ? transform.up.x <= -0.95f ? false : true : transform.up.x >= 0.95f ? true : false) + " " + bombing);
                             evadePosition = new Vector2(transform.position.x - (7 * transform.up.x), transform.position.y + 0.2f);
                             resettingSortie = true;
                         }
@@ -134,7 +134,7 @@ public class StrategicBomber : AircraftBase
     {
         if (base.ReturnToBaseRot())
         {
-            Debug.Log("child = true");
+            LogUtils.DebugLog("child = true");
             returningToBaseRot = false;
             currentBombs = amountOfBombs;
             bombing = true;

@@ -87,7 +87,7 @@ public class AircraftCarrier : MonoBehaviour
 
     private void Test()
     {
-        Debug.Log(UnitLayerMask.CheckIfUnitIsInMask(UnitType.Ship, whatUnitsToTarget));
+        LogUtils.DebugLog(UnitLayerMask.CheckIfUnitIsInMask(UnitType.Ship, whatUnitsToTarget));
     }
 
     private void FireRocket()
@@ -182,7 +182,7 @@ public class AircraftCarrier : MonoBehaviour
                     planeClone.name = planeClone.name + "Enemy";
                     break;
                 default:
-                    Debug.Log("more headaches here we go!!!!");
+                    LogUtils.DebugLog("more headaches here we go!!!!");
                     break;
             }
 
@@ -209,7 +209,7 @@ public class AircraftCarrier : MonoBehaviour
 
         /*for (int i = 0; i < availableTargets.Count; i++)
         {
-            Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+            LogUtils.DebugLog(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
         }*/
 
         availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
@@ -233,8 +233,8 @@ public class AircraftCarrier : MonoBehaviour
     {
         if (pref < 0 || pref >= planePrefabs.Count)
         {
-            Debug.Log("Yeet yeet motherfucker");
-            Debug.Log(planePrefabs[pref] + " | " + pref);
+            LogUtils.DebugLog("Yeet yeet motherfucker");
+            LogUtils.DebugLog(planePrefabs[pref] + " | " + pref);
             Debug.Break();
         }
 
@@ -243,7 +243,7 @@ public class AircraftCarrier : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("Clicked");
+        LogUtils.DebugLog("Clicked");
         carrierMenu.SetActive(!carrierMenu.activeInHierarchy);
     }
 

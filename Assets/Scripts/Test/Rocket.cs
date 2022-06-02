@@ -163,7 +163,7 @@ public class Rocket : MonoBehaviour
 
         /*for (int i = 0; i < availableTargets.Count; i++)
         {
-            Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+            LogUtils.DebugLog(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
         }*/
 
         availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();

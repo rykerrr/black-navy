@@ -39,7 +39,7 @@ public class Missile : MonoBehaviour
     //Vector2 dir = target.position - transform.position;
     //Debug.DrawRay(transform.position, dir, Color.magenta);
     //angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-    //Debug.Log(transform.rotation.eulerAngles.z + " | " + transform.rotation.z* Mathf.Rad2Deg);
+    //LogUtils.DebugLog(transform.rotation.eulerAngles.z + " | " + transform.rotation.z* Mathf.Rad2Deg);
     //testAngle = Mathf.Abs(transform.rotation.z* Mathf.Rad2Deg) - Mathf.Abs(angle);
     //Quaternion angleAxis = Quaternion.AngleAxis(angle, Vector3.forward);
     //eulerAngle = angleAxis.eulerAngles.z;
@@ -113,7 +113,7 @@ public class Missile : MonoBehaviour
 
         /*for (int i = 0; i < availableTargets.Count; i++)
         {
-            Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+            LogUtils.DebugLog(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
         }*/
 
         availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();

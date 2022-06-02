@@ -48,7 +48,7 @@ public class Submarine : ShipBase
 
             if (FindTarget())
             {
-                Debug.Log(FindTarget());
+                LogUtils.DebugLog(FindTarget());
                 return; // loop back
             }
         }

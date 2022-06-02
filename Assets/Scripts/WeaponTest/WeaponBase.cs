@@ -59,7 +59,7 @@ public abstract class WeaponBase : Poolable
         {
             if (transform.parent)
             {
-                Debug.LogWarning("No audio source on weapon? | " + transform.parent.name + " , " + name);
+                LogUtils.DebugLogWarning("No audio source on weapon? | " + transform.parent.name + " , " + name);
             }
         }
     }
@@ -103,7 +103,7 @@ public abstract class WeaponBase : Poolable
 
     protected virtual bool FindTarget(float addTime = 0f)
     {
-        Debug.Log("yes");
+        LogUtils.DebugLog("yes");
         if (Time.time > findTargetTimer)
         {
             List<Collider2D> hit = (Physics2D.OverlapCircleAll(transform.position, targetCheckRadius, whatIsTarget)).ToList();
@@ -125,12 +125,12 @@ public abstract class WeaponBase : Poolable
                     }
                     catch (System.Exception e)
                     {
-                        Debug.Log(e);
-                        Debug.Log(hit + " | " + hit.Count);
+                        LogUtils.DebugLog(e);
+                        LogUtils.DebugLog(hit + " | " + hit.Count);
 
                         foreach (var obj in hit)
                         {
-                            Debug.Log(obj.name);
+                            LogUtils.DebugLog(obj.name);
                         }
                     }
                 }
@@ -139,7 +139,7 @@ public abstract class WeaponBase : Poolable
 
             /*for (int i = 0; i < availableTargets.Count; i++)
             {
-                Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+                LogUtils.DebugLog(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
             }*/
 
             if (availableTargets.Count > 0)
@@ -155,12 +155,12 @@ public abstract class WeaponBase : Poolable
                 if (targetBase)
                 {
                     availableTargets.Add(targetBase);
-                    Debug.Log("found base + base is target: " + availableTargets[availableTargets.Count - 1]);
+                    LogUtils.DebugLog("found base + base is target: " + availableTargets[availableTargets.Count - 1]);
                 }
 
                 target = availableTargets[0].transform;
-                Debug.Log(availableTargets.Count);
-                Debug.Log(target);
+                LogUtils.DebugLog(availableTargets.Count);
+                LogUtils.DebugLog(target);
                 targHumanoid = target.GetComponent<UnitHumanoid>();
                 targRb = target.GetComponent<Rigidbody2D>();
 
@@ -200,7 +200,7 @@ public abstract class WeaponBase : Poolable
         // No solution
         if (root < 0)
         {
-            Debug.Log("no solution");
+            LogUtils.DebugLog("no solution");
             return 0;
         }
 

@@ -25,7 +25,6 @@ public class UIWeaponHelpScript : MonoBehaviour
     {
         foreach (GameObject obj in strongAgainstImageObjs)
         {
-            Debug.Log(obj.GetComponentInChildren<Image>().name);
             List<Image> imgs = obj.GetComponentsInChildren<Image>().ToList();
 
             if(imgs.Count >= 1)

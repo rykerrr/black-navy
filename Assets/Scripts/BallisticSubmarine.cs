@@ -28,7 +28,7 @@ public class BallisticSubmarine : ShipBase
         {
             if (FindTarget())
             {
-                Debug.Log(FindTarget());
+                LogUtils.DebugLog(FindTarget());
                 return; // loop back
             }
         }

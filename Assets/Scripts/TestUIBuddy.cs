@@ -174,7 +174,7 @@ public class TestUIBuddy : MonoBehaviour
             if (str1 == str2)
             {
                 curLoadout = loadout;
-                //Debug.Log(str1 + " == " + str2);
+                //LogUtils.DebugLog(str1 + " == " + str2);
                 break;
             }
         }
@@ -194,8 +194,8 @@ public class TestUIBuddy : MonoBehaviour
             }
             else
             {
-                Debug.Log(curLoadout + " | " + currentUnit.unitPrefab);
-                Debug.Log("Error..");
+                LogUtils.DebugLog(curLoadout + " | " + currentUnit.unitPrefab);
+                LogUtils.DebugLog("Error..");
                 Debug.Break();
 
                 return;
@@ -212,7 +212,7 @@ public class TestUIBuddy : MonoBehaviour
             Transform newUnitClone = GetUnit(newUnit);
             newUnitClone.gameObject.layer = (int)newUnit.teamLayer;
 
-            //Debug.Log(newUnitClone.gameObject.layer + " | " + (int)newUnit.teamLayer);
+            //LogUtils.DebugLog(newUnitClone.gameObject.layer + " | " + (int)newUnit.teamLayer);
 
             LayerMask whatAreOurProjectiles;
             LayerMask whatIsTarget;
@@ -268,7 +268,7 @@ public class TestUIBuddy : MonoBehaviour
                     newUnitClone.name = newUnitClone.name + "Enemy";
                     break;
                 default:
-                    Debug.Log("more headaches here we go!!!!");
+                    LogUtils.DebugLog("more headaches here we go!!!!");
                     yield break;
             }
 

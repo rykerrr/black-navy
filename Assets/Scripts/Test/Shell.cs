@@ -44,7 +44,7 @@ public class Shell : MonoBehaviour
         if (hit != null)
         {
             target = hit.transform;
-            Debug.Log("Found target!");
+            LogUtils.DebugLog("Found target!");
             return true;
         }
 

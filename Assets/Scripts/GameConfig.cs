@@ -23,12 +23,12 @@ public class GameConfig : Singleton<GameConfig>
         if (SceneManager.GetActiveScene().name == "Sandbox")
         {
             isSandbox = true;
-            Debug.Log("sandbox");
+            LogUtils.DebugLog("sandbox");
         }
         else
         {
             isSandbox = false;
-            Debug.Log("no sandbox");
+            LogUtils.DebugLog("no sandbox");
         }
     }
 

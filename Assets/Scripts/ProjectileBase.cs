@@ -50,7 +50,7 @@ public abstract class ProjectileBase : Poolable, IDamager
         {
             if ((graphics = GetComponentInChildren<SpriteRenderer>()) == null)
             {
-                Debug.Log("No graphics??");
+                LogUtils.DebugLog("No graphics??");
             }
         }
     }
@@ -59,8 +59,8 @@ public abstract class ProjectileBase : Poolable, IDamager
     {
         if (Time.time > lifeTimer && gameObject.activeInHierarchy && enabled)
         {
-            //Debug.Log("Deleting, " + lifeTimer);
-            //Debug.Log("Deleting: " + Time.time + " | " + projectileLifetime + " | " + (Time.time + projectileLifetime) + " | " + lifeTimer + " | " + gameObject.activeSelf + " | " + gameObject.activeInHierarchy);
+            //LogUtils.DebugLog("Deleting, " + lifeTimer);
+            //LogUtils.DebugLog("Deleting: " + Time.time + " | " + projectileLifetime + " | " + (Time.time + projectileLifetime) + " | " + lifeTimer + " | " + gameObject.activeSelf + " | " + gameObject.activeInHierarchy);
             ReturnToPool();
         }
     }
@@ -108,7 +108,7 @@ public abstract class ProjectileBase : Poolable, IDamager
             partSound.Play();
         }
 
-        //Debug.Log(partSound);
+        //LogUtils.DebugLog(partSound);
         Destroy(particleClone.gameObject, hitSound.clip.length * 1.4f);
 
         if (collision.GetComponent<UnitHumanoid>())

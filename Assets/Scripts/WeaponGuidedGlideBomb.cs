@@ -28,7 +28,7 @@ public class WeaponGuidedGlideBomb
         bombClone.gameObject.layer = layerValue;
         bomb.target = target;
         bomb.timeBeforeBoosters = Mathf.Clamp(bomb.timeBeforeBoosters - yOffsetDelay, 0.6f, 2f);
-        Debug.Log(bomb.timeBeforeBoosters + " | " + yOffsetDelay);
+        LogUtils.DebugLog(bomb.timeBeforeBoosters + " | " + yOffsetDelay);
         bomb.whatIsTarget = whatIsTarget;
         bombRb.velocity = thisRb.velocity;
 

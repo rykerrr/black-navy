@@ -32,7 +32,7 @@ public class SubmarineThatWorksWithWeapon : ShipBase
 
             if (FindTarget())
             {
-                Debug.Log(FindTarget());
+                LogUtils.DebugLog(FindTarget());
                 return; // loop back
             }
         }

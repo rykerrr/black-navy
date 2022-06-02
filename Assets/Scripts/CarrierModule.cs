@@ -39,10 +39,10 @@ public class CarrierModule : MonoBehaviour
     {
         if (isLaunchingAircraft)
         {
-            //Debug.Log("Launch!");
+            //LogUtils.DebugLog("Launch!");
             if (Time.time > aircraftLaunchTimer)
             {
-                //Debug.Log("launching plane");
+                //LogUtils.DebugLog("launching plane");
                 Transform planeClone = GetPlane();
 
                 switch (planeClone.gameObject.layer) // temporary before i commit seppuku, retard
@@ -83,7 +83,7 @@ public class CarrierModule : MonoBehaviour
                         planeClone.name = planeClone.name + "Enemy";
                         break;
                     default:
-                        Debug.Log("more headaches here we go!!!!");
+                        LogUtils.DebugLog("more headaches here we go!!!!");
                         break;
                 }
 
@@ -92,26 +92,26 @@ public class CarrierModule : MonoBehaviour
                 aircraft.whatIsTarget = whatIsTarget;
                 aircraft.TakeOff();
 
-                //Debug.Log("takeoff");
+                //LogUtils.DebugLog("takeoff");
 
                 aircraftLaunchTimer = Time.time + aircraftLaunchDelay;
             }
             else
             {
-                //Debug.Log("on delay");
+                //LogUtils.DebugLog("on delay");
                 return;
             }
         }
         else
         {
-            //Debug.Log("wut");
+            //LogUtils.DebugLog("wut");
             return;
         }
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("Clicked");
+        LogUtils.DebugLog("Clicked");
         carrierMenu.SetActive(!carrierMenu.activeSelf);
     }
 
@@ -121,17 +121,17 @@ public class CarrierModule : MonoBehaviour
 
         if (currentPlane.GetComponent<AircraftThatWorksWithWeapon>())
         {
-            //Debug.Log("1");
+            //LogUtils.DebugLog("1");
             planeClone = Poolable.Get<AircraftThatWorksWithWeapon>(() => Poolable.CreateObj<AircraftThatWorksWithWeapon>(currentPlane.gameObject), aircraftSpawnPoint.position, transform.rotation, null).transform;
         }
         else if (currentPlane.GetComponent<StrikeFighterThatWorksWithWeapon>())
         {
-            //Debug.Log("2");
+            //LogUtils.DebugLog("2");
             planeClone = Poolable.Get<StrikeFighterThatWorksWithWeapon>(() => Poolable.CreateObj<StrikeFighterThatWorksWithWeapon>(currentPlane.gameObject), aircraftSpawnPoint.position, transform.rotation, null).transform;
         }
         else if (currentPlane.GetComponent<StrategicBomberThatWorksWithWeapon>())
         {
-            //Debug.Log("3");
+            //LogUtils.DebugLog("3");
             planeClone = Poolable.Get<StrategicBomberThatWorksWithWeapon>(() => Poolable.CreateObj<StrategicBomberThatWorksWithWeapon>(currentPlane.gameObject), aircraftSpawnPoint.position, transform.rotation, null).transform;
         }
 
@@ -142,8 +142,8 @@ public class CarrierModule : MonoBehaviour
     {
         if (pref < 0 || pref >= planePrefabs.Count)
         {
-            Debug.Log("Yeet yeet motherfucker");
-            Debug.Log(planePrefabs[pref] + " | " + pref);
+            LogUtils.DebugLog("Yeet yeet motherfucker");
+            LogUtils.DebugLog(planePrefabs[pref] + " | " + pref);
             Debug.Break();
         }
 

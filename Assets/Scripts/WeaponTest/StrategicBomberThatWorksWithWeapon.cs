@@ -83,7 +83,7 @@ public class StrategicBomberThatWorksWithWeapon : AircraftBase
 
                     Debug.DrawRay(transform.position, (target.position - transform.position) * 3f);
 
-                    Debug.Log(FireWeapons());
+                    LogUtils.DebugLog(FireWeapons());
 
                     bombing = false;
                 }
@@ -93,7 +93,7 @@ public class StrategicBomberThatWorksWithWeapon : AircraftBase
                     {
                         if (!bombing)
                         {
-                            Debug.Log("Beyond sortie range, " + (target.up.x <= -0.95f ? transform.up.x <= -0.95f ? false : true : transform.up.x >= 0.95f ? true : false) + " " + bombing);
+                            LogUtils.DebugLog("Beyond sortie range, " + (target.up.x <= -0.95f ? transform.up.x <= -0.95f ? false : true : transform.up.x >= 0.95f ? true : false) + " " + bombing);
                             evadePosition = new Vector2(transform.position.x - (7 * transform.up.x), transform.position.y + 0.2f);
                             resettingSortie = true;
                         }
@@ -132,7 +132,7 @@ public class StrategicBomberThatWorksWithWeapon : AircraftBase
     {
         if (base.ReturnToBaseRot())
         {
-            Debug.Log("child = true");
+            LogUtils.DebugLog("child = true");
             returningToBaseRot = false;
             ReloadWeapons();
             bombing = true;

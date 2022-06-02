@@ -29,14 +29,14 @@ public class CannonShell : UnguidedProjectile
     {
         base.OnEnable();
         //thisRb.velocity = ((Vector2)transform.right * speed * Time.fixedDeltaTime);
-        //Debug.Log("enabled cannon shell");
+        //LogUtils.DebugLog("enabled cannon shell");
     }
 
     protected override void OnDisable()
     {
         base.OnDisable();
         thisRb.velocity = Vector2.zero;
-        //Debug.Log("disabled cannon shell");
+        //LogUtils.DebugLog("disabled cannon shell");
     }
 }
 #pragma warning restore 0649

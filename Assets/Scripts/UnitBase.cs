@@ -109,12 +109,12 @@ public abstract class UnitBase : Poolable
                     }
                     catch (System.Exception e)
                     {
-                        Debug.Log(e);
-                        Debug.Log(hit + " | " + hit.Count);
+                        LogUtils.DebugLog(e);
+                        LogUtils.DebugLog(hit + " | " + hit.Count);
 
                         foreach (var obj in hit)
                         {
-                            Debug.Log(obj.name);
+                            LogUtils.DebugLog(obj.name);
                         }
                     }
                 }
@@ -123,7 +123,7 @@ public abstract class UnitBase : Poolable
 
             /*for (int i = 0; i < availableTargets.Count; i++)
             {
-                Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+                LogUtils.DebugLog(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
             }*/
 
 
@@ -141,7 +141,7 @@ public abstract class UnitBase : Poolable
                 if (targetBase)
                 {
                     availableTargets.Add(targetBase);
-                    Debug.Log("found base + base is target: " + availableTargets[availableTargets.Count - 1]);
+                    LogUtils.DebugLog("found base + base is target: " + availableTargets[availableTargets.Count - 1]);
                 }
 
                 target = availableTargets[0].transform;

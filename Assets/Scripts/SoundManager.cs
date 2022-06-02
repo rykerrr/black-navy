@@ -43,7 +43,7 @@ public class SoundManager : Singleton<SoundManager>
 
         if (s == null)
         {
-            Debug.LogWarning("Sound not found by said name, name: " + soundName);
+            LogUtils.DebugLogWarning("Sound not found by said name, name: " + soundName);
             return null;
         }
         else

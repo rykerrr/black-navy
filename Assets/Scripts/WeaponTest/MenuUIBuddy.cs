@@ -15,7 +15,7 @@ public class MenuUIBuddy : MonoBehaviour
     {
         if(curVisiblePanel == panels[panelNum])
         {
-            Debug.LogWarning("Same panel?");
+            LogUtils.DebugLogWarning("Same panel?");
             return;
         }
         else
@@ -34,17 +34,17 @@ public class MenuUIBuddy : MonoBehaviour
             StopAllCoroutines();
             StartCoroutine(MovePanelSmooth(curVisiblePanel, newPos, panelSwitchSpeedFactor));
             curVisiblePanel = panels[panelNum];
-            //Debug.Log("Current pan: " + curVisiblePanel);
-            //Debug.Log(Mathf.Abs(curVisiblePanel.localPosition.x));
-            //Debug.Log(Mathf.Abs(curVisiblePanel.localPosition.x) / panelOffset);
-            //Debug.Log(Mathf.Abs(curVisiblePanel.localPosition.x) / panelOffset * panelSwitchSpeedFactor);
+            //LogUtils.DebugLog("Current pan: " + curVisiblePanel);
+            //LogUtils.DebugLog(Mathf.Abs(curVisiblePanel.localPosition.x));
+            //LogUtils.DebugLog(Mathf.Abs(curVisiblePanel.localPosition.x) / panelOffset);
+            //LogUtils.DebugLog(Mathf.Abs(curVisiblePanel.localPosition.x) / panelOffset * panelSwitchSpeedFactor);
             StartCoroutine(MovePanelSmooth(curVisiblePanel, Vector2.zero, Mathf.Abs(curVisiblePanel.localPosition.x) / panelOffset * panelSwitchSpeedFactor));
         }
     }
 
     private IEnumerator MovePanel(RectTransform panel, Vector2 pos, float spd)
     {
-        //Debug.Log("New pos for " + panel.name + " : " + pos);
+        //LogUtils.DebugLog("New pos for " + panel.name + " : " + pos);
         while(Mathf.Abs(panel.localPosition.x - pos.x) >= 0.1f || Mathf.Abs(panel.localPosition.y - pos.y) >= 0.1f)
         {
             panel.localPosition = Vector2.MoveTowards(panel.localPosition, pos, spd);
@@ -57,7 +57,7 @@ public class MenuUIBuddy : MonoBehaviour
     private IEnumerator MovePanelSmooth(RectTransform panel, Vector2 pos, float spd)
     {
         Vector2 veloc = Vector2.zero;
-        //Debug.Log("New pos for " + panel.name + " : " + pos);
+        //LogUtils.DebugLog("New pos for " + panel.name + " : " + pos);
         while (Mathf.Abs(panel.localPosition.x - pos.x) >= 0.1f || Mathf.Abs(panel.localPosition.y - pos.y) >= 0.1f)
         {
             panel.localPosition = Vector2.SmoothDamp(panel.localPosition, pos, ref veloc, spd);

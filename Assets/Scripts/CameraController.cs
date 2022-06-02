@@ -21,6 +21,8 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float movMult = 1;
     [SerializeField] private float mWheelMovement;
 
+    private float camZoomLevel = 175f;
+    
     private Image zoomLevelImg;
     private bool appearing = false;
     private float veloc1;
@@ -28,10 +30,14 @@ public class CameraController : MonoBehaviour
     private float unitZoomTimer;
     private float zoomTimer;
 
+    bool isMobile;
+    
     public Transform SelectedUnit => selectedUnit;
 
     private void Start()
     {
+        isMobile = SystemInfo.deviceType == DeviceType.Handheld;
+        
         if (target.GetComponent<Camera>() == null)
         {
             targCam = Camera.main;
@@ -54,8 +60,19 @@ public class CameraController : MonoBehaviour
             Select();
         }
 
-        xMovement = Input.GetAxis("Horizontal");
-        yMovement = Input.GetAxis("Vertical");
+        if (isMobile)
+        {
+            if (Input.touchCount <= 0) return;
+            
+            var mv = Input.GetTouch(0).deltaPosition;
+            xMovement = mv.x / 3f; 
+            yMovement = mv.y / 3f;
+        }
+        else
+        {
+            xMovement = Input.GetAxis("Horizontal");
+            yMovement = Input.GetAxis("Vertical");
+        }
 
         if (!EventSystem.current.IsPointerOverGameObject())
         {
@@ -121,7 +138,7 @@ public class CameraController : MonoBehaviour
             }
         }
 
-        targCam.orthographicSize = Mathf.Clamp(targCam.orthographicSize - (mWheelMovement / mwheelSensDivisor) * movMult, 5, 100);
+        targCam.orthographicSize = Mathf.Clamp(isMobile ? camZoomLevel : targCam.orthographicSize - (mWheelMovement / mwheelSensDivisor) * movMult, 5, 175);
         target.position = new Vector3(target.position.x + (xMovement / movSensDivisor) * movMult, target.position.y + (yMovement / movSensDivisor) * movMult, target.position.z);
         zoomLevelText.text = "Zoom level: " + targCam.orthographicSize;
     }
@@ -153,6 +170,11 @@ public class CameraController : MonoBehaviour
     public void ClearUnitSelection()
     {
         selectedUnit = null;
+    }
+
+    public void Slider_ChangeZoomLevel(float zoomLevel)
+    {
+        camZoomLevel = zoomLevel;
     }
 }
 #pragma warning disable 0649

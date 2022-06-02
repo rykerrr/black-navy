@@ -22,7 +22,7 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
         {
             if (m_ShuttingDown)
             {
-                Debug.LogWarning("[Singleton] Instance '" + typeof(T) +
+                LogUtils.DebugLogWarning("[Singleton] Instance '" + typeof(T) +
                     "' already destroyed. Returning null.");
                 return null;
             }
@@ -65,10 +65,5 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     private void OnEnable()
     {
         m_ShuttingDown = false;
-    }
-
-    private void OnDisable()
-    {
-        m_ShuttingDown = true;
     }
 }

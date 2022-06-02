@@ -99,7 +99,7 @@ public class ParasiteFighter : MonoBehaviour
             if (currentRockets == 0)
             {
                 currentRockets = -1;
-                Debug.Log("OUT OF ROCKETS!");
+                LogUtils.DebugLog("OUT OF ROCKETS!");
             }
 
             if (evading == true)
@@ -116,7 +116,7 @@ public class ParasiteFighter : MonoBehaviour
 
                     if (enemyIsTooCloseEvadeTimer >= 5f)
                     {
-                        Debug.Log("Too close!");
+                        LogUtils.DebugLog("Too close!");
                         int rand = Random.Range(0, 30) > 20 ? -1 : 1;
                         retPosition = new Vector3(transform.up.x * Random.Range(14f, 30f) * rand, yBaseAltitude + Random.Range(4f, 14f), transform.position.z);
                         evading = false;
@@ -279,7 +279,7 @@ public class ParasiteFighter : MonoBehaviour
 
         /*for (int i = 0; i < availableTargets.Count; i++)
         {
-            Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+            LogUtils.DebugLog(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
         }*/
 
         availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();

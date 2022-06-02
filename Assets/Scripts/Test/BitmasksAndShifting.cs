@@ -16,7 +16,7 @@ public class BitmasksAndShifting : MonoBehaviour
     private void Start()
     {
         bitMask = 1 << unitLayer | 1 << unit2Layer;
-        //Debug.Log("Lr: " + unitLayer + " Mask: " + System.Convert.ToString(bitMask, 2).PadLeft(32, '0'));
+        //LogUtils.DebugLog("Lr: " + unitLayer + " Mask: " + System.Convert.ToString(bitMask, 2).PadLeft(32, '0'));
     }
 }
 #pragma warning disable 0649

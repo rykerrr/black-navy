@@ -12,7 +12,7 @@ public class UnitLayerMask
     {
         if (CheckIfMaskHasMultiples(mask.mask) == true)
         {
-            Debug.LogError("Mask has doubles");
+            LogUtils.DebugLogError("Mask has doubles");
             Debug.Break();
         }
 
@@ -21,7 +21,7 @@ public class UnitLayerMask
 
         int check = maskTest & layer;
 
-        //Debug.Log("Layer: " + System.Convert.ToString(layer, 2).PadLeft(4, '0') + " Mask: " + System.Convert.ToString(maskTest, 2).PadLeft(4, '0') + " Check: " + System.Convert.ToString(check, 2).PadLeft(4, '0'));
+        //LogUtils.DebugLog("Layer: " + System.Convert.ToString(layer, 2).PadLeft(4, '0') + " Mask: " + System.Convert.ToString(maskTest, 2).PadLeft(4, '0') + " Check: " + System.Convert.ToString(check, 2).PadLeft(4, '0'));
 
         if (check > 0)
         {

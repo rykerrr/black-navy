@@ -14,13 +14,13 @@ public class UnitWeaponLoadout : ScriptableObject
     private void OnEnable()
     {
         InitializeWeapons();
-        //Debug.Log("init'd");
+        //LogUtils.DebugLog("init'd");
     }
 
     private void OnDisable()
     {
-        //Debug.Log("uninit'd");
-        unlockedWeapons.Clear();
+        //LogUtils.DebugLog("uninit'd");
+        // unlockedWeapons.Clear();
     }
 
     public void InitializeWeapons()

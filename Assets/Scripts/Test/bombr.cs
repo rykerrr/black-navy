@@ -68,7 +68,7 @@ public class bombr : MonoBehaviour
     {
         if (returningToBaseAlt)
         {
-            Debug.Log("returning to base alt");
+            LogUtils.DebugLog("returning to base alt");
             transform.up = Vector3.MoveTowards(transform.up, retPosition, Random.Range(0.08f, 0.12f));
 
             if (transform.position.y >= yBaseAltitude)
@@ -95,7 +95,7 @@ public class bombr : MonoBehaviour
             {
                 if (transform.position.y <= waterLevel + 4f && !returningToBaseAlt)
                 {
-                    Debug.Log("returning to base alt is true");
+                    LogUtils.DebugLog("returning to base alt is true");
                     returningToBaseAlt = true;
                     retPosition = new Vector3(transform.up.x * 70, yBaseAltitude + Random.Range(4f, 6f), transform.position.z);
                 }
@@ -112,7 +112,7 @@ public class bombr : MonoBehaviour
                 {
                     if (Time.time > evasionTimer)
                     {
-                        Debug.Log("Yeet");
+                        LogUtils.DebugLog("Yeet");
                         evading = false;
                     }
 
@@ -120,7 +120,7 @@ public class bombr : MonoBehaviour
                     {
                         if (target)
                         {
-                            Debug.Log("Higher than evadeYAltitude");
+                            LogUtils.DebugLog("Higher than evadeYAltitude");
                             curSpd = Mathf.SmoothDamp(curSpd, speed * 2.4f, ref veloc4, 2f);
                             diving = true;
                             evading = false;
@@ -145,7 +145,7 @@ public class bombr : MonoBehaviour
                     if ((target.position - transform.position).magnitude <= distanceBeforeBomb)
                     {
                         DropBomb();
-                        Debug.Log("Should be evading?");
+                        LogUtils.DebugLog("Should be evading?");
                         diving = false;
                         evading = true;
                         evasionTimer = Time.time + 10f;
@@ -198,7 +198,7 @@ public class bombr : MonoBehaviour
                 bombClone.gameObject.layer = layerValue;
                 bomb.target = target;
                 bomb.timeBeforeBoosters = Mathf.Clamp(bomb.timeBeforeBoosters - yOffsetDelay, 0.6f, 2f);
-                Debug.Log(bomb.timeBeforeBoosters + " | " + yOffsetDelay);
+                LogUtils.DebugLog(bomb.timeBeforeBoosters + " | " + yOffsetDelay);
                 bomb.whatIsEnemy = whatIsTarget;
                 bombRb.velocity = thisRb.velocity;
             }
@@ -213,7 +213,7 @@ public class bombr : MonoBehaviour
                 torpClone.up = transform.up;
             }
         }
-        else Debug.Log("No target");
+        else LogUtils.DebugLog("No target");
 
         dropTimer = dropDelay + Time.time;
     }
@@ -257,7 +257,7 @@ public class bombr : MonoBehaviour
 
         /*for (int i = 0; i < availableTargets.Count; i++)
         {
-            Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+            LogUtils.DebugLog(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
         }*/
 
         availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();

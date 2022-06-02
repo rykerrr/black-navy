@@ -62,7 +62,7 @@ public class asfighter : MonoBehaviour
     {
         if (returningToBaseAlt)
         {
-            Debug.Log("returning to base alt");
+            LogUtils.DebugLog("returning to base alt");
             transform.up = Vector3.MoveTowards(transform.up, retPosition, Random.Range(0.08f, 0.12f));
 
             if (transform.position.y >= yBaseAltitude)
@@ -92,7 +92,7 @@ public class asfighter : MonoBehaviour
 
             if (transform.position.y <= waterLevel + 17 && !returningToBaseAlt)
             {
-                Debug.Log("returning to base alt is true");
+                LogUtils.DebugLog("returning to base alt is true");
                 returningToBaseAlt = true;
                 engaging = false;
                 retPosition = new Vector3(transform.up.x * 70, yBaseAltitude + Random.Range(4f, 6f), transform.position.z);
@@ -101,7 +101,7 @@ public class asfighter : MonoBehaviour
 
             if (cannonAmmo == 0)
             {
-                Debug.Log("reload time");
+                LogUtils.DebugLog("reload time");
                 cannonAmmo = -1;
                 engaging = false;
 
@@ -128,13 +128,13 @@ public class asfighter : MonoBehaviour
                         return;
                     }
 
-                    Debug.Log("too close to engage");
+                    LogUtils.DebugLog("too close to engage");
                     speed = Mathf.SmoothDamp(speed, startSpeed * 1.4f, ref floatveloc1, 2f);
                     transform.up = Vector3.MoveTowards(transform.up, new Vector2(transform.up.x * 140, yBaseAltitude * 1.1f), 0.06f);
 
                     if ((target.position - transform.position).magnitude >= engageRange && cannonAmmo > 0)
                     {
-                        Debug.Log("engaging is true");
+                        LogUtils.DebugLog("engaging is true");
                         engaging = true;
                     }
 
@@ -144,7 +144,7 @@ public class asfighter : MonoBehaviour
 
                 if ((target.position - transform.position).magnitude <= minEngageRange)
                 {
-                    Debug.Log("engaging is true");
+                    LogUtils.DebugLog("engaging is true");
                     engaging = false;
                 }
 
@@ -154,7 +154,7 @@ public class asfighter : MonoBehaviour
 
                 if (targetIsVisual)
                 {
-                    Debug.Log("target is in sight");
+                    LogUtils.DebugLog("target is in sight");
                     speed = Mathf.SmoothDamp(speed, startSpeed * 0.8f, ref floatveloc1, 2f);
 
                     if (Time.time > missileTimer)
@@ -265,7 +265,7 @@ public class asfighter : MonoBehaviour
             cannonTimer = cannonDelay + Time.time;
             cannonAmmo--;
         }
-        else Debug.Log("No target");
+        else LogUtils.DebugLog("No target");
     }
 
     private void LaunchMissile()
@@ -297,17 +297,17 @@ public class asfighter : MonoBehaviour
 
         /*for (int i = 0; i < availableTargets.Count; i++)
         {
-            Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+            LogUtils.DebugLog(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
         }*/
 
         availableTargets = availableTargets.OrderBy(en => Mathf.Abs((en.transform.position - transform.position).magnitude)).ToList();
         if (availableTargets.Count > 0)
         {
             target = availableTargets[availableTargets.Count - 1].transform;
-            Debug.Log(target);
-            Debug.Log(target.GetComponent<ShipHumanoid>());
-            Debug.Log(target.GetComponent<ShipHumanoid>().whatAmI);
-            Debug.Log(UnitLayerMask.CheckIfUnitIsInMask(target.GetComponent<ShipHumanoid>().whatAmI, whatUnitsToTarget));
+            LogUtils.DebugLog(target);
+            LogUtils.DebugLog(target.GetComponent<ShipHumanoid>());
+            LogUtils.DebugLog(target.GetComponent<ShipHumanoid>().whatAmI);
+            LogUtils.DebugLog(UnitLayerMask.CheckIfUnitIsInMask(target.GetComponent<ShipHumanoid>().whatAmI, whatUnitsToTarget));
 
             return true;
         }

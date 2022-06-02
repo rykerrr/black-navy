@@ -20,7 +20,7 @@ public class WeaponPlacementNode : MonoBehaviour
         {
             if ((graphics = transform.GetComponentInChildren<SpriteRenderer>()) == null)
             {
-                Debug.Log("No sprite renderer found noob");
+                LogUtils.DebugLog("No sprite renderer found noob");
             }
         }
 
@@ -29,10 +29,10 @@ public class WeaponPlacementNode : MonoBehaviour
 
     public bool PlaceTurret(WeaponBase turret)
     {
-        Debug.Log("placing turret");
+        LogUtils.DebugLog("placing turret");
         if (weapon != null)
         {
-            Debug.Log("Has a weapon already");
+            LogUtils.DebugLog("Has a weapon already");
             return false;
         }
 
@@ -44,7 +44,7 @@ public class WeaponPlacementNode : MonoBehaviour
         HasWeapon = true;
 
         turret.transform.position = transform.position;
-        Debug.Log("placed");
+        LogUtils.DebugLog("placed");
         return true;
     }
 
@@ -58,7 +58,7 @@ public class WeaponPlacementNode : MonoBehaviour
         }
         else
         {
-            Debug.Log("Doesn't have a weapon");
+            LogUtils.DebugLog("Doesn't have a weapon");
         }
     }
 }

@@ -7,7 +7,7 @@ public abstract class UnguidedProjectile : ProjectileBase
     protected override void OnEnable()
     {
         base.OnEnable();
-        //Debug.Log("unguided base created");
+        //LogUtils.DebugLog("unguided base created");
     }
 
     protected override void FixedUpdate()
@@ -18,6 +18,6 @@ public abstract class UnguidedProjectile : ProjectileBase
     protected override void OnDisable()
     {
         base.OnDisable();
-        //Debug.Log("unguided base destroyed");
+        //LogUtils.DebugLog("unguided base destroyed");
     }
 }

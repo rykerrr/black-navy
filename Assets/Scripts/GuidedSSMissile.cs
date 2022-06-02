@@ -30,7 +30,7 @@ public class GuidedSSMissile : GuidedProjectile // surface to surface
         {
             if(fuel <= 0)
             {
-                Debug.Log("hello there from the other side");
+                LogUtils.DebugLog("hello there from the other side");
             }
         }
 

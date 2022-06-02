@@ -57,6 +57,8 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,6 +83,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7476648859782138402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105,7 +108,7 @@ MonoBehaviour:
   typeOfWeapon: 0
   typeOfMountRequired: 0
   owner: {fileID: 0}
-  projectilePrefab: {fileID: 4669977145655853685, guid: c602090dfe38507448350afdb19e1666,
+  projectilePrefab: {fileID: 7612355235461252767, guid: 0fa3197f0d7605e41820dddcd65f5030,
     type: 3}
   spawnLocation: {fileID: 2285250482528888368}
   delayBetweenFire: 0.7

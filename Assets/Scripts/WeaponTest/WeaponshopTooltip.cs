@@ -57,10 +57,10 @@ public class WeaponshopTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
         //}
 
-        //Debug.Log("" + transform.name[5]);
-        //Debug.Log(int.Parse("" + transform.name[5]));
-        //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit]);
-        //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit].unlockedWeapons[int.Parse("" + transform.name[5])]);
+        //LogUtils.DebugLog("" + transform.name[5]);
+        //LogUtils.DebugLog(int.Parse("" + transform.name[5]));
+        //LogUtils.DebugLog(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit]);
+        //LogUtils.DebugLog(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit].unlockedWeapons[int.Parse("" + transform.name[5])]);
         imgObj.color = new Color(imgObj.color.r, imgObj.color.g, imgObj.color.b, 0f);
         textObj.color = new Color(textObj.color.r, textObj.color.g, textObj.color.b, 0f);
     }
@@ -73,7 +73,7 @@ public class WeaponshopTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
 + "\nRearmament time: " + wep.reloadTime + "\nDamage per projectile: " + wep.damage + "\nWeapon type: " + FormatString("" + wep.typeOfWeapon)
 + "\nExtra desc: " + wepInfo.desc + "Cost: " + wep.ShopCost + "\nUnits that can use this: ";
 
-            //Debug.Log("pointer's down!");
+            //LogUtils.DebugLog("pointer's down!");
             if (imgObj.color.a >= 0.00001f)
             {
                 timeToWait = appearanceTimer;
@@ -98,7 +98,7 @@ public class WeaponshopTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         //}
 
         pointerDown = true;
-        //Debug.Log("enter");
+        //LogUtils.DebugLog("enter");
         //if (imgObj.color.a >= 0.00001f)
         //{
         //    StartCoroutine(StartDamp(1, 0f, imgObj, textObj, curText, timeToWait, null, false));
@@ -114,19 +114,19 @@ public class WeaponshopTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void OnPointerExit(PointerEventData eventData)
     {
         imgObj.StopAllCoroutines();
-        //Debug.Log("exit");
+        //LogUtils.DebugLog("exit");
         pointerDown = false;
         textObj.text = "";
         i = 0;
 
         if (imgObj.color.a <= 0.999f)
         {
-            imgObj.StartCoroutine(StartDamp(0f, 0f, imgObj, textObj, curText, timeToWait, () => { textObj.text = ""; i = 0; Debug.Log("memes"); }));
+            imgObj.StartCoroutine(StartDamp(0f, 0f, imgObj, textObj, curText, timeToWait, () => { textObj.text = ""; i = 0; LogUtils.DebugLog("memes"); }));
             timeToWait = appearanceTimer;
         }
         else
         {
-            imgObj.StartCoroutine(StartDamp(0f, waitBeforeReappTimer / 4f, imgObj, textObj, curText, timeToWait, () => { textObj.text = ""; i = 0; Debug.Log("memes"); }));
+            imgObj.StartCoroutine(StartDamp(0f, waitBeforeReappTimer / 4f, imgObj, textObj, curText, timeToWait, () => { textObj.text = ""; i = 0; LogUtils.DebugLog("memes"); }));
             timeToWait = appearanceTimer;
         }
     }
@@ -202,7 +202,7 @@ public class WeaponshopTooltip : MonoBehaviour, IPointerEnterHandler, IPointerEx
         {
             if (i > curText.Length - 1)
             {
-                //Debug.Log("breaking out");
+                //LogUtils.DebugLog("breaking out");
                 yield break;
             }
 

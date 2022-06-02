@@ -35,12 +35,12 @@ public abstract class GuidedProjectile : ProjectileBase
             }
             catch (System.Exception e)
             {
-                Debug.Log(e);
-                Debug.Log(hit + " | " + hit.Count);
+                LogUtils.DebugLog(e);
+                LogUtils.DebugLog(hit + " | " + hit.Count);
 
                 foreach (var obj in hit)
                 {
-                    Debug.Log(obj.name);
+                    LogUtils.DebugLog(obj.name);
                 }
             }
         }
@@ -49,7 +49,7 @@ public abstract class GuidedProjectile : ProjectileBase
 
         /*for (int i = 0; i < availableTargets.Count; i++)
         {
-            Debug.Log(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
+            LogUtils.DebugLog(" Index: " + i + " Name: " + hit[i].name + " Dist: " + (hit[i].transform.position - transform.position).magnitude);
         }*/
 
         if (availableTargets.Count > 0)

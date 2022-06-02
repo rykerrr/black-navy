@@ -19,7 +19,7 @@ public class StrikeFighter : AircraftBase
     protected override void Start()
     {
         OnEnable();
-        Debug.Log(waterLevel);
+        LogUtils.DebugLog(waterLevel);
         base.Start();
     }
 
@@ -30,12 +30,12 @@ public class StrikeFighter : AircraftBase
 
         if(transform.position.y < waterLevel)
         {
-            Debug.Log("help pls: - " + name + " | vsi: " + vsi);
+            LogUtils.DebugLog("help pls: - " + name + " | vsi: " + vsi);
         }
 
         if (vsi == 0)
         {
-            Debug.Log("vsi is 0");
+            LogUtils.DebugLog("vsi is 0");
         }
 
         if (!takenOff)
@@ -61,7 +61,7 @@ public class StrikeFighter : AircraftBase
 
             if (autoCannon.currentShells <= 0)
             {
-                Debug.Log("Out of ammo");
+                LogUtils.DebugLog("Out of ammo");
                 evadePosition = new Vector3(transform.up.x * 10f * vsi, evadeAlt, transform.position.z);
 
                 evading = true;
@@ -139,7 +139,7 @@ public class StrikeFighter : AircraftBase
         if (evading == false)
         {
             autoCannon.currentShells = autoCannon.MaxShells;
-            Debug.Log("reloaded boy");
+            LogUtils.DebugLog("reloaded boy");
         }
     }
 
@@ -150,7 +150,7 @@ public class StrikeFighter : AircraftBase
         if (returningToBaseAlt == false)
         {
             autoCannon.currentShells = autoCannon.MaxShells;
-            Debug.Log("reloaded boy");
+            LogUtils.DebugLog("reloaded boy");
         }
     }
 

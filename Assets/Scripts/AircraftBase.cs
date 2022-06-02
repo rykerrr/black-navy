@@ -44,7 +44,7 @@ public abstract class AircraftBase : UnitBase
 
     public void TakeOff()
     {
-        //Debug.Log("starting takeoff routine");
+        //LogUtils.DebugLog("starting takeoff routine");
         StartCoroutine(TakeOffRoutine());
     }
 
@@ -60,7 +60,7 @@ public abstract class AircraftBase : UnitBase
         {
             if (transform.position.y >= retPosition.y - 2f && transform.position.y <= retPosition.y + 2f)
             {
-                Debug.Log("F-ing out! | " + name);
+                LogUtils.DebugLog("F-ing out! | " + name);
                 //retPosition = Vector2.zero;
                 returningToBaseAlt = false;
                 enemyIsTooCloseEvadeTimer = 0f;
@@ -95,12 +95,12 @@ public abstract class AircraftBase : UnitBase
     protected virtual bool ReturnToBaseRot()
     {
         int rot = transform.up.x >= 0 ? 1 : -1;
-        //Debug.Log(Mathf.CeilToInt(transform.up.x));
+        //LogUtils.DebugLog(Mathf.CeilToInt(transform.up.x));
         transform.up = Vector3.MoveTowards(transform.up, new Vector2(transform.up.x > 0 ? Mathf.CeilToInt(transform.up.x) : Mathf.FloorToInt(transform.up.x), 0f), rotationSmoothing * Time.deltaTime);
 
         if (transform.up.y >= retPosition.y - 3f)
         {
-            Debug.Log("super = true");
+            LogUtils.DebugLog("super = true");
             //transform.up = new Vector2(transform.up.x > 0 ? 1 : -1, 0f);
             return true;
         }
@@ -110,7 +110,7 @@ public abstract class AircraftBase : UnitBase
 
     protected virtual void Evade(float escapeRange)
     {
-        //Debug.Log(returningToBaseAlt + " | " + evading + " | " + transform.name);
+        //LogUtils.DebugLog(returningToBaseAlt + " | " + evading + " | " + transform.name);
 
         if (Time.time > evadeTimer)
         {
@@ -126,7 +126,7 @@ public abstract class AircraftBase : UnitBase
 
                 if (enemyIsTooCloseEvadeTimer >= 3f)
                 {
-                    Debug.Log("Too close!");
+                    LogUtils.DebugLog("Too close!");
                     int rand = Random.Range(0, 30) > 20 ? -1 : 1;
                     retPosition = new Vector3(transform.up.x * Random.Range(14f, 30f) * rand, yBaseAltitude + Random.Range(4f, 14f), transform.position.z);
                     evading = false;
@@ -164,7 +164,7 @@ public abstract class AircraftBase : UnitBase
     {
         if (transform.position.y >= ceilAltitude)
         {
-            Debug.Log("above ceiling motherfucker | " + name);
+            LogUtils.DebugLog("above ceiling motherfucker | " + name);
 
             returningToBaseAlt = true;
             evading = false;

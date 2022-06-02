@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitType: 1
   weapons:
-  - {fileID: 0}
-  unlockedWeapons: []
+  - {fileID: 7476648859782138402, guid: d4d22479d21349a42befe339d8b05f60, type: 3}
+  unlockedWeapons:
+  - {fileID: 7476648859782138402, guid: d4d22479d21349a42befe339d8b05f60, type: 3}
   availableWeapons:
   - {fileID: 7476648859782138402, guid: d4d22479d21349a42befe339d8b05f60, type: 3}

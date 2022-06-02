@@ -25,7 +25,7 @@ public class AirSuperiorityFighter : AircraftBase
 
         if (vsi == 0)
         {
-            Debug.Log("possible error @vsi");
+            LogUtils.DebugLog("possible error @vsi");
             Debug.Break();
         }
 
@@ -51,7 +51,7 @@ public class AirSuperiorityFighter : AircraftBase
         if (!takenOff)
         {
             curSpd = Mathf.SmoothDamp(curSpd, speed, ref veloc1, timeToTakeOffFully / 3f);
-            Debug.Log("hello");
+            LogUtils.DebugLog("hello");
         }
         else
         {

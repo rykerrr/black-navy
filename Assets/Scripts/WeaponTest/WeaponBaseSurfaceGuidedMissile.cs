@@ -13,7 +13,7 @@ public class WeaponBaseSurfaceGuidedMissile : WeaponBase
             {
                 if (FindTarget())
                 {
-                    Debug.Log("Found target");
+                    LogUtils.DebugLog("Found target");
                 }
             }
 

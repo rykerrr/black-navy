@@ -36,10 +36,10 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         //}
 
-        //Debug.Log("" + transform.name[5]);
-        //Debug.Log(int.Parse("" + transform.name[5]));
-        //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit]);
-        //Debug.Log(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit].unlockedWeapons[int.Parse("" + transform.name[5])]);
+        //LogUtils.DebugLog("" + transform.name[5]);
+        //LogUtils.DebugLog(int.Parse("" + transform.name[5]));
+        //LogUtils.DebugLog(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit]);
+        //LogUtils.DebugLog(loadoutLoader.GetTeam1UnitLoadouts[loadoutLoader.GetUnit].unlockedWeapons[int.Parse("" + transform.name[5])]);
         curText = "Name: " + hoveredWeapon.name + "\nMax ammo before rearm: " + (hoveredWeapon.maxAmmo > 50000 ? Mathf.Infinity : hoveredWeapon.maxAmmo == 0 ? Mathf.Infinity : hoveredWeapon.maxAmmo)
              + "\nRearmament time: " + hoveredWeapon.reloadTime + "\nDamage per projectile: " + hoveredWeapon.damage + "\nWeapon type: " + FormatString("" + hoveredWeapon.typeOfWeapon)
              + "\nExtra desc: " + hoveredWeapon.GetComponent<WeaponAdditionalInfo>().desc;
@@ -51,7 +51,7 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         if(pointerDown)
         {
-            //Debug.Log("pointer's down!");
+            //LogUtils.DebugLog("pointer's down!");
             if (imgObj.color.a >= 0.00001f)
             {
                 timeToWait = appearanceTimer;
@@ -76,7 +76,7 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         //}
 
         pointerDown = true;
-        //Debug.Log("enter");
+        //LogUtils.DebugLog("enter");
         //if (imgObj.color.a >= 0.00001f)
         //{
         //    StartCoroutine(StartDamp(1, 0f, imgObj, textObj, curText, timeToWait, null, false));
@@ -92,19 +92,19 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public void OnPointerExit(PointerEventData eventData)
     {
         imgObj.StopAllCoroutines();
-        //Debug.Log("exit");
+        //LogUtils.DebugLog("exit");
         pointerDown = false;
         textObj.text = "";
         i = 0;
 
         if (imgObj.color.a <= 0.999f)
         {
-            imgObj.StartCoroutine(StartDamp(0f, 0f, imgObj, textObj, curText, timeToWait, () => { textObj.text = ""; i = 0; Debug.Log("memes"); }));
+            imgObj.StartCoroutine(StartDamp(0f, 0f, imgObj, textObj, curText, timeToWait, () => { textObj.text = ""; i = 0; LogUtils.DebugLog("memes"); }));
             timeToWait = appearanceTimer;
         }
         else
         {
-            imgObj.StartCoroutine(StartDamp(0f, waitBeforeReappTimer / 4f, imgObj, textObj, curText, timeToWait, () => { textObj.text = ""; i = 0; Debug.Log("memes"); }));
+            imgObj.StartCoroutine(StartDamp(0f, waitBeforeReappTimer / 4f, imgObj, textObj, curText, timeToWait, () => { textObj.text = ""; i = 0; LogUtils.DebugLog("memes"); }));
             timeToWait = appearanceTimer;
         }
     }
@@ -170,7 +170,7 @@ public class UiTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             if (i > curText.Length - 1)
             {
-                //Debug.Log("breaking out");
+                //LogUtils.DebugLog("breaking out");
                 yield break;
             }
 

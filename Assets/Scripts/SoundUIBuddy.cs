@@ -29,8 +29,8 @@ public class SoundUIBuddy : MonoBehaviour
 
         if (soundMngr == null)
         {
-            Debug.Log("REEEEEEEEEEEEEE");
-            Debug.Log(SoundManager.Instance);
+            LogUtils.DebugLog("REEEEEEEEEEEEEE");
+            LogUtils.DebugLog(SoundManager.Instance);
         }
 
         SetSong(0);
@@ -48,21 +48,21 @@ public class SoundUIBuddy : MonoBehaviour
     {
         string songName = songPickDropdown.options[songNum].text;
         curAudio.name = songName.ToLower().Replace(" ", string.Empty);
-        Debug.Log(curAudio.name);
+        LogUtils.DebugLog(curAudio.name);
 
     }
 
     public void ChangeVolume(string vol)
     {
         float volNum = System.Convert.ToSingle(vol);
-        Debug.Log(volNum + " | " + vol);
+        LogUtils.DebugLog(volNum + " | " + vol);
         curAudio.volume = Mathf.Clamp(volNum, 0f, 1f);
     }
 
     public void ChangePitch(string pitch)
     {
         float pitchNum = System.Convert.ToSingle(pitch);
-        Debug.Log(pitchNum + " | " + pitch);
+        LogUtils.DebugLog(pitchNum + " | " + pitch);
         curAudio.pitch = Mathf.Clamp(pitchNum, 0.1f, 10f);
     }
 

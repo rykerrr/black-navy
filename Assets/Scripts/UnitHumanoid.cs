@@ -29,7 +29,7 @@ public class UnitHumanoid : MonoBehaviour, IHealth
     {
         if(newHealth <= 0)
         {
-            Debug.Log("rekt");
+            LogUtils.DebugLog("rekt");
             Destroy(gameObject); // have to do this till i figure out a diff way, ReturnToPool fucks FindEnemy up in every other script
             // necessasry temporary casualty of war
         }

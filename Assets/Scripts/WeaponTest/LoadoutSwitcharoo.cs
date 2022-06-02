@@ -34,21 +34,35 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
 
     private void LoadBaseWeapons()
     {
+        LogUtils.DebugLog("not passed anything");
+        
         for (int i = 0; i < team1UnitLoadouts.Length; i++)
         {
             for (int j = 0; j < team1UnitLoadouts[i].weapons.Count; j++)
             {
+                LogUtils.DebugLog(team1UnitLoadouts[i].unlockedWeapons.Count);
+                LogUtils.DebugLog(team1UnitLoadouts[i].unitType);
+                LogUtils.DebugLog(team1UnitLoadouts[i].name);
+                
                 team1UnitLoadouts[i].weapons[j] = team1UnitLoadouts[i].unlockedWeapons[0];
             }
         }
 
+        LogUtils.DebugLog("passed this");
+        
         for (int i = 0; i < team2UnitLoadouts.Length; i++)
         {
             for (int j = 0; j < team2UnitLoadouts[i].weapons.Count; j++)
             {
+                LogUtils.DebugLog(team2UnitLoadouts[i].unlockedWeapons.Count);
+                LogUtils.DebugLog(team2UnitLoadouts[i].unitType);
+                LogUtils.DebugLog(team2UnitLoadouts[i].name);
+                
                 team2UnitLoadouts[i].weapons[j] = team2UnitLoadouts[i].availableWeapons[0];
             }
         }
+        
+        LogUtils.DebugLog("also passed this but kinda impossible");
 
         isLoaded = true;
     }
@@ -56,7 +70,7 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
     public void SwitchUnit(int unit)
     {
         curUnit = unit;
-        Debug.Log(team1UnitLoadouts[curUnit].name);
+        LogUtils.DebugLog(team1UnitLoadouts[curUnit].name);
 
         foreach (Dropdown drop in weaponDropdownMenus) // disables dropdown menus
         {
@@ -99,10 +113,10 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
             {
                 for (int j = 0; j < weaponDropdownMenus[i].options.Count; j++)
                 {
-                    //Debug.Log(team1UnitLoadouts[curUnit].weapons.Count);
-                    //Debug.Log(team1UnitLoadouts[curUnit].weapons[i].name);
-                    //Debug.Log(weaponDropdownMenus[i].options[j]);
-                    //Debug.Log(weaponDropdownMenus[i].options[j].text);
+                    //LogUtils.DebugLog(team1UnitLoadouts[curUnit].weapons.Count);
+                    //LogUtils.DebugLog(team1UnitLoadouts[curUnit].weapons[i].name);
+                    //LogUtils.DebugLog(weaponDropdownMenus[i].options[j]);
+                    //LogUtils.DebugLog(weaponDropdownMenus[i].options[j].text);
                     if (team1UnitLoadouts[curUnit].weapons[i].name == weaponDropdownMenus[i].options[j].text)
                     {
                         weaponDropdownMenus[i].SetValueWithoutNotify(j);
@@ -140,7 +154,7 @@ public class LoadoutSwitcharoo : Singleton<LoadoutSwitcharoo>
         //unitLoadouts[curUnit].weapons[wepNum] = PickableWeapons[(int) unitLoadouts[curUnit].unitType][wep];
         //unitLoadouts[curUnit].weapons[wepNum] = PickableWeapons[(int) unitLoadouts[curUnit].unitType]
 
-        Debug.Log(team + " | " + wep);
+        LogUtils.DebugLog(team + " | " + wep);
 
         if (team == 0)
         {

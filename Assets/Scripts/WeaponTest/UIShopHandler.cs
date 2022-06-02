@@ -21,7 +21,7 @@ public class UIShopHandler : MonoBehaviour
 
         selectedWep.unlocked = !selectedWep.unlocked;
         loadoutScript.RefreshLoadouts();
-        Debug.Log(selectedWep.unlocked);
+        LogUtils.DebugLog(selectedWep.unlocked);
     }
 }
 #pragma warning restore 0649
